@@ -1,0 +1,164 @@
+维护者：CyanSkyXD
+版本号：1.0.0
+更新时间：2025-08-09
+
+词条
+
+// 角色
+Akechi Goro：明智吾郎
+Akechi：明智
+Akira Kurusu：来栖晓
+Akira：晓
+Amamiya Ren：雨宫莲
+Amamiya：雨宫
+Ann Takamaki：高卷杏
+Ann：杏
+Caroline：卡萝莉娜
+Chihaya Mifune：御船千早
+Chihaya：千早
+Chouno：蝶野
+Futaba Sakura：佐仓双叶
+Futaba：双叶
+Goro Akechi：明智吾郎
+Goro：吾郎
+Haru Okumura：奥村春
+Haru：春
+Hifumi Togo：东乡一二三
+Hifumi：一二三
+Hiruta：蛭田
+Ichiko Ohya：大宅一子
+Ichiko：一子
+Ichiryusai Madarame：斑目一流斋
+Igor：伊戈尔
+Inui：乾
+Isshiki Wakaba：一色若叶
+Isshiki：一色
+Iwai Munehisa：岩井宗久
+Iwai：宗久
+Jose：约瑟
+José：约瑟
+Junya Kaneshiro：金城润矢
+Justine：芮斯汀娜
+Kamoshida Suguru：鸭志田卓
+Kamoshida：鸭志田
+Kaneshiro Junya：金城润矢
+Kaneshiro：金城
+Kasumi Yoshizawa：芳泽霞
+Kasumi：霞
+Kawakami Sadayo：川上贞代
+Kawakami：川上
+Kitagawa Yusuke：喜多川祐介
+Kitagawa：喜多川
+Kobayakawa：小早川
+Kunikazu Okumura：奥村邦和
+Kurusu Akira：来栖晓
+Kurusu：来栖
+Madarame Ichiryusai：斑目一流斋
+Madarame：斑目
+Makoto Niijima：新岛真
+Makoto Sae：新岛冴
+Makoto：真
+Maruki Takuto：丸喜拓人
+Maruki：丸喜
+Masayoshi Shido：狮童正义
+Mifune Chihaya：御船千早
+Mifune：御船
+Mika：美佳
+Mishima Yuuki：三岛由辉
+Mishima：三岛
+Morgana：摩尔加纳
+Mr. Hiruta：蛭田老师
+Mr. Inui：乾老师
+Mr. Kamoshida：鸭志田老师
+Mr. Ushimaru：牛丸老师
+Ms. Chouno：蝶野老师
+Ms. Usami：宇佐美老师
+Munehisa Iwai：岩井宗久
+Munehisa：岩井
+Nakanohara：中野原
+Natsuhiko Nakanohara：中野原夏彦
+Niijima Makoto：新岛真
+Niijima：新岛
+Oda Shinya：织田信也
+Oda：织田
+Ohya Ichiko：大宅一子
+Ohya：大宅
+Okumura Haru：奥村春
+Okumura Kunikazu：奥村邦和
+Okumura：奥村
+Phantom Thieves：怪盗团
+Principal Kobayakawa：小早川校长
+Ren Amamiya：雨宫莲
+Ren：莲
+Rumi：由美
+Ryuji Sakamoto：坂本龙司
+Ryuji：龙司
+Sadayo Kawakami：川上贞代
+Sadayo：贞代
+Sae Makoto：新岛冴
+Sae：冴
+Sakamoto Ryuji：坂本龙司
+Sakamoto：坂本
+Sakura Futaba：佐仓双叶
+Sakura Sojiro：佐仓惣治郎
+Sakura：佐仓
+Shido Masayoshi：狮童正义
+Shido：狮童
+Shiho Suzui：铃井志帆
+Shiho：志帆
+Shinichi Yoshizawa：芳泽伸一
+Shinya Oda：织田信也
+Shinya：信也
+Sojiro Sakura：佐仓惣治郎
+Sojiro：惣治郎
+Suguru Kamoshida：鸭志田卓
+Sumire Yoshizawa：芳泽堇
+Sumire：堇
+Suzui Shiho：铃井志帆
+Suzui：铃井
+Tae Takemi：武见妙
+Tae：妙
+Takamaki Ann：高卷杏
+Takamaki：高卷
+Takemi Tae：武见妙
+Takemi：武见
+Takuto Maruki：丸喜拓人
+Takuto：拓人
+Togo Hifumi：东乡一二三
+Togo：东乡
+Toranosuke Yoshida：吉田寅之助
+Toranosuke：寅之助
+Usami：宇佐美
+Ushimaru：牛丸
+Wakaba Isshiki：一色若叶
+Wakaba：若叶
+Wuhen：无边
+Yoshida Toranosuke：吉田寅之助
+Yoshida：吉田
+Yoshizawa Kasumi：芳泽霞
+Yoshizawa Shinichi：芳泽伸一
+Yoshizawa Sumire：芳泽堇
+Yoshizawa：芳泽
+Yusuke Kitagawa：喜多川祐介
+Yusuke：祐介
+Yuuki Mishima：三岛由辉
+Yuuki：由辉
+
+// 地点
+Akihabara：秋叶原
+Aoyamaitchome：苍山一丁目
+Ginza：银座
+Kanda：神田
+Kichijoji：吉祥寺
+Mementos：印象空间
+Shibuya：涩谷
+Shinjuku：新宿
+Shujin Academy：秀尽学园
+Shujin：秀尽
+Velvet Room：天鹅绒房间
+Yongenjaya：四轩茶屋
+
+// 其他
+cognitive psience：认知诃学
+cognitive world：认知世界
+featherman：翔羽侠
