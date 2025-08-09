@@ -17,6 +17,7 @@ Caroline：卡萝莉娜
 Chihaya Mifune：御船千早
 Chihaya：千早
 Chouno：蝶野
+Coach Hiraguchi：平口教练
 Futaba Sakura：佐仓双叶
 Futaba：双叶
 Goro Akechi：明智吾郎
@@ -25,6 +26,7 @@ Haru Okumura：奥村春
 Haru：春
 Hifumi Togo：东乡一二三
 Hifumi：一二三
+Hiraguchi：平口
 Hiruta：蛭田
 Ichiko Ohya：大宅一子
 Ichiko：一子
@@ -95,7 +97,7 @@ Ryuji Sakamoto：坂本龙司
 Ryuji：龙司
 Sadayo Kawakami：川上贞代
 Sadayo：贞代
-Sae Makoto：新岛冴
+Sae Niijima：新岛冴
 Sae：冴
 Sakamoto Ryuji：坂本龙司
 Sakamoto：坂本
@@ -111,6 +113,7 @@ Shinya Oda：织田信也
 Shinya：信也
 Sojiro Sakura：佐仓惣治郎
 Sojiro：惣治郎
+Sugimura：杉村
 Suguru Kamoshida：鸭志田卓
 Sumire Yoshizawa：芳泽堇
 Sumire：堇
@@ -144,6 +147,7 @@ Yusuke：祐介
 Yuuki Mishima：三岛由辉
 Yuuki：由辉
 
+
 // 地点
 Akihabara：秋叶原
 Aoyamaitchome：苍山一丁目
@@ -159,6 +163,7 @@ Velvet Room：天鹅绒房间
 Yongenjaya：四轩茶屋
 
 // 其他
+calling card：预告函
 cognitive psience：认知诃学
 cognitive world：认知世界
 featherman：翔羽侠
