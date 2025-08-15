@@ -5,7 +5,6 @@
 词条
 // 角色
 Akechi Goro = 明智 吾郎
-Akira Kurusu = 来栖 晓
 Amamiya Ren = 雨宫 莲
 Caroline = 卡萝莉娜
 Chouno = 蝶野
