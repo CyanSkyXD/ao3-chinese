@@ -1,9 +1,8 @@
-维护者：CyanSkyXD
 版本号：1.0.1
+维护者：CyanSkyXD
 更新时间：2025-08-15
 
 词条
-
 // 角色
 Akechi Goro = 明智 吾郎
 Akira Kurusu = 来栖 晓
@@ -57,7 +56,6 @@ Yoshizawa Shinichi = 芳泽 伸一
 Yoshizawa Sumire = 芳泽 堇
 
 通用词条
-
 // 地点
 Akihabara：秋叶原
 Aoyamaitchome：苍山一丁目
@@ -72,7 +70,6 @@ Shujin Academy：秀尽学园
 Shujin：秀尽
 Velvet Room：天鹅绒房间
 Yongenjaya：四轩茶屋
-
 // 其他
 calling card：预告函
 cognitive psience：认知诃学
@@ -80,7 +77,6 @@ cognitive world：认知世界
 featherman：翔羽侠
 
 禁翻词条
-
 Crow
 Joker
 Mona
