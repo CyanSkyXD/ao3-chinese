@@ -1,7 +1,7 @@
 /**
  name         AO3 汉化插件 - 词库
  namespace    https://github.com/V-Lipset/ao3-chinese
- version      1.4.1-2025-08-16
+ version      1.5.1-2025-08-29
  description  AO3 汉化插件的词库文件
  author       V-Lipset
  license      GPL-3.0
@@ -22,7 +22,7 @@ const I18N = {
             'works_show': ['.stats .hits', '.stats .kudos'],
         },
         ignoreSelectorPage: {
-            '*': ['script', 'style', 'noscript', 'iframe', 'canvas', 'video', 'audio', 'img', 'svg', 'pre', 'code', '.userstuff.workskin', '.workskin', 'div.autocomplete.dropdown ul', 'dd.freeform.tags', '[data-translated-by-custom-function]'],
+            '*': ['script', 'style', 'noscript', 'iframe', 'canvas', 'video', 'audio', 'img', 'svg', 'pre', 'code', '.userstuff.workskin', '.workskin', 'div.autocomplete.dropdown ul', 'dd.freeform.tags', '[data-translated-by-custom-function]', 'li.freeforms'],
             'works_show': ['.dropdown.actions-menu ul', '.userstuff'],
 			'works_chapters_show': ['.userstuff'],
             'admin_posts_show': ['.userstuff'],
@@ -632,6 +632,9 @@ const I18N = {
                     'This is a draft chapter in a posted work. It will be kept unless the work is deleted.': '这是已发布作品中的一篇草稿章节。除非作品被删除，否则该草稿将一直保留。',
                     'This chapter is a draft and hasn\'t been posted yet!': '本章节为草稿，尚未发布！',
 				'Are you sure you want to delete this bookmark?': '您确定要删除此书签吗？',
+				'This is part of an ongoing challenge and will be revealed soon!': '本作品正在参与一项开放中的挑战，内容将很快揭晓！',
+				'Your search failed because of a syntax error. Please try again.': '搜索失败，您的查询存在语法错误。请修改后重试。',
+				'Type or paste formatted text.': '输入或粘贴带有格式的文本'
             },
             'innerHTML_regexp': [
 
@@ -661,8 +664,8 @@ const I18N = {
                 ['h2.heading', /^\s*([\d,]+)\s+Works?\s+in\s+(<a[^>]+>.+?<\/a>)\s*$/s, '$2：$1 篇作品'],
                 ['dd.expandable dl.range dt label', /^From$/s, '从'],
                 ['dd.expandable dl.range dt label', /^To$/s, '到'],
-                ['label[for^="include_work_search_category_ids_"] span:last-of-type', /^(Other)(\s*\(\d+\))$/s, '其她$2'],
-                ['label[for^="include_bookmark_search_category_ids_"] span:last-of-type', /^(Other)(\s*\(\d+\))$/s, '其她$2'],
+                    ['label[for*="_work_search_category_ids_"] span:last-of-type', /^(Other)(\s*\(\d+\))$/s, '其她$2'],
+                ['label[for*="_bookmark_search_category_ids_"] span:last-of-type', /^(Other)(\s*\(\d+\))$/s, '其她$2'],
                 ['h2.heading', /^\s*(\d+)\s*-\s*(\d+)\s*of\s*([0-9,]+)\s*Bookmarks by\s*(.+)\s*$/s, '$4：$3 条书签，第 $1 - $2 条'],
                 ['h2.heading', /^\s*(\d+)\s*-\s*(\d+)\s+of\s+([0-9,]+)\s+Works?\s+by\s+(.+)\s*$/s, '$4：$3 篇作品，第 $1 - $2 篇'],
                 ['h2.heading', /^\s*(\d+)\s*-\s*(\d+)\s+of\s+([0-9,]+)\s+(?:Bookmarked Items|已创建书签作品) in\s+(<a[^>]+>.+?<\/a>)\s*$/s, '$4：$3 篇已创建书签作品，第 $1 - $2 篇'],
@@ -679,7 +682,7 @@ const I18N = {
                 ['h2.heading', /^\s*([\d,]+)\s+Collections?\s*$/s, '$1 个合集'],
                 [
                     'dt',
-                    /(<\/a>)\s*\(Work\)\s+by\s*(<a\s+rel="author".*)/s,
+                    /(<\/a>)\s*\(Work\)\s+by\s*(<a\s+rel="author".*?>.*?<\/a>|[^<]+)/s,
                     '$1（作品）by $2'
                 ],
                 [
@@ -701,6 +704,21 @@ const I18N = {
                 ['div#share p.note', /^Copy and paste the following code to link back to this work \((<kbd>CTRL A<\/kbd>\/<kbd>CMD A<\/kbd>) will select all\), or use the Tweet or Tumblr links to share the work on your Twitter or Tumblr account\.$/s, '请复制以下代码以添加指向此作品的链接（按 $1 可全选），或使用 Tweet / Tumblr 链接在您的 Twitter / Tumblr 账户上分享此作品。'],
                 ['h2.heading', /^\s*([\d,]+)\s+Bookmarks?\s*$/s, '$1 条书签'],
                 ['h2.heading', /^\s*(\d+)\s*-\s*(\d+)\s+of\s+([0-9,]+)\s+Bookmarks?\s*$/s, '第 $1 - $2 条，共 $3 条书签'],
+				[
+					'h6.landmark.heading',
+					/^Bookmarker's Notes$/,
+					'书签创建者的注释'
+				],
+				[
+					'h4.heading',
+					/^Mystery Work$/,
+					'神秘作品'
+				],
+				[
+					'h5.heading',
+					/^Part of (<a href="\/collections\/.*?">.+?<\/a>)$/,
+					'属于合集：$1'
+				],
 
                 // 界面
                 ['div.flash.notice', /^The skin (.+) has been set\. This will last for your current session\.$/s, '$1 界面已启用，此设置将在当前会话期间持续生效。'],
@@ -982,7 +1000,7 @@ const I18N = {
             'Moderated': '审核制',
             'Unmoderated': '非审核制',
             'Unrevealed': '未揭晓',
-            'Anonymous': '匿名投稿',
+            'Anonymous': '匿名',
             'Gift Exchange Challenges': '赠文交换活动',
             'Gift Exchange Challenge': '赠文交换活动',
             'Prompt Meme Challenges': '接梗挑战',
@@ -1227,7 +1245,7 @@ const I18N = {
                     'Chapter Preface': '章节前言',
                     'Chapter Summary': '章节简介',
                     'Chapter Notes': '章节注释',
-                    'End Notes': '尾注', // 补上这个之前遗漏的词条
+                    'End Notes': '尾注',
                     'Chapter Text*': '章节正文*',
                     'Post Chapter': '发布章节',
                     'Warning: Unchecking this box will delete the existing beginning note.': '警告：取消勾选此框将删除已有的开头注释。',
@@ -2065,7 +2083,7 @@ const I18N = {
                 ['h3.heading', /^\s*Requests?(.*)\s*$/, '请求$1'],
                 ['h3.heading', /^\s*Offers?(.*)\s*$/, '提供$1'],
                 ['ul.commas.index.group', /^\s*(\d+)\s+anonymous\s+claimant(s?)\s*$/, '$1 位匿名认领者'],
-                ['h4.heading', /^\s*Request\s+by\s+(?:Anonymous|匿名投稿)\s*$/s, '请求 by 匿名投稿'],
+                ['h4.heading', /^\s*Request\s+by\s+(?:Anonymous|匿名)\s*$/s, '请求 by 匿名'],
                 ['p.actions a.showme', /^\s*Add another request\?\s*\(Up to (\d+) allowed\.\)\s*$/, '添加另一个请求项？（最多可添加 $1 个）'],
                 ['p.actions a.showme', /^\s*Add another offer\?\s*\(Up to (\d+) allowed\.\)\s*$/, '添加另一个提供项？（最多可添加 $1 个）'],
                 ['h2.heading', /^\s*(\d+)\s+Works? in\s*(<a href="\/collections\/.*?">.+?<\/a>)\s*$/s, '$2 中的 $1 篇作品'],
@@ -2180,6 +2198,7 @@ const I18N = {
                 'Previous Post': '上一篇',
                 'Next Post': '下一篇',
                 'Published:': '发布于：',
+                    'Original:': '原文：',
                 'Tags:': '标签：',
                 'Translations:': '翻译版本：',
                 '↑ Top': '↑ 返回顶部',
@@ -3271,6 +3290,56 @@ function translateSymbolsKeyModal() {
         closeButton.textContent = '关闭';
     }
     modal.setAttribute('data-translated-by-custom-function', 'true');
+}
+
+/**
+ * 专门用于翻译“富文本”帮助弹窗。
+ */
+function translateRteHelpModal() {
+    const container = document.querySelector('#modal div.content.userstuff');
+    const footer = container?.nextElementSibling;
+    const footerTitle = footer?.querySelector('span.title');
+    if (!footerTitle || footerTitle.textContent !== 'Rte help') {
+        return;
+    }
+    if (container) {
+        container.innerHTML = `
+            <h2>富文本</h2>
+            <p>富文本编辑器（<abbr title="富文本编辑器">RTE</abbr>）的具体行为取决于您的设备、浏览器、操作系统以及您粘贴内容的来源。但是，从一个格式规范的文档开始，将有助于您最大程度地利用 <abbr>RTE</abbr> 。以下是一些通用技巧，以确保您的格式尽可能被保留：</p>
+            <ul>
+                <li><p><strong>在段落之间按<em>一次</em> <kbd>Enter</kbd> 键。</strong>按两次 <kbd>Enter</kbd> 会插入一个空段落，当您粘贴到 <abbr>RTE</abbr> 时，会在段落之间产生额外的、可能不需要的空格。Archive 使用顶部和底部边距来制造段落间的空行效果；您可以使用文本编辑器中的段落格式选项来达到类似效果，而无需添加额外的 <code>&lt;p&gt;</code> 标签。</p></li>
+                <li><p><strong>为标题、块引用、代码等使用预设样式。</strong>通常在文本编辑器的 “格式” 菜单中找到的 “样式” 选项，在粘贴到 <abbr>RTE</abbr> 时通常会转换为 <abbr title="超文本标记语言">HTML</abbr> 标签。仅仅通过改变字体大小、字体名称或文本缩进来模拟标题或块引用的视觉效果，通常是不会起作用的。</p></li>
+            </ul>
+            <h3>从特定文本编辑器粘贴</h3>
+            <h4>Google Drive</h4>
+            <p>Google Drive 使用内联 <abbr title="层叠样式表">CSS</abbr> 来改变文本对齐方式以及产生粗体、斜体、下划线和删除线格式。遗憾的是，我们不允许在 Archive 上使用内联样式，因此只有纯 <abbr>HTML</abbr> 格式（如标题、列表、链接和表格）会被保留。</p>
+            <p>在某些浏览器中，格式在粘贴到 <abbr>RTE</abbr> 时可能看起来被保留了，但在预览或发布您的作品时，它将被我们的 <abbr>HTML</abbr> 清理程序移除。</p>
+            <h4>Scrivener</h4>
+            <p>Scrivener 用户通常通过粘贴到 <abbr>HTML</abbr> 编辑器，然后切换到 <abbr>RTE</abbr> 进行修改，可以获得更好的效果。要从 Scrivener 复制 HTML，请执行以下操作：</p>
+            <ol>
+                <li>转到 “编辑” 菜单</li>
+                <li>选择 “特殊复制”</li>
+                <li>选择 “以 HTML 格式复制” 或 “以 HTML 格式复制（基础，使用 &lt;p&gt; 和 &lt;span&gt;）”</li>
+            </ol>
+            <h3>粘贴特定类型的格式</h3>
+            <h4>下划线和删除线</h4>
+            <p>下划线和删除线通常由 <abbr>CSS</abbr> 产生。因为 Archive 不允许使用内联 <abbr>CSS</abbr>，这些文本样式在粘贴时经常会丢失。</p>
+            <p>从使用 <code>&lt;u&gt;</code>、<code>&lt;del&gt;</code>、<code>&lt;strike&gt;</code> 或 <code>&lt;s&gt;</code> 标签的网页粘贴将可以正常工作。</p>
+            <h4>对齐</h4>
+            <p>文本对齐现在通常通过 <abbr>CSS</abbr> 实现，并且因为 Archive 不允许内联 <abbr>CSS</abbr>，对齐方式在粘贴时通常会丢失。</p>
+            <p>从使用 <code>align</code> 属性和 <code>&lt;center&gt;</code> 元素的来源粘贴将保持格式完整，但请注意，<abbr>RTE</abbr> 中的对齐按钮无法修改用 <code>&lt;center&gt;</code> 标签创建的居中对齐。</p>
+            <h4>标题</h4>
+            <p>文本编辑器为其标题预设使用许多不同的样式。例如，在 OpenOffice 中选择 “标题 4” 会产生斜体的无衬线文本。即使成功将标题粘贴到 <abbr>RTE</abbr> 中，这种视觉格式也<em>不会</em>被保留——只有 <code>&lt;h4&gt;</code> 标签会被保留。这不是 bug 。<abbr>HTML</abbr> 旨在告诉浏览器文本的含义（例如：“这是一个标题” ），而不是它应该如何显示（例如：“这应该是 Arial 字体” ）。如果您希望修改标题或作品任何其她部分的样式，请使用作品界面。</p>
+            <h4>缩进文本</h4>
+            <p>缩进文本是一种纯粹的视觉效果，没有等效的 <abbr>HTML</abbr>，并且不会被保留。请使用作品界面来缩进文本。</p>
+        `;
+        container.setAttribute('data-translated-by-custom-function', 'true');
+    }
+    footerTitle.textContent = '富文本 帮助';
+    const closeButton = footer.querySelector('a.modal-closer');
+    if (closeButton) {
+        closeButton.textContent = '关闭';
+    }
 }
 
 /**
@@ -5550,7 +5619,7 @@ function translateKudosSection() {
 		const originalHtml = html;
             html = html.replace(/(<a[^>]*>)([\d,]+)\s+more\s+users(<\/a>)/g, '$1$2 位用户$3');
             html = html.replace(/([\d,]+)\s+guest(s)?/g, '$1 位访客');
-            html = html.replace(/\s+as well as\s+/g, '，以及 ');
+            html = html.replace(/\s+as well as\s+/g, ' ，以及 ');
             html = html.replace(/(<span id="kudos_more_connector">), and (<\/span>)/g, '$1，和 $2');
             html = html.replace(/\s+and\s+/g, ' 和 ');
             html = html.replace(/, /g, '，');
