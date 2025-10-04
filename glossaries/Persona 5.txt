@@ -1,15 +1,21 @@
-版本号：1.0.1
+版本号：1.0.2
 维护者：CyanSkyXD
-更新时间：2025-08-15
+更新时间：2025-10-04
 
-词条
+通用词条
 // 角色
 Akechi Goro = 明智 吾郎
 Amamiya Ren = 雨宫 莲
 Caroline = 卡萝莉娜
 Chouno = 蝶野
+Hasegawa Akane = 长谷川 茜
+Hasegawa Aoi = 长谷川 葵
+Hasegawa Zenkichi = 长谷川 善吉
+Hiiragi Alice = 柊 爱丽丝
 Hiraguchi = 平口
 Hiruta = 蛭田
+Hyoudou Mariko = 冰堂 鞠子
+Ichinose Kuon = 一之濑 久音
 Igor = 伊戈尔
 Inui = 乾
 Isshiki Wakaba = 一色 若叶
@@ -17,33 +23,36 @@ Iwai Munehisa = 岩井 宗久
 Jose = 约瑟
 José = 约瑟
 Justine = 芮斯汀娜
+Kaburagi Miyako = 镝木 京
 Kamoshida Suguru = 鸭志田 卓
 Kaneshiro Junya = 金城 润矢
 Kawakami Sadayo = 川上 贞代
 Kitagawa Yusuke = 喜多川 祐介
 Kobayakawa = 小早川
 Kurusu Akira = 来栖 晓
+Lavenza = 拉雯妲
 Maruki Takuto = 丸喜 拓人
 Mifune Chihaya = 御船 千早
 Mika = 美佳
 Mishima Yuuki = 三岛 由辉
 Morgana = 摩尔加纳
 Nakanohara Natsuhiko = 中野原 夏彦
+Natsume Ango = 夏芽 安吾
 Niijima Makoto = 新岛 真
 Oda Shinya = 织田 信也
 Ohya Ichiko = 大宅 一子
 Okumura Haru = 奥村 春
 Okumura Kunikazu = 奥村 邦和
-Phantom Thieves = 怪盗团
+Owada Jun = 大和 田纯
 Rumi = 由美
 Sakamoto Ryuji = 坂本 龙司
 Sakura Futaba = 佐仓 双叶
 Sakura Sojiro = 佐仓 惣治郎
 Shido Masayoshi= 狮童 正义
+Sophia = 索菲亚
 Sugimura = 杉村
 Suzui Shiho = 铃井 志帆
 Takamaki Ann = 高卷 杏
-Takemi = 武见
 Takemi Tae = 武见 妙
 Togo Hifumi = 东乡 一二三
 Usami = 宇佐美
@@ -53,8 +62,6 @@ Yoshida Toranosuke = 吉田 寅之助
 Yoshizawa Kasumi = 芳泽 霞
 Yoshizawa Shinichi = 芳泽 伸一
 Yoshizawa Sumire = 芳泽 堇
-
-通用词条
 // 地点
 Akihabara：秋叶原
 Aoyamaitchome：苍山一丁目
@@ -64,6 +71,7 @@ Kanda：神田
 Kichijoji：吉祥寺
 Mementos：印象空间
 Shibuya：涩谷
+Shinagawa：品川
 Shinjuku：新宿
 Shujin Academy：秀尽学园
 Shujin：秀尽
@@ -74,14 +82,18 @@ calling card：预告函
 cognitive psience：认知诃学
 cognitive world：认知世界
 featherman：翔羽侠
+phantom thieves：怪盗团
 
 禁翻词条
 Crow
 Joker
 Mona
+Navi
 Noir
 Oracle
 Panther
 Queen
 Skull
+Sophie
 Violet
+Wolf
