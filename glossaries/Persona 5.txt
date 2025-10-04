@@ -2,7 +2,7 @@
 维护者：CyanSkyXD
 更新时间：2025-10-04
 
-通用词条
+词条
 // 角色
 Akechi Goro = 明智 吾郎
 Amamiya Ren = 雨宫 莲
@@ -62,6 +62,8 @@ Yoshida Toranosuke = 吉田 寅之助
 Yoshizawa Kasumi = 芳泽 霞
 Yoshizawa Shinichi = 芳泽 伸一
 Yoshizawa Sumire = 芳泽 堇
+
+通用词条
 // 地点
 Akihabara：秋叶原
 Aoyamaitchome：苍山一丁目
