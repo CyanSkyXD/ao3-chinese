@@ -1,7 +1,7 @@
 /**
  name         AO3 汉化插件 - 词库
  namespace    https://github.com/V-Lipset/ao3-chinese
- version      1.5.2-2025-09-22
+ version      1.5.4-2025-09-29
  description  AO3 汉化插件的词库文件
  author       V-Lipset
  license      GPL-3.0
@@ -70,7 +70,7 @@ const I18N = {
                 'Log in': '登录',
                 'Sign Up': '注册',
                 'User': '用户',
-                'Username or email:': '用户名或电子邮箱:',
+                'Username or email:': '用户名或邮箱:',
                 'Password:': '密码:',
                 'Remember Me': '记住我',
                 'Remember me': '记住我',
@@ -335,6 +335,8 @@ const I18N = {
                 'Sort direction': '排序方向',
                 'Descending': '降序',
                 'Ascending': '升序',
+                    'Filter by title': '按标题筛选',
+                    'Filter by tag': '按标签筛选',
                 'Work Search': '作品搜索',
                 'Any Field': '任意字段',
                 'Date': '日期',
@@ -821,7 +823,7 @@ const I18N = {
                 [
                     'h4.viewed.heading',
                     /^\s*<span>Last visited:<\/span>\s*(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{4})\s+\((.*?)\)\s+Visited\s+(once|(\d+)\s+times)(?:\s+\((Marked for Later\.)\))?\s*$/s,
-                    (match, day, monthAbbr, year, statusText, visitText, visitCount, markedForLaterText) => {
+                    (_match, day, monthAbbr, year, statusText, visitText, visitCount, markedForLaterText) => {
                         const statusMap = {
                             'Latest version.': '已是最新版',
                             'Minor edits made since then.': '有微小修订',
@@ -875,7 +877,7 @@ const I18N = {
                 [
                     'p',
                     /^\s*Forgot your password or username\?\s*<a href="(\/users\/password\/new)">Reset password<\/a>\.\s*<br.*?>\s*Don't have an account\?\s*<a href="(\/invite_requests)">Request an invitation to join<\/a>\.?\s*$/s,
-                    '忘记您的密码或用户名？<a href="$1"> 重置密码 </a>。<br>还没有帐户？<a href="$2"> 获取邀请 </a>。'
+                    '忘记了您的密码或用户名？<a href="$1"> 重置密码 </a>。<br>还没有帐户？<a href="$2"> 获取邀请 </a>。'
                 ],
                 [
                     'label[for="reset_login"]',
@@ -972,12 +974,32 @@ const I18N = {
                     /^\s*\(See the end of the work for\s*(<a href="#work_endnotes">)notes(<\/a>)\s+and\s+(<a href="#children">)other works inspired by this one(<\/a>)\.\)\s*$/,
                     '（在作品结尾查看$1注释$2和$3相关衍生作品$4。）'
                 ],
+                [
+                    'main',
+                    /^\s*<h2>The archive is down for maintenance\.<\/h2>\s*<p>Check our (<a href="https:\/\/www\.otwstatus\.org">status page<\/a>), (<a href="https:\/\/bsky\.app\/profile\/status\.archiveofourown\.org">@status\.archiveofourown\.org<\/a>) on Bluesky or (<a href="https:\/\/ao3org\.tumblr\.com\/">ao3org<\/a>) on Tumblr for updates\.<\/p>\s*$/s,
+                    '<h2> Archive 正在进行维护。</h2><p>请查看我们的 $1、Bluesky 上的 $2 或 Tumblr 上的 $3，以获取最新动态。</p>'
+                ],
+                [
+                    'h3.heading',
+                    /^\s*Sorry!\s*$/s,
+                    '抱歉！'
+                ],
+                [
+                    'h3.heading + p',
+                    /^\s*This work is only available to registered users of the Archive\.\s*If you already have an Archive of Our Own account, log in now\.\s*If you don't have an account, you can\s*<a href="\/invite_requests">.*?<\/a>\s*[.。]?\s*$/s,
+                    '此作品仅对 Archive 的注册用户开放。如果您已有 AO3 帐户，请立即登录。如果您还没有帐户，可以 <a href="/invite_requests">获取邀请</a> 。'
+                ],
+                [
+                    'div#error.error ul',
+                    /<li>(.+?) does not accept gifts\.<\/li>/g,
+                    (_match, username) => `<li>${username} 不接受赠文。</li>`
+                ],
 
                     // 标签说明
                     [
                         'p',
                         /^\s*This tag belongs to the (Fandom|Relationship|Character|Category|Archive Warning|Rating|Additional Tags) Category\.(\s*It's a <a href="\/faq\/glossary#canonicaldef">(?:canonical tag|规范标签)<\/a>[\.。]\s*You can use it to <a href="([^"]+)">(?:filter works|筛选作品)<\/a> and to <a href="([^"]+)">(?:filter bookmarks|筛选书签)<\/a>[\.。]\s*(\s*You can also access a list of <a href="([^"]+)">(?:Relationship tags in this fandom|此同人圈中的关系标签)<\/a>\s*)?[\.。]?)?\s*$/s,
-                        (_, category, canonicalPart, worksLink, bookmarksLink, relationshipPart, relationshipLink) => {
+                        (_match, category, canonicalPart, worksLink, bookmarksLink, relationshipPart, relationshipLink) => {
                             const categoryMap = {
                                 'Fandom': '同人圈',
                                 'Relationship': '关系',
@@ -1006,7 +1028,7 @@ const I18N = {
                     [
                         'div.merger p',
                         /^\s*(')?([^'<]+)(')?\s+has been made a synonym of (<a class="tag"[^>]*>.*<\/a>)\.\s*Works and bookmarks tagged with ('?)([^'<]+)(')?\s+will show up in (.*)'s filter\.\s*$/s,
-                        (_, quote1, tag1, quote2, tag2Link, quote3, tag3, quote4, tag4) => {
+                        (_match, quote1, tag1, _quote2, tag2Link, quote3, tag3, _quote4, tag4) => {
                             const displayTag1 = quote1 ? `'${tag1}'` : tag1;
                             const displayTag3 = quote3 ? `'${tag3}'` : tag3;
                             return `${displayTag1} 已被设为 ${tag2Link} 的同义标签。使用 ${displayTag3} 标签的作品和书签将会在 ${tag4} 的筛选结果中显示。`;
@@ -2346,6 +2368,12 @@ const I18N = {
             'selector': [
                 [['input[name="commit"][value="Comment"]', '评论']]
             ]
+        },
+        'admin_posts_index': {
+            'static': {},
+            'innerHTML_regexp': [],
+            'regexp': [],
+            'selector': []
         },
         'works_chapters_show': {
             'static': {
