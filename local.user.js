@@ -2,10 +2,11 @@
 // @name         AO3 汉化插件
 // @namespace    https://github.com/V-Lipset/ao3-chinese
 // @description  中文化 AO3 界面，可调用 AI 实现简介、注释、评论以及全文翻译。
-// @version      1.5.4-2025-09-29
+// @version      1.5.7-2025-10-16
 // @author       V-Lipset
 // @license      GPL-3.0
 // @match        https://archiveofourown.org/*
+// @match        https://archiveofourown.gay/*
 // @match        https://xn--iao3-lw4b.ws/*
 // @match        https://ao3sg.hyf9588.tech/*
 // @icon         https://raw.githubusercontent.com/V-Lipset/ao3-chinese/main/assets/icon.png
@@ -26,6 +27,7 @@
 // @connect      api.together.xyz
 // @connect      api.cerebras.ai
 // @connect      api-inference.modelscope.cn
+// @connect      fanyi.baidu.com
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
@@ -57,7 +59,7 @@
 	        ignoreSelectorPage: {
 	            '*': ['script', 'style', 'noscript', 'iframe', 'canvas', 'video', 'audio', 'img', 'svg', 'pre', 'code', '.userstuff.workskin', '.workskin', 'div.autocomplete.dropdown ul', 'dd.freeform.tags', '[data-translated-by-custom-function]', 'li.freeforms'],
 	            'works_show': ['.dropdown.actions-menu ul', '.userstuff'],
-				'works_chapters_show': ['.userstuff'],
+                'works_chapters_show': ['.userstuff'],
 	            'admin_posts_show': ['.userstuff'],
 	            'tag_sets_index': ['h2.heading', 'dl.stats'],
 	            'tag_sets_new': ['h4.heading > label[for*="freeform"]'],
@@ -84,360 +86,360 @@
 	        'public': {
 	            'static': {
 
-	                // 基本
-	                'Archive of Our Own': 'AO3 作品库',
-	                'Fandoms': '同人圈', 'All Fandoms': '所有同人圈',
-	                'Browse': '浏览', 'Works': '作品', 'Bookmarks': '书签', 'Tags': '标签', 'Collections': '合集',
-	                'Search': '搜索', 'People': '用户',
-	                'About': '关于', 'About Us': '关于我们', 'News': '新的动态', 'FAQ': '常见问题', 'Wrangling Guidelines': '整理指南', 'Donate or Volunteer': '捐赠/成为志愿者',
-	                'Recent Works': '最近作品',
-	                'Recent Bookmarks': '最近书签','Collections:': '合集:',
-	                'Bookmarker\'s Tags:': '书签创建者的标签：', 'Bookmarker\'s Collections:': '书签创建者的合集：','Completed': '已完结',
-	                'Bookmark Tags:': '书签标签：', 'Complete Work': '已完结', 'Work in Progress': '连载中', 'Public Bookmark': '公开书签',
-	                'Most Popular': '最常用','Tag Sets': '标签集',
-	                'Warnings': '预警',
-	                'Find your favorites': '寻找喜欢的内容',
+                    // 基本
+                    'Archive of Our Own': 'AO3 作品库',
+                    'Fandoms': '同人圈', 'All Fandoms': '所有同人圈',
+                    'Browse': '浏览', 'Works': '作品', 'Bookmarks': '书签', 'Tags': '标签', 'Collections': '合集',
+                    'Search': '搜索', 'People': '用户',
+                    'About': '关于', 'About Us': '关于我们', 'News': '新的动态', 'FAQ': '常见问题', 'Wrangling Guidelines': '整理指南', 'Donate or Volunteer': '捐赠/成为志愿者',
+                    'Recent Works': '最近作品',
+                    'Recent Bookmarks': '最近书签','Collections:': '合集:',
+                    'Bookmarker\'s Tags:': '书签创建者的标签：', 'Bookmarker\'s Collections:': '书签创建者的合集：','Completed': '已完结',
+                    'Bookmark Tags:': '书签标签：', 'Complete Work': '已完结', 'Work in Progress': '连载中', 'Public Bookmark': '公开书签',
+                    'Most Popular': '最常用','Tag Sets': '标签集',
+                    'Warnings': '预警',
+                    'Find your favorites': '寻找喜欢的内容',
 
-	                // 登录
-	                'Log In': '登录',
-	                'Log in': '登录',
-	                'Sign Up': '注册',
-	                'User': '用户',
-	                'Username or email:': '用户名或邮箱:',
-	                'Password:': '密码:',
-	                'Remember Me': '记住我',
-	                'Remember me': '记住我',
-	                'Forgot password?': '忘记密码？',
-	                'Get an Invitation': '获取邀请',
+                    // 登录
+                    'Log In': '登录',
+                    'Log in': '登录',
+                    'Sign Up': '注册',
+                    'User': '用户',
+                    'Username or email:': '用户名或邮箱:',
+                    'Password:': '密码:',
+                    'Remember Me': '记住我',
+                    'Remember me': '记住我',
+                    'Forgot password?': '忘记密码？',
+                    'Get an Invitation': '获取邀请',
 
-	                // 忘记密码
-	                'Forgotten your password?': '忘记您的密码了吗？',
-	                'If you\'ve forgotten your password, we can send instructions that will allow you to reset it. Please tell us the username or email address you used when you signed up for your Archive account.': '如果您忘记了密码，我们可以发送允许您重置密码的邮件说明。请输入您注册 AO3 帐户时使用的用户名或电子邮箱地址。',
-	                'Reset Password': '重置密码',
+                    // 忘记密码
+                    'Forgotten your password?': '忘记您的密码了吗？',
+                    'If you\'ve forgotten your password, we can send instructions that will allow you to reset it. Please tell us the username or email address you used when you signed up for your Archive account.': '如果您忘记了密码，我们可以发送允许您重置密码的邮件说明。请输入您注册 AO3 帐户时使用的用户名或电子邮箱地址。',
+                    'Reset Password': '重置密码',
 
-	                // 星期
-	                'Mon': '周一',
-	                'Tue': '周二',
-	                'Wed': '周三',
-	                'Thu': '周四',
-	                'Fri': '周五',
-	                'Sat': '周六',
-	                'Sun': '周日',
-	                'Monday': '星期一',
-	                'Tuesday': '星期二',
-	                'Wednesday': '星期三',
-	                'Thursday': '星期四',
-	                'Friday': '星期五',
-	                'Saturday': '星期六',
-	                'Sunday': '星期日',
+                    // 星期
+                    'Mon': '周一',
+                    'Tue': '周二',
+                    'Wed': '周三',
+                    'Thu': '周四',
+                    'Fri': '周五',
+                    'Sat': '周六',
+                    'Sun': '周日',
+                    'Monday': '星期一',
+                    'Tuesday': '星期二',
+                    'Wednesday': '星期三',
+                    'Thursday': '星期四',
+                    'Friday': '星期五',
+                    'Saturday': '星期六',
+                    'Sunday': '星期日',
 
-	                // 月份
-	                'Jan': '1月',
-	                'Feb': '2月',
-	                'Mar': '3月',
-	                'Apr': '4月',
-	                'May': '5月',
-	                'Jun': '6月',
-	                'Jul': '7月',
-	                'Aug': '8月',
-	                'Sep': '9月',
-	                'Oct': '10月',
-	                'Nov': '11月',
-	                'Dec': '12月',
-	                'January': '1月',
-	                'February': '2月',
-	                'March': '3月',
-	                'April': '4月',
-	                'May': '5月',
-	                'June': '6月',
-	                'July': '7月',
-	                'August': '8月',
-	                'September': '9月',
-	                'October': '10月',
-	                'November': '11月',
-	                'December': '12月',
+                    // 月份
+                    'Jan': '1月',
+                    'Feb': '2月',
+                    'Mar': '3月',
+                    'Apr': '4月',
+                    'May': '5月',
+                    'Jun': '6月',
+                    'Jul': '7月',
+                    'Aug': '8月',
+                    'Sep': '9月',
+                    'Oct': '10月',
+                    'Nov': '11月',
+                    'Dec': '12月',
+                    'January': '1月',
+                    'February': '2月',
+                    'March': '3月',
+                    'April': '4月',
+                    'May': '5月',
+                    'June': '6月',
+                    'July': '7月',
+                    'August': '8月',
+                    'September': '9月',
+                    'October': '10月',
+                    'November': '11月',
+                    'December': '12月',
 
-	                // 页脚
-	                'Footer': '页脚',
-	                'Customize': '自定义',
-	                'Default': '默认界面',
-	                'Low Vision Default': '低视力默认界面',
-	                'Reversi': 'Reversi 界面',
-	                'Snow Blue': 'Snow Blue 界面',
-	                'About the Archive': '关于作品库',
-	                'Site Map': '站点地图',
-	                'Diversity Statement': '多元化声明',
-	                'Terms of Service': '服务条款',
-	                'Content Policy': '内容政策',
-	                'Privacy Policy': '隐私政策',
-	                'DMCA Policy': 'DMCA 政策',
-	                'TOS FAQ': '服务条款常见问题',
-	                '↑ Top': '↑ 回到顶部',
-	                'Frequently Asked Questions': '常见问题',
-	                'Contact Us': '联系我们',
-	                'Policy Questions & Abuse Reports': '政策咨询与滥用举报',
-	                'Technical Support & Feedback': '技术支持与反馈',
-	                'Development': '开发',
-	                'Known Issues': '已知问题',
-	                'View License': '查看许可证',
-	                'OTW': 'OTW',
-	                'Organization for Transformative Works': '再创作组织',
+                    // 页脚
+                    'Footer': '页脚',
+                    'Customize': '自定义',
+                    'Default': '默认界面',
+                    'Low Vision Default': '低视力默认界面',
+                    'Reversi': 'Reversi 界面',
+                    'Snow Blue': 'Snow Blue 界面',
+                    'About the Archive': '关于作品库',
+                    'Site Map': '站点地图',
+                    'Diversity Statement': '多元化声明',
+                    'Terms of Service': '服务条款',
+                    'Content Policy': '内容政策',
+                    'Privacy Policy': '隐私政策',
+                    'DMCA Policy': 'DMCA 政策',
+                    'TOS FAQ': '服务条款常见问题',
+                    '↑ Top': '↑ 回到顶部',
+                    'Frequently Asked Questions': '常见问题',
+                    'Contact Us': '联系我们',
+                    'Policy Questions & Abuse Reports': '政策咨询与滥用举报',
+                    'Technical Support & Feedback': '技术支持与反馈',
+                    'Development': '开发',
+                    'Known Issues': '已知问题',
+                    'View License': '查看许可证',
+                    'OTW': 'OTW',
+                    'Organization for Transformative Works': '再创作组织',
 
-	                // 反馈
-	                'Support and Feedback': '支持与反馈',
-	                'FAQs & Tutorials': '常见问题与教程',
-	                'Release Notes': '更新日志',
+                    // 反馈
+                    'Support and Feedback': '支持与反馈',
+                    'FAQs & Tutorials': '常见问题与教程',
+                    'Release Notes': '更新日志',
 
-	                // 动态
-	                'News': '最新动态',
-	                'All News': '全部动态',
-	                'Published': '发布于',
-	                'Comments': '评论',
-	                'Read more...': '更多',
-	                'Tag:': '标签：',
-	                'Go': '确定',
-	                'RSS Feed': 'RSS 订阅',
-	                'Follow us': '关注我们',
-	                'What\'s New': '新增内容',
-	                'Enter Comment': '输入评论',
-	                'Last Edited': '最后编辑',
+                    // 动态
+                    'News': '最新动态',
+                    'All News': '全部动态',
+                    'Published': '发布于',
+                    'Comments': '评论',
+                    'Read more...': '更多',
+                    'Tag:': '标签：',
+                    'Go': '确定',
+                    'RSS Feed': 'RSS 订阅',
+                    'Follow us': '关注我们',
+                    'What\'s New': '新增内容',
+                    'Enter Comment': '输入评论',
+                    'Last Edited': '最后编辑',
 
-	                // 同人圈
-	                'Anime & Manga': '动漫及漫画', 'Books & Literature': '书籍及文学', 'Cartoons & Comics & Graphic Novels': '卡通，漫画及图像小说', 'Celebrities & Real People': '明星及真人', 'Movies': '电影', 'Music & Bands': '音乐及乐队', 'Other Media': '其她媒体', 'Theater': '戏剧', 'TV Shows': '电视剧', 'Video Games': '电子游戏', 'Uncategorized Fandoms': '未分类的同人圈',
-	                '> Anime & Manga': ' > 动漫及漫画', '> Books & Literature': ' > 书籍及文学', '> Cartoons & Comics & Graphic Novels': ' > 卡通，漫画及图像小说', '> Celebrities & Real People': ' > 明星及真人', '> Movies': ' > 电影', '> Music & Bands': ' > 音乐及乐队', '> Other Media': ' > 其她媒体', '> Theater': ' > 戏剧', '> TV Shows': ' > 电视剧', '> Video Games': ' > 电子游戏', '> Uncategorized Fandoms': ' > 未分类的同人圈',
+                    // 同人圈
+                    'Anime & Manga': '动漫及漫画', 'Books & Literature': '书籍及文学', 'Cartoons & Comics & Graphic Novels': '卡通，漫画及图像小说', 'Celebrities & Real People': '明星及真人', 'Movies': '电影', 'Music & Bands': '音乐及乐队', 'Other Media': '其她媒体', 'Theater': '戏剧', 'TV Shows': '电视剧', 'Video Games': '电子游戏', 'Uncategorized Fandoms': '未分类的同人圈',
+                    '> Anime & Manga': ' > 动漫及漫画', '> Books & Literature': ' > 书籍及文学', '> Cartoons & Comics & Graphic Novels': ' > 卡通，漫画及图像小说', '> Celebrities & Real People': ' > 明星及真人', '> Movies': ' > 电影', '> Music & Bands': ' > 音乐及乐队', '> Other Media': ' > 其她媒体', '> Theater': ' > 戏剧', '> TV Shows': ' > 电视剧', '> Video Games': ' > 电子游戏', '> Uncategorized Fandoms': ' > 未分类的同人圈',
 
-	                // 个人中心
-	                'My Dashboard': '个人中心',
-	                'My Subscriptions': '订阅列表',
-	                'My History': '历史记录',
-	                'My Preferences': '偏好设置',
-	                'Dashboard': '仪表盘',
-	                'Preferences': '偏好设置',
-	                'Skins': '界面',
-	                'Works in Collections': '合集中的作品',
-	                'Drafts': '草稿',
-	                'Please note:': '注意：',
-	                'Unposted drafts are only saved for a month from the day they are first created, and then deleted from the Archive.': '未发布的草稿自创建日起仅保留一个月，之后将被从 Archive 中删除。',
-	                'Series': '系列',
-	                'Bookmark External Work': '为外部作品创建书签',
-	                'Sorry, there were no collections found.': '抱歉，未找到任何合集。',
-	                'Manage Collection Items': '管理合集',
-	                'New Collection': '新建合集',
-	                'Works in Challenges/Collections': '参与挑战/合集的作品',
-	                'Awaiting Collection Approval': '等待合集方审核',
-	                'Awaiting User Approval': '等待用户确认',
-	                'Rejected by Collection': '合集方已拒绝',
-	                'Rejected by User': '用户已拒绝',
-	                'Approved': '已通过',
-	                'Nothing to review here!': '当前无待审内容！',
-	                'Inbox': '消息中心',
-	                'Filter by read': '按阅读状态筛选',
-	                'Show all': '显示全部',
-	                'Show unread': '显示未读',
-	                'Show read': '显示已读',
-	                'Filter by replied to': '按回复状态筛选',
-	                'Show all': '显示全部',
-	                'Show without replies': '显示未回复',
-	                'Show replied to': '显示已回复',
-	                'Sort by date': '按日期排序',
-	                'Newest first': '最新优先',
-	                'Oldest first': '最早优先',
-	                'Filter': '筛选',
-	                'Statistics': '数据统计',
-	                'History': '历史记录',
-	                'Full History': '全部历史记录',
-	                'Marked for Later': '稍后阅读',
-	                'Is it later already?': '到“稍后”了吗？',
-	                'Some works you\'ve marked for later.': '这里是您标记为稍后阅读的作品。',
-	                'Clear History': '清空历史记录',
-	                'Delete from History': '从历史记录中删除',
-	                'Subscriptions': '订阅列表',
-	                'All Subscriptions': '全部订阅',
-	                'Series Subscriptions': '系列订阅',
-	                'User Subscriptions': '用户订阅',
-	                'Work Subscriptions': '作品订阅',
+                    // 个人中心
+                    'My Dashboard': '个人中心',
+                    'My Subscriptions': '订阅列表',
+                    'My History': '历史记录',
+                    'My Preferences': '偏好设置',
+                    'Dashboard': '仪表盘',
+                    'Preferences': '偏好设置',
+                    'Skins': '界面',
+                    'Works in Collections': '合集中的作品',
+                    'Drafts': '草稿',
+                    'Please note:': '注意：',
+                    'Unposted drafts are only saved for a month from the day they are first created, and then deleted from the Archive.': '未发布的草稿自创建日起仅保留一个月，之后将被从 Archive 中删除。',
+                    'Series': '系列',
+                    'Bookmark External Work': '为外部作品创建书签',
+                    'Sorry, there were no collections found.': '抱歉，未找到任何合集。',
+                    'Manage Collection Items': '管理合集',
+                    'New Collection': '新建合集',
+                    'Works in Challenges/Collections': '参与挑战/合集的作品',
+                    'Awaiting Collection Approval': '等待合集方审核',
+                    'Awaiting User Approval': '等待用户确认',
+                    'Rejected by Collection': '合集方已拒绝',
+                    'Rejected by User': '用户已拒绝',
+                    'Approved': '已通过',
+                    'Nothing to review here!': '当前无待审内容！',
+                    'Inbox': '消息中心',
+                    'Filter by read': '按阅读状态筛选',
+                    'Show all': '显示全部',
+                    'Show unread': '显示未读',
+                    'Show read': '显示已读',
+                    'Filter by replied to': '按回复状态筛选',
+                    'Show all': '显示全部',
+                    'Show without replies': '显示未回复',
+                    'Show replied to': '显示已回复',
+                    'Sort by date': '按日期排序',
+                    'Newest first': '最新优先',
+                    'Oldest first': '最早优先',
+                    'Filter': '筛选',
+                    'Statistics': '数据统计',
+                    'History': '历史记录',
+                    'Full History': '全部历史记录',
+                    'Marked for Later': '稍后阅读',
+                    'Is it later already?': '到“稍后”了吗？',
+                    'Some works you\'ve marked for later.': '这里是您标记为稍后阅读的作品。',
+                    'Clear History': '清空历史记录',
+                    'Delete from History': '从历史记录中删除',
+                    'Subscriptions': '订阅列表',
+                    'All Subscriptions': '全部订阅',
+                    'Series Subscriptions': '系列订阅',
+                    'User Subscriptions': '用户订阅',
+                    'Work Subscriptions': '作品订阅',
                     'Unsubscribe': '取消订阅',
-	                'Delete All Subscriptions': '删除所有订阅',
-	                'Sign-ups': '报名挑战',
-	                'Assignments': '任务中心',
-	                'My Assignments': '任务中心',
-	                'Looking for prompts you claimed in a prompt meme? Try': '想查看您在“接梗挑战”中认领的同人梗？请前往',
-	                'My Claims': '我的认领',
-	                'Unfulfilled Claims': '未完成的认领',
-	                'Fulfilled Claims': '已完成的认领',
-	                'Looking for assignments you were given for a gift exchange? Try': '想查看您在赠文交换活动中被分配的任务？请前往',
-	                'Claims': '我的认领',
-	                'Related Works': '相关作品',
-	                'Gifts': '赠文',
-	                'Accepted Gifts': '已接受的赠文',
-	                'Refused Gifts': '已拒绝的赠文',
-	                'Choices': '用户选项',
-	                'Pitch': '创作与发布',
-	                'Catch': '互动与追踪',
-	                'Switch': '活动与交换',
-	                'My Works': '我的作品',
-	                'My Series': '我的系列',
-	                'My Bookmarks': '我的书签',
-	                'My Collections': '我的合集',
-	                'History': '历史记录',
-	                'Log Out': '登出',
-	                'Post New': '发布新作',
-	                'Edit Works': '编辑作品',
-	                'Subscribe': '订阅',
-	                'Invitations': '邀请好友',
-	                'My pseuds:': '笔名：',
-	                'Pseuds': '笔名',
-	                'I joined on:': '加入于：',
-	                'My user ID is:': '用户ID：',
-	                'Edit My Works': '编辑作品',
-	                'Edit My Profile': '编辑资料',
-	                'Set My Preferences': '设置偏好',
-	                'Manage My Pseuds': '管理笔名',
-	                'Delete My Account': '删除账号',
-	                'Blocked Users': '已屏蔽用户',
-	                'Muted Users': '已静音用户',
-	                'Change Username': '修改用户名',
-	                'Change Password': '修改密码',
-	                'Change Email': '修改邮箱',
-	                'Privacy': '隐私设置',
-	                'Show my email address to other people.': '向其她人显示我的邮箱地址',
-	                'Show my date of birth to other people.': '向其她人显示我的出生日期',
-	                'Hide my work from search engines when possible.': '尽可能地对搜索引擎隐藏我的作品',
-	                'Hide the share buttons on my work.': '隐藏我作品中的分享按钮',
-	                'Allow others to invite me to be a co-creator.': '允许其她人邀请我成为共同创作者',
-	                'Display': '显示设置',
-	                'Show me adult content without checking.': '无需确认即可显示成人内容',
-	                'Show the whole work by default.': '默认显示全文',
-	                'Hide warnings (you can still choose to show them).': '隐藏内容预警（仍可手动显示）',
-	                'Hide additional tags (you can still choose to show them).': '隐藏附加标签（仍可手动显示）',
-	                'Hide work skins (you can still choose to show them).': '隐藏作品界面（仍可手动显示）',
-	                'Your site skin': '您的站点界面',
-	                'Public Site Skins': '公开站点界面',
-	                'Your time zone': '您所在的时区',
-	                'Browser page title format': '浏览页面标题格式',
-	                'Turn off emails about comments.': '关闭评论邮件通知',
-	                'Turn off messages to your inbox about comments.': '关闭评论消息通知',
-	                'Turn off copies of your own comments.': '关闭自己评论的副本通知',
-	                'Turn off emails about kudos.': '关闭点赞邮件通知',
-	                'Do not allow guests to reply to my comments on news posts or other users\' works (you can still control the comment settings for your works separately).': '不允许游客回复我在动态帖或其她用户作品中的评论（仍可单独调整自己作品的评论权限）',
-	                'Collections, Challenges and Gifts': '合集、挑战与赠文设置',
-	                'Allow others to invite my works to collections.': '允许其她人将我的作品加入合集',
-	                'Allow anyone to gift me works.': '允许任何人向我赠送作品',
-	                'Turn off emails from collections.': '关闭来自合集的邮件通知',
-	                'Turn off inbox messages from collections.': '关闭来自合集的消息通知',
-	                'Turn off emails about gift works.': '关闭有关赠文的邮件通知',
-	                'Misc': '其她偏好设置',
-	                'Turn on History.': '启用历史记录',
-	                'Turn the new user help banner back on.': '重新显示新用户帮助横幅',
-	                'Turn off the banner showing on every page.': '关闭每个页面的提示横幅',
-	                'Update': '确定',
-	                'My Site Skins': '我的站点界面',
-	                'Create Site Skin': '创建站点界面',
-	                'A site skin lets you change the way the Archive is presented when you are logged in to your account. You can use work skins to customize the way your own works are shown to others.': '站点界面可让您在登录账户后更改 Archive 的呈现方式。您也可以使用作品皮肤来自定义其她人查看您作品时的展示样式。',
-	                'My Site Skins': '我的站点界面',
-	                'My Work Skins': '我的作品界面',
-	                'Public Work Skins': '公开作品界面',
-	                'Create Work Skin': '创建作品界面',
-	                'No site skins here yet!': '还没有站点界面！',
-	                'No work skins here yet!': '还没有作品界面！',
-	                'Why not try making one?': '为什么不试着去创建一个呢？',
-	                'Inbox': '收件箱',
-	                'Subscribed Works': '已订阅作品',
-	                'Subscribed Series': '已订阅系列',
+                    'Delete All Subscriptions': '删除所有订阅',
+                    'Sign-ups': '报名挑战',
+                    'Assignments': '任务中心',
+                    'My Assignments': '任务中心',
+                    'Looking for prompts you claimed in a prompt meme? Try': '想查看您在“接梗挑战”中认领的同人梗？请前往',
+                    'My Claims': '我的认领',
+                    'Unfulfilled Claims': '未完成的认领',
+                    'Fulfilled Claims': '已完成的认领',
+                    'Looking for assignments you were given for a gift exchange? Try': '想查看您在赠文交换活动中被分配的任务？请前往',
+                    'Claims': '我的认领',
+                    'Related Works': '相关作品',
+                    'Gifts': '赠文',
+                    'Accepted Gifts': '已接受的赠文',
+                    'Refused Gifts': '已拒绝的赠文',
+                    'Choices': '用户选项',
+                    'Pitch': '创作与发布',
+                    'Catch': '互动与追踪',
+                    'Switch': '活动与交换',
+                    'My Works': '我的作品',
+                    'My Series': '我的系列',
+                    'My Bookmarks': '我的书签',
+                    'My Collections': '我的合集',
+                    'History': '历史记录',
+                    'Log Out': '登出',
+                    'Post New': '发布新作',
+                    'Edit Works': '编辑作品',
+                    'Subscribe': '订阅',
+                    'Invitations': '邀请好友',
+                    'My pseuds:': '笔名：',
+                    'Pseuds': '笔名',
+                    'I joined on:': '加入于：',
+                    'My user ID is:': '用户ID：',
+                    'Edit My Works': '编辑作品',
+                    'Edit My Profile': '编辑资料',
+                    'Set My Preferences': '设置偏好',
+                    'Manage My Pseuds': '管理笔名',
+                    'Delete My Account': '删除账号',
+                    'Blocked Users': '已屏蔽用户',
+                    'Muted Users': '已静音用户',
+                    'Change Username': '修改用户名',
+                    'Change Password': '修改密码',
+                    'Change Email': '修改邮箱',
+                    'Privacy': '隐私设置',
+                    'Show my email address to other people.': '向其她人显示我的邮箱地址',
+                    'Show my date of birth to other people.': '向其她人显示我的出生日期',
+                    'Hide my work from search engines when possible.': '尽可能地对搜索引擎隐藏我的作品',
+                    'Hide the share buttons on my work.': '隐藏我作品中的分享按钮',
+                    'Allow others to invite me to be a co-creator.': '允许其她人邀请我成为共同创作者',
+                    'Display': '显示设置',
+                    'Show me adult content without checking.': '无需确认即可显示成人内容',
+                    'Show the whole work by default.': '默认显示全文',
+                    'Hide warnings (you can still choose to show them).': '隐藏内容预警（仍可手动显示）',
+                    'Hide additional tags (you can still choose to show them).': '隐藏附加标签（仍可手动显示）',
+                    'Hide work skins (you can still choose to show them).': '隐藏作品界面（仍可手动显示）',
+                    'Your site skin': '您的站点界面',
+                    'Public Site Skins': '公开站点界面',
+                    'Your time zone': '您所在的时区',
+                    'Browser page title format': '浏览页面标题格式',
+                    'Turn off emails about comments.': '关闭评论邮件通知',
+                    'Turn off messages to your inbox about comments.': '关闭评论消息通知',
+                    'Turn off copies of your own comments.': '关闭自己评论的副本通知',
+                    'Turn off emails about kudos.': '关闭点赞邮件通知',
+                    'Do not allow guests to reply to my comments on news posts or other users\' works (you can still control the comment settings for your works separately).': '不允许游客回复我在动态帖或其她用户作品中的评论（仍可单独调整自己作品的评论权限）',
+                    'Collections, Challenges and Gifts': '合集、挑战与赠文设置',
+                    'Allow others to invite my works to collections.': '允许其她人将我的作品加入合集',
+                    'Allow anyone to gift me works.': '允许任何人向我赠送作品',
+                    'Turn off emails from collections.': '关闭来自合集的邮件通知',
+                    'Turn off inbox messages from collections.': '关闭来自合集的消息通知',
+                    'Turn off emails about gift works.': '关闭有关赠文的邮件通知',
+                    'Misc': '其她偏好设置',
+                    'Turn on History.': '启用历史记录',
+                    'Turn the new user help banner back on.': '重新显示新用户帮助横幅',
+                    'Turn off the banner showing on every page.': '关闭每个页面的提示横幅',
+                    'Update': '确定',
+                    'My Site Skins': '我的站点界面',
+                    'Create Site Skin': '创建站点界面',
+                    'A site skin lets you change the way the Archive is presented when you are logged in to your account. You can use work skins to customize the way your own works are shown to others.': '站点界面可让您在登录账户后更改 Archive 的呈现方式。您也可以使用作品皮肤来自定义其她人查看您作品时的展示样式。',
+                    'My Site Skins': '我的站点界面',
+                    'My Work Skins': '我的作品界面',
+                    'Public Work Skins': '公开作品界面',
+                    'Create Work Skin': '创建作品界面',
+                    'No site skins here yet!': '还没有站点界面！',
+                    'No work skins here yet!': '还没有作品界面！',
+                    'Why not try making one?': '为什么不试着去创建一个呢？',
+                    'Inbox': '收件箱',
+                    'Subscribed Works': '已订阅作品',
+                    'Subscribed Series': '已订阅系列',
 
-	                // 作品搜索页
-	                'Work Info': '作品信息',
-	                'Date Posted': '发布日期',
-	                'Date Updated': '更新日期',
-	                'Completion status': '完成状态',
-	                'All works': '所有作品',
-	                'Complete works only': '仅完结作品',
-	                'Works in progress only': '仅连载作品',
-	                'Include crossovers': '包含跨圈作品',
-	                'Exclude crossovers': '排除跨圈作品',
-	                'Only crossovers': '仅限跨圈作品',
-	                'Single Chapter': '单个章节',
-	                'Rating': '分级',
-	                'Categories': '分类',
-	                'Other': '其她',
-	                'Work Stats': '作品统计',
-	                'Hits': '点击',
-	                'Kudos': '点赞',
-	                'Sort by': '排序方式',
-	                'Best Match': '最佳匹配',
-	                'Sort direction': '排序方向',
-	                'Descending': '降序',
-	                'Ascending': '升序',
+                    // 作品搜索页
+                    'Work Info': '作品信息',
+                    'Date Posted': '发布日期',
+                    'Date Updated': '更新日期',
+                    'Completion status': '完成状态',
+                    'All works': '所有作品',
+                    'Complete works only': '仅完结作品',
+                    'Works in progress only': '仅连载作品',
+                    'Include crossovers': '包含跨圈作品',
+                    'Exclude crossovers': '排除跨圈作品',
+                    'Only crossovers': '仅限跨圈作品',
+                    'Single Chapter': '单个章节',
+                    'Rating': '分级',
+                    'Categories': '分类',
+                    'Other': '其她',
+                    'Work Stats': '作品统计',
+                    'Hits': '点击',
+                    'Kudos': '点赞',
+                    'Sort by': '排序方式',
+                    'Best Match': '最佳匹配',
+                    'Sort direction': '排序方向',
+                    'Descending': '降序',
+                    'Ascending': '升序',
                     'Filter by title': '按标题筛选',
                     'Filter by tag': '按标签筛选',
-	                'Work Search': '作品搜索',
-	                'Any Field': '任意字段',
-	                'Date': '日期',
-	                'Crossovers': '跨圈作品',
-	                'Language': '语言',
-	                'Characters': '角色',
-	                'Relationships': '关系',
-	                'Additional Tags': '附加标签',
+                    'Work Search': '作品搜索',
+                    'Any Field': '任意字段',
+                    'Date': '日期',
+                    'Crossovers': '跨圈作品',
+                    'Language': '语言',
+                    'Characters': '角色',
+                    'Relationships': '关系',
+                    'Additional Tags': '附加标签',
 
-	                // 用户搜索页
-	                'Search all fields': '搜索所有字段',
-	                'Name': '名称',
-	                'Fandom': '同人圈',
-	                'Search People': '搜索用户',
+                    // 用户搜索页
+                    'Search all fields': '搜索所有字段',
+                    'Name': '名称',
+                    'Fandom': '同人圈',
+                    'Search People': '搜索用户',
 
-	                // 标签搜索页
-	                'Tag name': '标签名称',
-	                'Find tags wrangled to specific canonical fandoms.': '查找已整理至特定规范同人圈的标签。',
-	                'Type': '类型',
-	                'Fandom': '同人圈',
-	                'Character': '角色',
-	                'Relationship': '关系',
-	                'Freeform': '自由标签',
-	                'Any type': '任意类型',
-	                'Wrangling status': '整理状态',
-	                'Canonical': '规范',
-	                'Non-canonical': '非规范',
-	                'Synonymous': '同义',
-	                'Canonical or synonymous': '规范或同义',
-	                'Non-canonical and non-synonymous': '非规范且非同义',
-	                'Any status': '任意状态',
-	                'Name': '名称',
-	                'Date Created': '创建日期',
-	                'Uses': '使用次数',
-	                'Search Tags': '搜索标签',
-	                'Title': '标题',
-	                'Author': '作者',
-	                'Artist': '画师',
-	                'Author/Artist': '作者/画师',
-	                'People Search': '用户搜索',
-	                'Tag Search': '标签搜索',
-	                'Work Tags': '作品标签',
+                    // 标签搜索页
+                    'Tag name': '标签名称',
+                    'Find tags wrangled to specific canonical fandoms.': '查找已整理至特定规范同人圈的标签。',
+                    'Type': '类型',
+                    'Fandom': '同人圈',
+                    'Character': '角色',
+                    'Relationship': '关系',
+                    'Freeform': '自由标签',
+                    'Any type': '任意类型',
+                    'Wrangling status': '整理状态',
+                    'Canonical': '规范',
+                    'Non-canonical': '非规范',
+                    'Synonymous': '同义',
+                    'Canonical or synonymous': '规范或同义',
+                    'Non-canonical and non-synonymous': '非规范且非同义',
+                    'Any status': '任意状态',
+                    'Name': '名称',
+                    'Date Created': '创建日期',
+                    'Uses': '使用次数',
+                    'Search Tags': '搜索标签',
+                    'Title': '标题',
+                    'Author': '作者',
+                    'Artist': '画师',
+                    'Author/Artist': '作者/画师',
+                    'People Search': '用户搜索',
+                    'Tag Search': '标签搜索',
+                    'Work Tags': '作品标签',
 
-	                // 浏览
-	                'Expand Fandoms List': '展开同人圈列表',
-	                'Collapse Fandoms List': '收起同人圈列表',
-	                'Recent works': '最近作品',
-	                'Recent bookmarks': '最近书签',
-	                'Expand Works List': '展开作品列表',
-	                'Collapse Works List': '收起作品列表',
-	                'Expand Bookmarks List': '展开书签列表',
-	                'Collapse Booksmarks List': '收起书签列表',
+                    // 浏览
+                    'Expand Fandoms List': '展开同人圈列表',
+                    'Collapse Fandoms List': '收起同人圈列表',
+                    'Recent works': '最近作品',
+                    'Recent bookmarks': '最近书签',
+                    'Expand Works List': '展开作品列表',
+                    'Collapse Works List': '收起作品列表',
+                    'Expand Bookmarks List': '展开书签列表',
+                    'Collapse Booksmarks List': '收起书签列表',
 
-	                // 作品
+                    // 作品
                     'Rating:': '分级:',
                     'Archive Warning:': 'Archive 预警:',
-					'Archive Warnings:': 'Archive 预警:',
+                    'Archive Warnings:': 'Archive 预警:',
                     'Archive Warning': 'Archive 预警',
-	                'Archive Warnings': 'Archive 预警',
+                    'Archive Warnings': 'Archive 预警',
                     'Category:': '分类:',
                     'Categories:': '分类:',
                     'Fandom:': '同人圈:',
-					'Fandoms:': '同人圈:',
+                    'Fandoms:': '同人圈:',
                     'Relationship:': '关系:',
                     'Relationships:': '关系:',
                     'Character:': '角色:',
                     'Characters:': '角色:',
-					'Additional Tag:': '附加标签:',
+                    'Additional Tag:': '附加标签:',
                     'Additional Tags:': '附加标签:',
                     'Language:': '语言:',
                     'Series': '系列',
@@ -455,12 +457,12 @@
                     'Complete?': '已完结？',
                     'Word Count:': '字数:',
                     'Date Updated:': '更新日期:',
-	                'Post': '发布',
-	                'New Work': '新作品',
+                    'Post': '发布',
+                    'New Work': '新作品',
                     'Edit Work': '编辑作品',
-	                'Import Work': '导入作品',
+                    'Import Work': '导入作品',
                     'From Draft': '从草稿',
-	                'Edit': '编辑',
+                    'Edit': '编辑',
                     'Edit Tags': '编辑标签',
                     'Add Chapter': '添加章节',
                     'Post Draft': '发布草稿',
@@ -472,188 +474,189 @@
                     'Drag chapters to change their order.': '拖动章节以更改顺序。',
                     'Enter new chapter numbers.': '输入新的章节编号。',
                     'Update Positions': '更新顺序',
-	                'Update': '更新',
-	                'Delete': '删除',
-	                'Cancel': '取消',
-	                'Save': '保存',
-	                'Saved': '已保存',
-	                'Submit': '提交',
+                    'Update': '更新',
+                    'Delete': '删除',
+                    'Cancel': '取消',
+                    'Save': '保存',
+                    'Saved': '已保存',
+                    'Submit': '提交',
                     'Orphan Work': '匿名化作品',
                     'Orphan Works': '匿名化作品',
-	                'Filters': '筛选器',
-	                'Sort By': '排序方式',
-	                'Random': '随机',
-	                'Creator': '创作者',
-	                'Date Updated': '更新日期',
-	                'Word Count': '字数统计',
-	                'Summary': '简介',
-					'Summary:': '简介:',
-	                'Notes': '注释',
-	                'Work Text': '作品正文',
-	                'Chapter Index': '章节索引',
-	                'Full-page index': '整页索引',
-	                'Entire Work': '完整作品',
-	                'Next Chapter': '下一章',
-	                'Previous Chapter': '上一章',
-	                'kudos': ' 个赞',
-	                'bookmark': ' 条书签',
-	                'comment': ' 条评论',
-	                '← Previous': '← 上一页',
-	                'Next →': '下一页 →',
-	                'All fields are required. Your email address will not be published.': '所有字段均为必填。您的电子邮箱地址不会被公开。',
-	                'Guest name': '访客名称',
-	                'Guest email': '访客邮箱',
-	                'Please enter your name.': '请输入您的名称',
-	                'Please enter your email address.': '请输入您的电子邮箱地址',
-	                'Hide Creator\'s Style': '隐藏创作者样式',
-	                'Show Creator\'s Style': '显示创作者样式',
-	                'top level comment': '主评论',
-	                'Share Work': '分享作品',
+                    'Filters': '筛选器',
+                    'Sort By': '排序方式',
+                    'Random': '随机',
+                    'Creator': '创作者',
+                    'Date Updated': '更新日期',
+                    'Word Count': '字数统计',
+                    'Summary': '简介',
+                    'Summary:': '简介:',
+                    'Notes': '注释',
+                    'Work Text': '作品正文',
+                    'Chapter Index': '章节索引',
+                    'Full-page index': '整页索引',
+                    'Entire Work': '完整作品',
+                    'Next Chapter': '下一章',
+                    'Previous Chapter': '上一章',
+                    'kudos': ' 个赞',
+                    'bookmark': ' 条书签',
+                    'comment': ' 条评论',
+                    '← Previous': '← 上一页',
+                    'Next →': '下一页 →',
+                    'All fields are required. Your email address will not be published.': '所有字段均为必填。您的电子邮箱地址不会被公开。',
+                    'Guest name': '访客名称',
+                    'Guest email': '访客邮箱',
+                    'Please enter your name.': '请输入您的名称',
+                    'Please enter your email address.': '请输入您的电子邮箱地址',
+                    'Hide Creator\'s Style': '隐藏创作者样式',
+                    'Show Creator\'s Style': '显示创作者样式',
+                    'top level comment': '主评论',
+                    'Share Work': '分享作品',
                     'Restore From Last Unposted Draft?': '从上次未发布的草稿恢复？',
                     'Delete Work': '删除作品',
                     'Save As Draft': '存为草稿',
 
-	                // 合集
-	                'Collections in the Archive of Our Own': ' AO3 中的合集',
-	                'Profile': '简介',
-	                'Join': '加入',
-	                'Leave': '退出',
-	                'Open Challenges': '开放中的挑战',
-	                'Open Collections': '开放中的合集',
-	                'Closed Collections': '已截止的合集',
-	                'Moderated Collections': '审核制合集',
-	                'Unmoderated Collections': '非审核制合集',
-	                'Unrevealed Collections': '未公开合集',
-	                'Anonymous Collections': '匿名合集',
-	                'Sort and Filter': '排序及筛选',
-	                'Filter collections:': '筛选合集:',
-	                'Filter by title or name': '按标题或名称筛选',
-	                'Filter by fandom': '按同人圈筛选',
-	                'Closed': '已截止',
-	                'Yes': '是',
-	                'No': '否',
-	                'Either': '皆可',
-	                'Collection Type': '合集类型',
-	                'No Challenge': '无挑战',
-	                'Any': '任意',
-	                'Clear Filters': '清除筛选',
+                    // 合集
+                    'Collections in the Archive of Our Own': ' AO3 中的合集',
+                    'Profile': '简介',
+                    'Join': '加入',
+                    'Leave': '退出',
+                    'Open Challenges': '开放中的挑战',
+                    'Open Collections': '开放中的合集',
+                    'Closed Collections': '已截止的合集',
+                    'Moderated Collections': '审核制合集',
+                    'Unmoderated Collections': '非审核制合集',
+                    'Unrevealed Collections': '未公开合集',
+                    'Anonymous Collections': '匿名合集',
+                    'Sort and Filter': '排序及筛选',
+                    'Filter collections:': '筛选合集:',
+                    'Filter by title or name': '按标题或名称筛选',
+                    'Filter by fandom': '按同人圈筛选',
+                    'Closed': '已截止',
+                    'Multifandom': '跨圈',
+                    'Yes': '是',
+                    'No': '否',
+                    'Either': '皆可',
+                    'Collection Type': '合集类型',
+                    'No Challenge': '无挑战',
+                    'Any': '任意',
+                    'Clear Filters': '清除筛选',
 
-	                // 书签
-	                'Bookmark Search': '书签搜索',
-	                'Edit Bookmark': '编辑书签',
-	                'Start typing for suggestions!': '开始输入以获取建议',
-	                'Searching...': '搜索中…',
-	                '(No suggestions found)': '未找到建议',
-	                'Any field on work': '作品任意字段', 'Work tags': '作品标签', 'Type': '类型', 'Work': '作品', 'Work language': '作品语言', 'External Work': '外部作品', 'Date updated': '更新日期', 'Bookmark': '书签', 'Any field on bookmark': '书签任意字段', 'Bookmarker\'s tags': '书签创建者的标签', 'Bookmarker': '书签创建者', 'Bookmark type': '书签类型', 'Rec': '推荐', 'With notes': '含注释', 'Date Bookmarked': '书签创建日期', 'Date bookmarked': '书签创建日期', 'Search Bookmarks': '搜索书签',
-	                'Search Results': '搜索结果', 'Edit Your Search': '修改搜索设置',
-	                'Ratings': '分级',
-	                'Include': '包括',
-	                'Include Ratings': '包括分级',
-	                'Other tags to include': '要包括的其她标签',
-	                'Exclude': '排除',
-	                'Other tags to exclude': '要排除的其她标签',
-	                'More Options': '更多选项',
-	                'Show only crossovers': '仅显示跨圈作品',
-	                'Completion Status': '完成状态',
-	                'Search within results': '在结果中搜索',
-	                'Bookmarker\'s Tags': '书签创建者标签',
-	                'Other work tags to include': '要包括的其她作品标签',
-	                'Other bookmarker\'s tags to include': '要包括的其她书签创建者标签',
-	                'Search bookmarker\'s tags and notes': '搜索书签创建者标签和注释',
-	                'Other work tags to exclude': '要排除的其她作品标签',
-	                'Other bookmarker\'s tags to exclude': '要排除的其她书签创建者标签',
-	                'Bookmark types': '书签类型',
-	                'Recs only': '仅推荐',
-	                'Only bookmarks with notes': '仅含注释',
-	                'All Bookmarks': '所有书签',
-	                'Add To Collection': '添加到合集',
-	                'Share': '分享',
-	                'Private Bookmark': '私人书签',
-	                'Your tags': '您的标签',
-	                'The creator\'s tags are added automatically.': '创建者的标签会自动添加',
-	                'Comma separated, 150 characters per tag': '以逗号分隔，每个标签最多 150 字符',
-	                'Add to collections': '添加到合集',
-	                'Private bookmark': '私人书签',
-	                'Create': '创建',
-	                'Bookmark was successfully deleted.': '书签已成功删除。',
-	                'Add Bookmark to collections': '将书签添加到合集',
-	                'Collection name(s):': '合集名称：',
-	                'collection name': '合集名称',
-	                'Add': '添加',
-	                'Back': '返回',
-	                'Bookmark was successfully updated.': '书签已成功更新。',
-	                'Share Bookmark': '分享书签',
-	                'Close': '关闭',
-					'Show': '展示',
-	                'Bookmark Collections:': '书签合集:',
+                    // 书签
+                    'Bookmark Search': '书签搜索',
+                    'Edit Bookmark': '编辑书签',
+                    'Start typing for suggestions!': '开始输入以获取建议',
+                    'Searching...': '搜索中…',
+                    '(No suggestions found)': '未找到建议',
+                    'Any field on work': '作品任意字段', 'Work tags': '作品标签', 'Type': '类型', 'Work': '作品', 'Work language': '作品语言', 'External Work': '外部作品', 'Date updated': '更新日期', 'Bookmark': '书签', 'Any field on bookmark': '书签任意字段', 'Bookmarker\'s tags': '书签创建者的标签', 'Bookmarker': '书签创建者', 'Bookmark type': '书签类型', 'Rec': '推荐', 'With notes': '含注释', 'Date Bookmarked': '书签创建日期', 'Date bookmarked': '书签创建日期', 'Search Bookmarks': '搜索书签',
+                    'Search Results': '搜索结果', 'Edit Your Search': '修改搜索设置',
+                    'Ratings': '分级',
+                    'Include': '包括',
+                    'Include Ratings': '包括分级',
+                    'Other tags to include': '要包括的其她标签',
+                    'Exclude': '排除',
+                    'Other tags to exclude': '要排除的其她标签',
+                    'More Options': '更多选项',
+                    'Show only crossovers': '仅显示跨圈作品',
+                    'Completion Status': '完成状态',
+                    'Search within results': '在结果中搜索',
+                    'Bookmarker\'s Tags': '书签创建者标签',
+                    'Other work tags to include': '要包括的其她作品标签',
+                    'Other bookmarker\'s tags to include': '要包括的其她书签创建者标签',
+                    'Search bookmarker\'s tags and notes': '搜索书签创建者标签和注释',
+                    'Other work tags to exclude': '要排除的其她作品标签',
+                    'Other bookmarker\'s tags to exclude': '要排除的其她书签创建者标签',
+                    'Bookmark types': '书签类型',
+                    'Recs only': '仅推荐',
+                    'Only bookmarks with notes': '仅含注释',
+                    'All Bookmarks': '所有书签',
+                    'Add To Collection': '添加到合集',
+                    'Share': '分享',
+                    'Private Bookmark': '私人书签',
+                    'Your tags': '您的标签',
+                    'The creator\'s tags are added automatically.': '创建者的标签会自动添加',
+                    'Comma separated, 150 characters per tag': '以逗号分隔，每个标签最多 150 字符',
+                    'Add to collections': '添加到合集',
+                    'Private bookmark': '私人书签',
+                    'Create': '创建',
+                    'Bookmark was successfully deleted.': '书签已成功删除。',
+                    'Add Bookmark to collections': '将书签添加到合集',
+                    'Collection name(s):': '合集名称：',
+                    'collection name': '合集名称',
+                    'Add': '添加',
+                    'Back': '返回',
+                    'Bookmark was successfully updated.': '书签已成功更新。',
+                    'Share Bookmark': '分享书签',
+                    'Close': '关闭',
+                    'Show': '展示',
+                    'Bookmark Collections:': '书签合集:',
 
-	                // 系列
-	                'Creators:': '创建者:',
-	                'Creator:': '创建者:',
-	                'Series Begun:': '系列开始于:',
-	                'Series Updated:': '系列更新于:',
-	                'Description:': '描述:',
-	                'Notes:': '注释:',
-	                'Works:': '作品:',
-	                'Complete:': '完结:',
+                    // 系列
+                    'Creators:': '创建者:',
+                    'Creator:': '创建者:',
+                    'Series Begun:': '系列开始于:',
+                    'Series Updated:': '系列更新于:',
+                    'Description:': '描述:',
+                    'Notes:': '注释:',
+                    'Works:': '作品:',
+                    'Complete:': '完结:',
 
-	                // 语言
-	                'Work Languages': '作品语言',
-	                'Suggest a Language': '建议语言',
+                    // 语言
+                    'Work Languages': '作品语言',
+                    'Suggest a Language': '建议语言',
 
-	                // 界面
-	                'You are now using the default Archive skin again!': '您已重新切换至 Archive 默认界面！',
-	                'Revert to Default Skin': '恢复默认界面',
-	                'Role:': '功能:',
-	                'user': '用户',
-	                'Media:': '媒体:',
-	                'all': '全部',
-	                'Condition:': '状态:',
-	                'Normal': '正常',
-	                '(No Description Provided)': '（未提供描述）',
-	                'Parent Skins': '母级界面',
-	                'Use': '使用',
-	                'Preview': '预览',
-	                'Set For Session': '为当前会话设置',
-	                'override': '覆盖',
+                    // 界面
+                    'You are now using the default Archive skin again!': '您已重新切换至 Archive 默认界面！',
+                    'Revert to Default Skin': '恢复默认界面',
+                    'Role:': '功能:',
+                    'user': '用户',
+                    'Media:': '媒体:',
+                    'all': '全部',
+                    'Condition:': '状态:',
+                    'Normal': '正常',
+                    '(No Description Provided)': '（未提供描述）',
+                    'Parent Skins': '母级界面',
+                    'Use': '使用',
+                    'Preview': '预览',
+                    'Set For Session': '为当前会话设置',
+                    'override': '覆盖',
 
-	                // 屏蔽与静音
-	                'Block': '屏蔽',
-	                'Unblock': '取消屏蔽',
-	                'Mute': '静音',
-	                'Unmute': '取消静音',
-	                'Yes, Unmute User': '是的，取消静音',
-	                'Yes, Mute User': '是的，静音用户',
-	                'Yes, Unblock User': '是的，取消屏蔽',
-	                'Yes, Block User': '是的，屏蔽用户',
+                    // 屏蔽与静音
+                    'Block': '屏蔽',
+                    'Unblock': '取消屏蔽',
+                    'Mute': '静音',
+                    'Unmute': '取消静音',
+                    'Yes, Unmute User': '是的，取消静音',
+                    'Yes, Mute User': '是的，静音用户',
+                    'Yes, Unblock User': '是的，取消屏蔽',
+                    'Yes, Block User': '是的，屏蔽用户',
 
-	                // 提示信息
-	                'Follow the Archive on Twitter or Tumblr for status updates, and don\'t forget to check out the': '在 Twitter 或 Tumblr 上关注 Archive 以获取最新动态；同时别忘了查看',
-	                'Organization for Transformative Works\' news outlets': ' 再创作组织 的动态发布渠道',
-	                'for updates on our other projects!': '，了解我们其她项目的进展！',
-	                'Your profile has been successfully updated': '您的个人资料已成功更新',
-					'Your edits were put through! Please check over the works to make sure everything is right.': '您的编辑已生效！请检查相关作品，确保所有更改都已正确应用。',
-	                'We\'re sorry! Something went wrong.': '非常抱歉！操作未完成，请稍后重试。',
-	                'Your preferences were successfully updated.': '您的偏好设置已成功更新。',
-	                'Works and bookmarks listed here have been added to a collection but need approval from a collection moderator before they are listed in the collection.': '此处列出的作品和书签已添加至合集中，但需经合集管理员批准后才会在合集内显示。',
-	                'Successfully logged out.': '已成功登出。',
-	                'Successfully logged in.': '已成功登录。',
-	                'Bookmark was successfully created. It should appear in bookmark listings within the next few minutes.': '书签已创建成功。它将在接下来的几分钟内出现在书签列表中。',
-	                'Browse fandoms by media or favorite up to 20 tags to have them listed here!': '可按“媒介”浏览同人圈，或收藏最多 20 个标签，以便在这里显示！',
-	                'You can search this page by pressing': '按', 'ctrl F': ' Ctrl + F ', 'cmd F': ' Cmd + F ，','': '', 'and typing in what you are looking for.': '输入关键词即可在本页搜索。',
-	                'Sorry! We couldn\'t save this bookmark because:': '抱歉！我们无法保存此书签，因为', 'Pseud can\'t be blank': '笔名不能为空',
-	                'The following challenges are currently open for sign-ups! Those closing soonest are at the top.': '以下挑战现已开放报名！即将截止的挑战排在最前面。',
-	                'You currently have no works posted to the Archive. If you add some, you\'ll find information on this page about hits, kudos, comments, and bookmarks of your works.': '您当前没有任何已发布的作品。添加作品后，您可以在此页面查看作品的访问量、点赞、评论和书签情况。',
-	                'Users can also see how many subscribers they have, but not the names of their subscribers or identifying information about other users who have viewed or downloaded their works.': '用户还可以查看自己的订阅者数量，但无法看到订阅者的姓名，也无法获取浏览或下载其作品的其她用户的任何身份信息。',
-	                'This work could have adult content. If you continue, you have agreed that you are willing to see such content.': '此作品可能含有成人内容。若您选择“继续”，即表示您同意查看此类内容。',
-	                'Yes, Continue': '是，继续',
-	                'No, Go Back': '否，返回',
-	                'Set your preferences now': '立即设置您的偏好',
-	                'Work successfully deleted from your history.': '该作品已成功从您的历史记录中删除。',
-	                'Your history is now cleared.': '您的历史记录已清除。',
-	                'You are already signed in.': '您已登录。',
-	                'There are no works or bookmarks under this name yet.': '此名称下尚无作品或书签。',
-	                'Sorry, you don\'t have permission to access the page you were trying to reach. Please log in.': '抱歉，您无权访问目标页面。请先登录。',
+                    // 提示信息
+                    'Follow the Archive on Twitter or Tumblr for status updates, and don\'t forget to check out the': '在 Twitter 或 Tumblr 上关注 Archive 以获取最新动态；同时别忘了查看',
+                    'Organization for Transformative Works\' news outlets': ' 再创作组织 的动态发布渠道',
+                    'for updates on our other projects!': '，了解我们其她项目的进展！',
+                    'Your profile has been successfully updated': '您的个人资料已成功更新',
+                    'Your edits were put through! Please check over the works to make sure everything is right.': '您的编辑已生效！请检查相关作品，确保所有更改都已正确应用。',
+                    'We\'re sorry! Something went wrong.': '非常抱歉！操作未完成，请稍后重试。',
+                    'Your preferences were successfully updated.': '您的偏好设置已成功更新。',
+                    'Works and bookmarks listed here have been added to a collection but need approval from a collection moderator before they are listed in the collection.': '此处列出的作品和书签已添加至合集中，但需经合集管理员批准后才会在合集内显示。',
+                    'Successfully logged out.': '已成功登出。',
+                    'Successfully logged in.': '已成功登录。',
+                    'Bookmark was successfully created. It should appear in bookmark listings within the next few minutes.': '书签已创建成功。它将在接下来的几分钟内出现在书签列表中。',
+                    'Browse fandoms by media or favorite up to 20 tags to have them listed here!': '可按“媒介”浏览同人圈，或收藏最多 20 个标签，以便在这里显示！',
+                    'You can search this page by pressing': '按', 'ctrl F': ' Ctrl + F ', 'cmd F': ' Cmd + F ，','': '', 'and typing in what you are looking for.': '输入关键词即可在本页搜索。',
+                    'Sorry! We couldn\'t save this bookmark because:': '抱歉！我们无法保存此书签，因为', 'Pseud can\'t be blank': '笔名不能为空',
+                    'The following challenges are currently open for sign-ups! Those closing soonest are at the top.': '以下挑战现已开放报名！即将截止的挑战排在最前面。',
+                    'You currently have no works posted to the Archive. If you add some, you\'ll find information on this page about hits, kudos, comments, and bookmarks of your works.': '您当前没有任何已发布的作品。添加作品后，您可以在此页面查看作品的访问量、点赞、评论和书签情况。',
+                    'Users can also see how many subscribers they have, but not the names of their subscribers or identifying information about other users who have viewed or downloaded their works.': '用户还可以查看自己的订阅者数量，但无法看到订阅者的姓名，也无法获取浏览或下载其作品的其她用户的任何身份信息。',
+                    'This work could have adult content. If you continue, you have agreed that you are willing to see such content.': '此作品可能含有成人内容。若您选择“继续”，即表示您同意查看此类内容。',
+                    'Yes, Continue': '是，继续',
+                    'No, Go Back': '否，返回',
+                    'Set your preferences now': '立即设置您的偏好',
+                    'Work successfully deleted from your history.': '该作品已成功从您的历史记录中删除。',
+                    'Your history is now cleared.': '您的历史记录已清除。',
+                    'You are already signed in.': '您已登录。',
+                    'There are no works or bookmarks under this name yet.': '此名称下尚无作品或书签。',
+                    'Sorry, you don\'t have permission to access the page you were trying to reach. Please log in.': '抱歉，您无权访问目标页面。请先登录。',
                     'Are you sure you want to delete this draft?': '您确定要删除此草稿吗？',
                     'Work was successfully updated.': '作品已成功更新。',
                     'The work was not updated.': '作品没有更新。',
@@ -662,15 +665,27 @@
                     'Are you sure you want to delete this work? This will destroy all comments and kudos on this work as well and CANNOT BE UNDONE!': '您确定要删除这篇作品吗？此操作将一并删除该作品收到的所有评论和点赞，且无法撤销！',
                     'Chapter has been posted!': '章节已成功发布！',
                     'Chapter was successfully updated.': '章节已成功更新。',
-                    'Are you sure?': '你确定吗？',
+                    'Are you sure?': '您确定吗？',
                     'The chapter was successfully deleted.': '已成功删除此章节。',
                     'Chapter order has been successfully updated.': '章节顺序已成功更新。',
                     'This is a draft chapter in a posted work. It will be kept unless the work is deleted.': '这是已发布作品中的一篇草稿章节。除非作品被删除，否则该草稿将一直保留。',
                     'This chapter is a draft and hasn\'t been posted yet!': '本章节为草稿，尚未发布！',
-					'Are you sure you want to delete this bookmark?': '您确定要删除此书签吗？',
-					'This is part of an ongoing challenge and will be revealed soon!': '本作品正在参与一项开放中的挑战，内容将很快揭晓！',
-					'Your search failed because of a syntax error. Please try again.': '搜索失败，您的查询存在语法错误。请修改后重试。',
-					'Type or paste formatted text.': '输入或粘贴带有格式的文本',
+                    'Are you sure you want to delete this bookmark?': '您确定要删除此书签吗？',
+                    'This is part of an ongoing challenge and will be revealed soon!': '本作品正在参与一项开放中的挑战，内容将很快揭晓！',
+                    'Your search failed because of a syntax error. Please try again.': '搜索失败，您的查询存在语法错误。请修改后重试。',
+                    'Type or paste formatted text.': '输入或粘贴带有格式的文本',
+                    'Comment created!': '评论已发布！',
+                    'Are you sure you want to delete this comment?': '您确定要删除这条评论吗？',
+                    'Yes, delete!': '是的，删除！',
+                    'Comment deleted.': '评论已删除。',
+                    '(Previous comment deleted.)': '（原评论已删除）',
+                    'Freeze Thread': '锁定评论串',
+                    'Comment thread successfully frozen!': '已成功锁定评论串！',
+                    'Unfreeze Thread': '解锁评论串',
+                    'Comment thread successfully unfrozen!': '已成功解锁评论串！',
+                    'Frozen': '已锁定',
+                    'Comment was successfully updated.': '评论已成功更新。',
+
 
                     // 标签说明
                     'This tag indicates adult content.': '此标签涉及成人内容。',
@@ -743,32 +758,39 @@
 	                ],
 	                ['li.pseud ul a[href$="/pseuds"], li.pseud ul span.current', /^\s*All Pseuds\s*\((\d+)\)\s*$/s, '所有笔名 ($1)'],
 
-	                // 书签
-	                ['h4.heading', /(\s*<span class="byline">.*?<\/span>\s*)save a bookmark!/s, '$1保存书签！'],
-	                ['p.character_counter', /(<span[^>]*>\d+<\/span>)\s*characters left/s, '剩余 $1 字符'],
-	                ['div.flash.notice', /^Added to collection\(s\):\s+(.*)\.$/s, '已添加到合集：$1 。'],
-	                ['div#share p.note', /^Copy and paste the following code to link back to this work \((<kbd>CTRL A<\/kbd>\/<kbd>CMD A<\/kbd>) will select all\), or use the Tweet or Tumblr links to share the work on your Twitter or Tumblr account\.$/s, '请复制以下代码以添加指向此作品的链接（按 $1 可全选），或使用 Tweet / Tumblr 链接在您的 Twitter / Tumblr 账户上分享此作品。'],
-	                ['h2.heading', /^\s*([\d,]+)\s+Bookmarks?\s*$/s, '$1 条书签'],
-	                ['h2.heading', /^\s*(\d+)\s*-\s*(\d+)\s+of\s+([0-9,]+)\s+Bookmarks?\s*$/s, '第 $1 - $2 条，共 $3 条书签'],
-					[
-						'h6.landmark.heading',
-						/^Bookmarker's Notes$/,
-						'书签创建者的注释'
-					],
-					[
-						'h4.heading',
-						/^Mystery Work$/,
-						'神秘作品'
-					],
-					[
-						'h5.heading',
-						/^Part of (<a href="\/collections\/.*?">.+?<\/a>)$/,
-						'属于合集：$1'
-					],
+	                // 作品
+                    [
+                        'h4.heading.byline',
+                        /on\s+(<a\s+href="[^"]*?">)Chapter\s+(\d+)(<\/a>)/g,
+                        '于 $1第 $2 章$3'
+                    ],
 
-	                // 界面
-	                ['div.flash.notice', /^The skin (.+) has been set\. This will last for your current session\.$/s, '$1 界面已启用，此设置将在当前会话期间持续生效。'],
-	                ['h2.heading', /^\s*(.+?)\s+skin by\s+(.+?)\s*$/s, '$1 界面，由 $2 提供'],
+                    // 书签
+                    ['h4.heading', /(\s*<span class="byline">.*?<\/span>\s*)save a bookmark!/s, '$1保存书签！'],
+                    ['p.character_counter', /(<span[^>]*>\d+<\/span>)\s*characters left/s, '剩余 $1 字符'],
+                    ['div.flash.notice', /^Added to collection\(s\):\s+(.*)\.$/s, '已添加到合集：$1 。'],
+                    ['div#share p.note', /^Copy and paste the following code to link back to this work \((<kbd>CTRL A<\/kbd>\/<kbd>CMD A<\/kbd>) will select all\), or use the Tweet or Tumblr links to share the work on your Twitter or Tumblr account\.$/s, '请复制以下代码以添加指向此作品的链接（按 $1 可全选），或使用 Tweet / Tumblr 链接在您的 Twitter / Tumblr 账户上分享此作品。'],
+                    ['h2.heading', /^\s*([\d,]+)\s+Bookmarks?\s*$/s, '$1 条书签'],
+                    ['h2.heading', /^\s*(\d+)\s*-\s*(\d+)\s+of\s+([0-9,]+)\s+Bookmarks?\s*$/s, '第 $1 - $2 条，共 $3 条书签'],
+                    [
+                        'h6.landmark.heading',
+                        /^Bookmarker's Notes$/,
+                        '书签创建者的注释'
+                    ],
+                    [
+                        'h4.heading',
+                        /^Mystery Work$/,
+                        '神秘作品'
+                    ],
+                    [
+                        'h5.heading',
+                        /^Part of (<a href="\/collections\/.*?">.+?<\/a>)$/,
+                        '属于合集：$1'
+                    ],
+
+                    // 界面
+                    ['div.flash.notice', /^The skin (.+) has been set\. This will last for your current session\.$/s, '$1 界面已启用，此设置将在当前会话期间持续生效。'],
+                    ['h2.heading', /^\s*(.+?)\s+skin by\s+(.+?)\s*$/s, '$1 界面，由 $2 提供'],
 
 	                // 屏蔽与静音
 	                ['h2.heading',
@@ -967,21 +989,21 @@
                         /^\s*Works which have used it as a tag:\s*$/,
                         '使用此标签的作品：'
                     ],
-					[
-						'div.flash.error',
-						/^We couldn't add your submission to the following collections: (.*?) does not exist\.$/s,
-						'我们无法将您的提交添加到以下合集：$1 不存在。'
-					],
-					[
-						'h2.heading',
-						/^\s*Editing bookmark for (<a href="\/works\/\d+">.*?<\/a>)\s*$/s,
-						'编辑书签：$1'
-					],
-					[
-						'div.flash.notice',
-						/^\s*Bookmark was successfully updated\.\s+Added to collection\(s\):\s*(.*?)\.\s*$/s,
-						'书签已成功更新。已添加到合集：$1。'
-					],
+                    [
+                        'div.flash.error',
+                        /^We couldn't add your submission to the following collections: (.*?) does not exist\.$/s,
+                        '我们无法将您的提交添加到以下合集：$1 不存在。'
+                    ],
+                    [
+                        'h2.heading',
+                        /^\s*Editing bookmark for (<a href="\/works\/\d+">.*?<\/a>)\s*$/s,
+                        '编辑书签：$1'
+                    ],
+                    [
+                        'div.flash.notice',
+                        /^\s*Bookmark was successfully updated\.\s+Added to collection\(s\):\s*(.*?)\.\s*$/s,
+                        '书签已成功更新。已添加到合集：$1。'
+                    ],
 	                [
 	                    'li',
 	                    /^\s*Translation into\s+(<span lang="[^"]+">[^<]+<\/span>)\s+available:\s+(<a href="[^"]+">.*?<\/a>)\s+by\s+(<a rel="author" href="[^"]+">.*?<\/a>)\s*$/,
@@ -1027,6 +1049,11 @@
 	                    /<li>(.+?) does not accept gifts\.<\/li>/g,
 	                    (_match, username) => `<li>${username} 不接受赠文。</li>`
 	                ],
+                    [
+                        'div.flash.error',
+                        /^We couldn't add your submission to the following collection\(s\): <br><ul><li>(.*?), because this item has already been submitted\.<\/li><\/ul>$/s,
+                        '我们无法将您的提交添加到以下合集：<br><ul><li>$1，因为该项目已被提交。</li></ul>'
+                    ],
 
                     // 标签说明
                     [
@@ -1150,7 +1177,7 @@
 	            'F/M': '女/男',
 	            'Gen': '无CP',
 	            'M/M': '男/男',
-	            'Multi-Fandom': '多配对-同人圈',
+	            'Multi-Fandom': '跨圈',
 	            'Original Work': '原创作品',
 	            'Multi': '多配对',
 	            'Choose Not To Use Archive Warnings': '不使用 Archive 预警',
@@ -1696,7 +1723,7 @@
 	            ],
 	            'selector': []
 	        },
-	        'users_works_index': { // 用户作品列表页
+	        'users_works_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1704,8 +1731,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_drafts_index': { // 用户草稿列表页
+	        'users_drafts_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1713,8 +1739,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_series_index': { // 用户系列列表页
+	        'users_series_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1722,8 +1747,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_bookmarks_index': { // 用户书签列表页
+	        'users_bookmarks_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1731,8 +1755,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_collections_index': { // 用户合集列表页
+	        'users_collections_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1741,8 +1764,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_subscriptions_index': { // 用户订阅列表页
+	        'users_subscriptions_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1750,8 +1772,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_related_works_index': { // 用户相关作品列表页
+	        'users_related_works_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1759,8 +1780,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_gifts_index': { // 用户相关作品列表页
+	        'users_gifts_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
 	            'regexp': [
@@ -1768,8 +1788,7 @@
 	            ],
 	            'selector': [],
 	        },
-
-	        'users_signups': { // 用户报名的挑战
+	        'users_signups': {
 	            'static': {
 	                'Challenge Sign-ups': '挑战活动报名'
 	            },
@@ -1779,7 +1798,28 @@
 	            ],
 	            'selector': []
 	        },
-
+            'users_stats': {
+                'static': {
+                    'Navigation and Sorting': '导航与排序',
+                    'Stats': '数据统计',
+                    'All Years': '所有年份',
+                    'Totals': '总计',
+                    'User Subscriptions:': '用户订阅:',
+                    'Comment Threads:': '评论串:',
+                    'Subscriptions:': '作品订阅:',
+                    'View Sorting and Actions': '视图排序与操作',
+                    'Fandoms View': '同人圈视图',
+                    'Flat View': '平铺视图',
+                    'Listing Statistics': '列表统计',
+                    'Comment Threads': '评论串',
+                    'Subscriptions': '作品订阅'
+                },
+                'innerHTML_regexp': [
+                    ['span.words', /^\(([\d,]+)\s+words\)$/s, '（$1 字）']
+                ],
+                'regexp': [],
+                'selector': []
+            },
 	        'works_index': {
 	            'static': {},
 	            'innerHTML_regexp': [],
@@ -2380,7 +2420,7 @@
 	                'Brevity is the soul of wit, but we need your comment to have text in it.': '简洁乃智慧之魂，但您的评论必须包含文字内容。',
 	            },
 	            'innerHTML_regexp': [
-	                ['h4.heading', /^\s*Comment as (<span class="byline">.*?<\/span>)/, '以 $1 身份发表评论'],
+	                ['h4.heading', /^\s*Comment as (<span class="byline">.*?<\/span>)/, '以 $1 的身份发表评论'],
 	                ['p.character_counter', /(<span[^>]*>\d+<\/span>)\s*characters left/, '剩余 $1 字符'],
 	                [
 	                    'ul.actions a',
@@ -2453,7 +2493,7 @@
 	                    /^\s*This work was removed from your <a href="([^"]*)">Marked for Later list<\/a>\.\s*$/s,
 	                    '此作品已从您的 <a href="$1">稍后阅读列表</a> 中移除。'
 	                ],
-	                ['h4.heading', /^\s*Comment as (<span class="byline">.*?<\/span>)/, '以 $1 身份发表评论'],
+	                ['h4.heading', /^\s*Comment as (<span class="byline">.*?<\/span>)/, '以 $1 的身份发表评论'],
 	                ['p.character_counter', /(<span[^>]*>\d+<\/span>)\s*characters left/, '剩余 $1 字符'],
 	                ['h3.title', /<a (.*?)>Chapter (\d+)<\/a>:\s*(.*)/s, '<a $1>第 $2 章</a>: $3'],
 	                ['h3.title', /<a (.*?)>Chapter (\d+)<\/a>/s, '<a $1>第 $2 章</a>'],
@@ -5559,15 +5599,22 @@
 	 */
 	function translateSortButtons() {
 	    const translations = {
+	        'Bookmarks': '书签',
+	        'Comment Threads': '评论串',
+	        'Date': '日期',
 	        'Fandom': '同人圈',
+	        'Hits': '点击',
+	        'Kudos': '点赞',
 	        'Prompter': '梗提供者',
-	        'Date': '日期'
+	        'Subscriptions': '作品订阅',
+	        'Word Count': '字数统计'
 	    };
 	    const sortButtons = document.querySelectorAll('a[title="sort up"], a[title="sort down"]');
 	    sortButtons.forEach(button => {
 	        if (button.hasAttribute('data-translated-by-custom-function')) {
 	            return;
 	        }
+
 	        let currentHTML = button.innerHTML;
 	        let isTranslated = false;
 	        for (const key in translations) {
@@ -5576,6 +5623,16 @@
 	                isTranslated = true;
 	            }
 	        }
+
+	        const title = button.getAttribute('title');
+	        if (title === 'sort up') {
+	            button.setAttribute('title', '升序');
+	            isTranslated = true;
+	        } else if (title === 'sort down') {
+	            button.setAttribute('title', '降序');
+	            isTranslated = true;
+	        }
+
 	        if (isTranslated) {
 	            button.innerHTML = currentHTML;
 	            button.setAttribute('data-translated-by-custom-function', 'true');
@@ -5813,6 +5870,115 @@
 		}
 	}
 
+    /**
+	 * 翻译统计图表
+	 */
+	function translateStatsChart() {
+	    const chartContainer = document.getElementById('stat_chart');
+	    if (!chartContainer || chartContainer.dataset.chartObserverAttached === 'true') {
+	        return;
+	    }
+
+	    const translateSVGText = (svg) => {
+	        const textElements = svg.querySelectorAll('text');
+	        if (textElements.length === 0) {
+	            return false;
+	        }
+
+	        const translations = {
+	            'Hits': '点击量',
+	            'Kudos': '点赞数',
+	            'Comment Threads': '评论串',
+	            'Comment Thread Count': '评论串数',
+	            'Bookmarks': '书签',
+	            'Subscriptions': '作品订阅',
+	            'Word Count': '字数',
+	            'Most Recent': '最近发布',
+	            'Oldest': '最早发布'
+	        };
+
+	        const titleRegex = /^(Top|Bottom) Five By (.+)$/;
+	        let wordCountElements = [];
+
+	        textElements.forEach(textEl => {
+	            const originalText = textEl.textContent.trim();
+	            if (!originalText) return;
+
+	            if (originalText === 'Word') {
+	                wordCountElements.push(textEl);
+	                return;
+	            }
+
+	            if (wordCountElements.length > 0) {
+	                const cleanedCountText = originalText.replace(/\u2026|\.\.\.$/, '');
+	                if ('Count'.startsWith(cleanedCountText)) {
+	                    const wordEl = wordCountElements.pop();
+	                    const wordY = parseFloat(wordEl.getAttribute('y'));
+	                    const countY = parseFloat(textEl.getAttribute('y'));
+	                    if (Math.abs(wordY - countY) < 20) {
+	                        wordEl.textContent = '字数';
+	                        textEl.textContent = '';
+	                    }
+	                    return;
+	                }
+	            }
+
+	            const titleMatch = originalText.match(titleRegex);
+	            if (titleMatch) {
+	                const direction = titleMatch[1] === 'Top' ? '前五' : '后五';
+	                const categoryKey = titleMatch[2];
+	                const category = translations[categoryKey] || categoryKey;
+	                textEl.textContent = `按${category}排名${direction}`;
+	                return;
+	            }
+
+	            if (translations[originalText]) {
+	                textEl.textContent = translations[originalText];
+	                return;
+	            }
+
+                const cleanedText = originalText.replace(/\u2026|\.\.\.$/, '');
+                if (cleanedText === '') {
+                    return;
+                }
+
+                if (cleanedText !== originalText) {
+                    for (const fullWord in translations) {
+                        if (fullWord.startsWith(cleanedText)) {
+                            textEl.textContent = translations[fullWord];
+                            return;
+                        }
+                    }
+                }
+	        });
+	        return true;
+	    };
+
+	    const observer = new MutationObserver((mutationsList, obs) => {
+	        for (const mutation of mutationsList) {
+	            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+	                const svg = chartContainer.querySelector('svg');
+	                if (svg) {
+	                    if (translateSVGText(svg)) {
+	                        obs.disconnect();
+	                        return;
+	                    }
+	                }
+	            }
+	        }
+	    });
+
+	    observer.observe(chartContainer, { childList: true, subtree: true });
+	    chartContainer.dataset.chartObserverAttached = 'true';
+
+	    const initialSvg = chartContainer.querySelector('svg');
+	    if (initialSvg) {
+	        if (translateSVGText(initialSvg)) {
+	            observer.disconnect();
+	        }
+	    }
+	}
+
     /****************** 全局配置区 ******************/
 
     // 调试模式开关
@@ -5829,35 +5995,217 @@
     const ACTIVE_MODEL_PREFIX_KEY = 'active_model_for_';
     const ADD_NEW_CUSTOM_SERVICE_ID = 'add_new_custom';
 
-    // AI 翻译指令
-    const sharedSystemPrompt = `You are a professional translator fluent in Simplified Chinese (简体中文), with particular expertise in translating web novels and online fanfiction.
+	/**
+     * 语言选项常量
+     */
+    const ALL_LANG_OPTIONS = [
+        ["zh-CN", "简体中文"],
+        ["zh-TW", "繁體中文"],
+        ["ar", "العربية"],
+        ["bg", "Български"],
+        ["bn", "বাংলা"],
+        ["ca", "Català"],
+        ["cs", "Čeština"],
+        ["da", "Dansk"],
+        ["de", "Deutsch"],
+        ["el", "Ελληνικά"],
+        ["en", "English"],
+        ["es", "Español"],
+        ["et", "Eesti"],
+        ["fa", "فارسی"],
+        ["fi", "Suomi"],
+        ["fr", "Français"],
+        ["gu", "ગુજરાતી"],
+        ["he", "עברית"],
+        ["hi", "हिन्दी"],
+        ["hr", "Hrvatski"],
+        ["hu", "Magyar"],
+        ["id", "Indonesia"],
+        ["is", "Íslenska"],
+        ["it", "Italiano"],
+        ["ja", "日本語"],
+        ["kn", "ಕನ್ನಡ"],
+        ["ko", "한국어"],
+        ["lt", "Lietuvių"],
+        ["lv", "Latviešu"],
+        ["ml", "മലയാളം"],
+        ["mr", "मराठी"],
+        ["ms", "Melayu"],
+        ["mt", "Malti"],
+        ["nl", "Nederlands"],
+        ["no", "Norsk"],
+        ["pa", "ਪੰਜਾਬੀ"],
+        ["pl", "Polski"],
+        ["pt", "Português"],
+        ["ro", "Română"],
+        ["ru", "Русский"],
+        ["sk", "Slovenčina"],
+        ["sl", "Slovenščina"],
+        ["sv", "Svenska"],
+        ["sw", "Kiswahili"],
+        ["ta", "தமிழ்"],
+        ["te", "తెలుగు"],
+        ["th", "ไทย"],
+        ["tr", "Türkçe"],
+        ["uk", "Українська"],
+        ["ur", "اردو"],
+        ["vi", "Tiếng Việt"],
+        ["zu", "isiZulu"],
+    ];
 
-    Your task is to translate a numbered list of text segments provided by the user. These segments can be anything from full paragraphs to single phrases or words. For each numbered item, you will follow an internal three-stage strategy to produce the final, polished translation.
+	/**
+     * 语言代码到自然语言名称的映射
+     */
+    const LANG_CODE_TO_NAME = {
+        'zh-CN': 'Simplified Chinese (简体中文)',
+        'zh-TW': 'Traditional Chinese (繁體中文)',
+        'ar': 'Arabic (العربية)',
+        'bg': 'Bulgarian (Български)',
+        'bn': 'Bengali (বাংলা)',
+        'ca': 'Catalan (Català)',
+        'cs': 'Czech (Čeština)',
+        'da': 'Danish (Dansk)',
+        'de': 'German (Deutsch)',
+        'el': 'Greek (Ελληνικά)',
+        'en': 'English',
+        'es': 'Spanish (Español)',
+        'et': 'Estonian (Eesti)',
+        'fa': 'Persian (فارسی)',
+        'fi': 'Finnish (Suomi)',
+        'fr': 'French (Français)',
+        'gu': 'Gujarati (ગુજરાતી)',
+        'he': 'Hebrew (עברית)',
+        'hi': 'Hindi (हिन्दी)',
+        'hr': 'Croatian (Hrvatski)',
+        'hu': 'Hungarian (Magyar)',
+        'id': 'Indonesian (Indonesia)',
+        'is': 'Icelandic (Íslenska)',
+        'it': 'Italian (Italiano)',
+        'ja': 'Japanese (日本語)',
+        'kn': 'Kannada (ಕನ್ನಡ)',
+        'ko': 'Korean (한국어)',
+        'lt': 'Lithuanian (Lietuvių)',
+        'lv': 'Latvian (Latviešu)',
+        'ml': 'Malayalam (മലയാളം)',
+        'mr': 'Marathi (मराठी)',
+        'ms': 'Malay (Melayu)',
+        'mt': 'Maltese (Malti)',
+        'nl': 'Dutch (Nederlands)',
+        'no': 'Norwegian (Norsk)',
+        'pa': 'Punjabi (ਪੰਜਾਬੀ)',
+        'pl': 'Polish (Polski)',
+        'pt': 'Portuguese (Português)',
+        'ro': 'Romanian (Română)',
+        'ru': 'Russian (Русский)',
+        'sk': 'Slovak (Slovenčina)',
+        'sl': 'Slovenian (Slovenščina)',
+        'sv': 'Swedish (Svenska)',
+        'sw': 'Swahili (Kiswahili)',
+        'ta': 'Tamil (தமிழ்)',
+        'te': 'Telugu (తెలుగు)',
+        'th': 'Thai (ไทย)',
+        'tr': 'Turkish (Türkçe)',
+        'uk': 'Ukrainian (Українська)',
+        'ur': 'Urdu (اردو)',
+        'vi': 'Vietnamese (Tiếng Việt)',
+        'zu': 'Zulu (isiZulu)',
+    };
 
-    ### Internal Translation Strategy (for each item):
-    1.  **Stage 1 (Internal Thought Process):** Produce a literal, word-for-word translation of the English content.
-    2.  **Stage 2 (Internal Thought Process):** Based on the literal translation, identify any phrasing that is unnatural or does not flow well in Chinese.
-    3.  **Stage 3 (Final Output):** Produce a polished, idiomatic translation that fully preserves the original meaning, tone, cultural nuances, and any specialized fandom terminology. The final translation must be natural-sounding, readable, and conform to standard Chinese usage.
+	/**
+     * 针对不同目标语言的输出示例数据
+     */
+    const PROMPT_EXAMPLE_OUTPUTS = {
+        'zh-CN': `1. 这是<em>第一个</em>句子。\n2. ---\n3. 她的名字是 ph_123456。\n4. 这是第四个句子。`,
+        'zh-TW': `1. 這是<em>第一個</em>句子。\n2. ---\n3. 她的名字是 ph_123456。\n4. 這是第四個句子。`,
+        'ar': `1. هذه هي الجملة <em>الأولى</em>.\n2. ---\n3. اسمها هو ph_123456.\n4. هذه هي الجملة الرابعة.`,
+        'bg': `1. Това е <em>първото</em> изречение.\n2. ---\n3. Нейното име е ph_123456.\n4. Това е четвъртото изречение.`,
+        'bn': `1. এটি <em>প্রথম</em> বাক্য।\n2. ---\n3. তার নাম ph_123456।\n4. এটি চতুর্থ বাক্য।`,
+        'ca': `1. Aquesta és la <em>primera</em> frase.\n2. ---\n3. El seu nom és ph_123456.\n4. Aquesta és la quarta frase.`,
+        'cs': `1. Toto je <em>první</em> věta.\n2. ---\n3. Jmenuje se ph_123456.\n4. Toto je čtvrtá věta.`,
+        'da': `1. Dette er den <em>første</em> sætning.\n2. ---\n3. Hendes navn er ph_123456.\n4. Dette er den fjerde sætning.`,
+        'de': `1. Das ist der <em>erste</em> Satz.\n2. ---\n3. Ihr Name ist ph_123456.\n4. Das ist der vierte Satz.`,
+        'el': `1. Αυτή είναι η <em>πρώτη</em> πρόταση.\n2. ---\n3. Το όνομά της είναι ph_123456.\n4. Αυτή είναι η τέταρτη πρόταση.`,
+        'es': `1. Esta es la <em>primera</em> frase.\n2. ---\n3. Su nombre es ph_123456.\n4. Esta es la cuarta frase.`,
+        'et': `1. See on <em>esimene</em> lause.\n2. ---\n3. Tema nimi on ph_123456.\n4. See on neljas lause.`,
+        'fa': `1. این <em>اولین</em> جمله است.\n2. ---\n3. نام او ph_123456 است.\n4. این چهارمین جمله است.`,
+        'fi': `1. Tämä on <em>ensimmäinen</em> lause.\n2. ---\n3. Hänen nimensä on ph_123456.\n4. Tämä on neljäs lause.`,
+        'fr': `1. C'est la <em>première</em> phrase.\n2. ---\n3. Son nom est ph_123456.\n4. C'est la quatrième phrase.`,
+        'gu': `1. આ <em>પહેલું</em> વાક્ય છે।\n2. ---\n3. તેનું નામ ph_123456 છે।\n4. આ ચોથું વાક્ય છે।`,
+        'he': `1. זהו המשפט ה<em>ראשון</em>.\n2. ---\n3. שמה הוא ph_123456.\n4. זהו המשפט הרביעי.`,
+        'hi': `1. यह <em>पहला</em> वाक्य है।\n2. ---\n3. उसका नाम ph_123456 है।\n4. यह चौथा वाक्य है।`,
+        'hr': `1. Ovo je <em>prva</em> rečenica.\n2. ---\n3. Njeno ime je ph_123456.\n4. Ovo je četvrta rečenica.`,
+        'hu': `1. Ez az <em>első</em> mondat.\n2. ---\n3. A neve ph_123456.\n4. Ez a negyedik mondat.`,
+        'id': `1. Ini adalah kalimat <em>pertama</em>.\n2. ---\n3. Namanya adalah ph_123456.\n4. Ini adalah kalimat keempat.`,
+        'is': `1. Þetta er <em>fyrsta</em> setningin.\n2. ---\n3. Hún heitir ph_123456.\n4. Þetta er fjórða setningin.`,
+        'it': `1. Questa è la <em>prima</em> frase.\n2. ---\n3. Il suo nome è ph_123456.\n4. Questa è la quarta frase.`,
+        'ja': `1. これは<em>最初の</em>文です。\n2. ---\n3. 彼女の名前は ph_123456 です。\n4. これは4番目の文です。`,
+        'kn': `1. ಇದು <em>ಮೊದಲ</em> ವಾಕ್ಯ।\n2. ---\n3. ಅವಳ ಹೆಸರು ph_123456।\n4. ಇದು ನಾಲ್ಕನೇ ವಾಕ್ಯ।`,
+        'ko': `1. 이것은 <em>첫 번째</em> 문장입니다。\n2. ---\n3. 그녀의 이름은 ph_123456 입니다。\n4. 이것은 네 번째 문장입니다。`,
+        'lt': `1. Tai yra <em>pirmas</em> sakinys.\n2. ---\n3. Jos vardas yra ph_123456.\n4. Tai yra ketvirtas sakinys.`,
+        'lv': `1. Šis ir <em>pirmais</em> teikums.\n2. ---\n3. Viņas vārds ir ph_123456.\n4. Šis ir ceturtais teikums.`,
+        'ml': `1. ഇതാണ് <em>ഒന്നാമത്തെ</em> വാക്യം।\n2. ---\n3. അവളുടെ പേര് ph_123456 എന്നാണ്।\n4. ഇതാണ് നാലാമത്തെ വാക്യം।`,
+        'mr': `1. हे <em>पहिले</em> वाक्य आहे।\n2. ---\n3. तिचे नाव ph_123456 आहे।\n4. हे चौथे वाक्य आहे।`,
+        'ms': `1. Ini adalah ayat <em>pertama</em>.\n2. ---\n3. Namanya ialah ph_123456.\n4. Ini adalah ayat keempat.`,
+        'mt': `1. Din hija l-<em>ewwel</em> sentenza.\n2. ---\n3. Jisimha hu ph_123456.\n4. Din hija r-raba' sentenza.`,
+        'nl': `1. Dit is de <em>eerste</em> zin.\n2. ---\n3. Haar naam is ph_123456.\n4. Dit is de vierde zin.`,
+        'no': `1. Dette er den <em>første</em> setningen.\n2. ---\n3. Hennes navn er ph_123456.\n4. Dette er den fjerde setningen.`,
+        'pa': `1. ਇਹ <em>ਪਹਿਲਾ</em> ਵਾਕ ਹੈ।\n2. ---\n3. ਉਸਦਾ ਨਾਮ ph_123456 ਹੈ।\n4. ਇਹ ਚੌਥਾ ਵਾਕ ਹੈ।`,
+        'pl': `1. To jest <em>pierwsze</em> zdanie.\n2. ---\n3. Nazywa się ph_123456.\n4. To jest czwarte zdanie.`,
+        'pt': `1. Esta é a <em>primeira</em> frase.\n2. ---\n3. O nome dela é ph_123456.\n4. Esta é a quarta frase.`,
+        'ro': `1. Aceasta este <em>prima</em> propoziție.\n2. ---\n3. Numele ei este ph_123456.\n4. Aceasta este a patra propoziție.`,
+        'ru': `1. Это <em>первое</em> предложение.\n2. ---\n3. Её зовут ph_123456.\n4. Это четвёртое предложение.`,
+        'sk': `1. Toto je <em>prvá</em> veta.\n2. ---\n3. Volá sa ph_123456.\n4. Toto je štvrtá veta.`,
+        'sl': `1. To je <em>prvi</em> stavek.\n2. ---\n3. Ime ji je ph_123456.\n4. To je četrti stavek.`,
+        'sv': `1. Detta är den <em>första</em> meningen.\n2. ---\n3. Hennes namn är ph_123456.\n4. Detta är den fjärde meningen.`,
+        'sw': `1. Hii ni sentensi ya <em>kwanza</em>.\n2. ---\n3. Jina lake ni ph_123456.\n4. Hii ni sentensi ya nne.`,
+        'ta': `1. இது <em>முதல்</em> வாக்கியம்.\n2. ---\n3. அவள் பெயர் ph_123456.\n4. இது நான்காவது வாக்கியம்.`,
+        'te': `1. ఇది <em>మొదటి</em> వాక్యం.\n2. ---\n3. ఆమె పేరు ph_123456.\n4. ఇది నాల్గవ వాక్యం.`,
+        'th': `1. นี่คือประโยค<em>แรก</em>\n2. ---\n3. ชื่อของเธอคือ ph_123456\n4. นี่คือประโยคที่สี่`,
+        'tr': `1. Bu <em>birinci</em> cümledir.\n2. ---\n3. Onun adı ph_123456.\n4. Bu dördüncü cümledir.`,
+        'uk': `1. Це <em>перше</em> речення.\n2. ---\n3. Її звати ph_123456.\n4. Це четверте речення.`,
+        'ur': `1. یہ <em>پہلا</em> جملہ ہے۔\n2. ---\n3. اس کا نام ph_123456 ہے۔\n4. یہ چوتھا جملہ ہے۔`,
+        'vi': `1. Đây là câu <em>đầu tiên</em>.\n2. ---\n3. Tên cô ấy là ph_123456.\n4. Đây là câu thứ tư.`,
+        'zu': `1. Lona umusho <em>wokuqala</em>.\n2. ---\n3. Igama lakhe ngu-ph_123456.\n4. Lona umusho wesine.`,
+        'default': `1. This is the <em>first</em> sentence.\n2. ---\n3. Her name is ph_123456.\n4. This is the fourth sentence.`
+    };
 
-    ### CRITICAL OUTPUT INSTRUCTIONS:
-    - Your entire response MUST consist of *only* the polished Chinese translation from Stage 3, formatted as a numbered list that exactly matches the input's numbering.
-    - Do NOT include any stage numbers, headers (e.g., "Polished Translation"), notes, or explanations in your final output.
-    - **HTML Tag Preservation:** If an item contains HTML tags (e.g., \`<em>\`, \`<strong>\`), you MUST preserve these tags exactly as they are in the original, including their positions around the translated text.
-    - **Placeholder Preservation:** If an item contains special placeholders in the format \`ph_\` followed by six digits (e.g., \`ph_123456\`), you MUST preserve these placeholders exactly as they are. DO NOT translate, modify, add spaces to, delete, or alter them in any way.
-    - **Untranslatable Content:** If an item is a separator, a meaningless symbol, or otherwise untranslatable, you MUST return the original item exactly as it is, preserving its number.
+/**
+     * 根据目标语言动态生成完整的提示示例
+     */
+    function generatePromptExample(toLang) {
+        const exampleOutputText = PROMPT_EXAMPLE_OUTPUTS[toLang] || PROMPT_EXAMPLE_OUTPUTS['zh-CN'];
+        return `### Example Output:\n${exampleOutputText}`;
+    }
 
-    ### Example Input:
-    1. This is the <em>first</em> sentence.
-    2. ---
-    3. Her name is ph_123456.
-    4. This is the fourth sentence.
+/**
+     * 获取 AI 翻译系统提示词模板
+     */
+    function getSharedSystemPrompt() {
+        return `You are a professional translator fluent in {toLangName}, with particular expertise in translating web novels and online fanfiction from {fromLangName}.
 
-    ### Example Output:
-    1. 这是<em>第一个</em>句子。
-    2. ---
-    3. 她的名字是 ph_123456。
-    4. 这是第四个句子。
-    `;
+Your task is to translate a numbered list of text segments provided by the user. These segments can be anything from full paragraphs to single phrases or words. For each numbered item, you will follow an internal three-stage strategy to produce the final, polished translation.
+
+### Internal Translation Strategy (for each item):
+1.  **Stage 1 (Internal Thought Process):** Produce a literal, word-for-word translation of the original content.
+2.  **Stage 2 (Internal Thought Process):** Based on the literal translation, identify any phrasing that is unnatural or does not flow well in the target language.
+3.  **Stage 3 (Final Output):** Produce a polished, idiomatic translation that fully preserves the original meaning, tone, cultural nuances, and any specialized fandom terminology. The final translation must be natural-sounding, readable, and conform to standard usage in {toLangName}.
+
+### CRITICAL OUTPUT INSTRUCTIONS:
+- Your entire response MUST consist of *only* the polished translation from Stage 3, formatted as a numbered list that exactly matches the input's numbering.
+- Do NOT include any stage numbers, headers (e.g., "Polished Translation"), notes, or explanations in your final output.
+- **HTML Tag Preservation:** If an item contains HTML tags (e.g., \`<em>\`, \`<strong>\`), you MUST preserve these tags exactly as they are in the original, including their positions around the translated text.
+- **Placeholder Preservation:** If an item contains special placeholders in the format \`ph_\` followed by six digits (e.g., \`ph_123456\`), you MUST preserve these placeholders exactly as they are. DO NOT translate, modify, add spaces to, delete, or alter them in any way.
+- **Untranslatable Content:** If an item is a separator, a meaningless symbol, or otherwise untranslatable, you MUST return the original item exactly as it is, preserving its number.
+
+### Example Input:
+1. This is the <em>first</em> sentence.
+2. ---
+3. Her name is ph_123456.
+4. This is the fourth sentence.
+
+{exampleOutput}
+		`;
+    }
 
     // 创建一个标准的、兼容OpenAI API的服务配置对象
     const createStandardApiConfig = ({ name, url }) => ({
@@ -5868,7 +6216,7 @@
         responseIdentifier: 'choices[0].message.content',
     });
 
-    // 底层实现配置
+	// 底层实现配置
     const CONFIG = {
         LANG: 'zh-CN',
         PAGE_MAP: { 'archiveofourown.org': 'ao3' },
@@ -5884,44 +6232,16 @@
         transEngine: GM_getValue('transEngine', 'google_translate'),
 
         // 默认文本分块、懒加载边距
-		CHUNK_SIZE: 1600,
+        CHUNK_SIZE: 1600,
         PARAGRAPH_LIMIT: 8,
-		SUBSEQUENT_CHUNK_SIZE: 2400,
-        SUBSEQUENT_PARAGRAPH_LIMIT: 12,
         LAZY_LOAD_ROOT_MARGIN: '400px 0px 1000px 0px',
 
-        // 特殊引擎/模型分块、懒加载
+        // 谷歌翻译文本分块、懒加载边距
         MODEL_SPECIFIC_LIMITS: {
             'google_translate': {
-                first: {
-                    CHUNK_SIZE: 4000,
-                    PARAGRAPH_LIMIT: 20,
-                },
-                subsequent: {
-                    CHUNK_SIZE: 5000,
-                    PARAGRAPH_LIMIT: 25,
-                },
+                CHUNK_SIZE: 4000,
+                PARAGRAPH_LIMIT: 20,
                 LAZY_LOAD_ROOT_MARGIN: '1200px 0px 3000px 0px',
-            },
-            'gemini-2.5-pro': {
-                first: {
-                    CHUNK_SIZE: 2400,
-                    PARAGRAPH_LIMIT: 12,
-                },
-                subsequent: {
-                    CHUNK_SIZE: 3000,
-                    PARAGRAPH_LIMIT: 15,
-                }
-            },
-            'deepseek-reasoner': {
-                first: {
-                    CHUNK_SIZE: 2400,
-                    PARAGRAPH_LIMIT: 12,
-                },
-                subsequent: {
-                    CHUNK_SIZE: 3000,
-                    PARAGRAPH_LIMIT: 15,
-                }
             }
         },
 
@@ -6339,13 +6659,13 @@
         };
     }
 
-    /**
+	/**
      * 聚合所有用户配置和数据以供导出
      */
     async function exportAllData() {
         const allData = {
             metadata: {
-                exportFormatVersion: "1.0",
+                exportFormatVersion: "1.1",
                 scriptVersion: GM_info.script.version,
                 exportDate: getShanghaiTimeString(),
             },
@@ -6355,40 +6675,55 @@
                 modelSelections: {},
                 customServices: [],
                 glossaries: {},
-                uiState: {}
+                uiState: {},
+                aiParameters: {}
             }
         };
 
         const staticKeys = [
             'enable_RegExp', 'enable_transDesc', 'show_fab', 'transEngine',
-            'translation_display_mode', 'ao3_glossary_last_action'
+            'translation_display_mode', 'ao3_glossary_last_action',
+            'from_lang', 'to_lang'
         ];
         for (const key of staticKeys) {
-            allData.data.staticKeys[key] = GM_getValue(key);
+            const value = GM_getValue(key);
+            if (value !== undefined) {
+                allData.data.staticKeys[key] = value;
+            }
         }
 
         const builtInServices = Object.keys(engineMenuConfig)
-            .filter(id => id !== 'google_translate' && id !== 'add_new_custom')
+            .filter(id => id !== 'google_translate' && id !== ADD_NEW_CUSTOM_SERVICE_ID)
             .sort();
         for (const serviceId of builtInServices) {
-            allData.data.apiKeys[`${serviceId}_keys_string`] = GM_getValue(`${serviceId}_keys_string`);
+            const apiKey = GM_getValue(`${serviceId}_keys_string`);
+            if (apiKey !== undefined) {
+                allData.data.apiKeys[`${serviceId}_keys_string`] = apiKey;
+            }
             if (engineMenuConfig[serviceId].modelGmKey) {
-                allData.data.modelSelections[engineMenuConfig[serviceId].modelGmKey] = GM_getValue(engineMenuConfig[serviceId].modelGmKey);
+                const model = GM_getValue(engineMenuConfig[serviceId].modelGmKey);
+                if (model !== undefined) {
+                    allData.data.modelSelections[engineMenuConfig[serviceId].modelGmKey] = model;
+                }
             }
         }
 
         const customServicesList = GM_getValue(CUSTOM_SERVICES_LIST_KEY, []);
         customServicesList.sort((a, b) => a.id.localeCompare(b.id));
         for (const service of customServicesList) {
+            const apiKey = GM_getValue(`${service.id}_keys_string`);
             allData.data.customServices.push({
                 id: service.id,
                 name: service.name,
                 url: service.url,
-                apiKey: GM_getValue(`${service.id}_keys_string`),
+                apiKey: apiKey,
                 modelsRaw: service.modelsRaw,
                 selectedModel: GM_getValue(`${ACTIVE_MODEL_PREFIX_KEY}${service.id}`),
                 lastAction: GM_getValue(`custom_service_last_action_${service.id}`)
             });
+            if (apiKey !== undefined) {
+                allData.data.apiKeys[`${service.id}_keys_string`] = apiKey;
+            }
         }
 
         allData.data.glossaries = {
@@ -6404,18 +6739,30 @@
             panelPosition: GM_getValue('ao3_panel_position')
         };
 
+        const aiParamKeys = [
+            'custom_ai_system_prompt', 'custom_ai_user_prompt', 'custom_ai_temperature',
+            'custom_ai_chunk_size', 'custom_ai_para_limit', 'custom_ai_lazy_load_margin',
+            'ao3_ai_param_last_action'
+        ];
+        for (const key of aiParamKeys) {
+            const value = GM_getValue(key);
+            if (value !== undefined) {
+                allData.data.aiParameters[key] = value;
+            }
+        }
+
         return allData;
     }
 
-    /**
+	/**
      * 校验并导入用户配置数据，并自动同步在线术语表
      */
     async function importAllData(jsonData, syncPanelStateCallback) {
-        if (!jsonData || !jsonData.metadata || !jsonData.data || jsonData.metadata.exportFormatVersion !== "1.0") {
-            return { success: false, message: "文件格式无效或版本不兼容。" };
+        if (!jsonData || typeof jsonData !== 'object' || !jsonData.data || typeof jsonData.data !== 'object') {
+            return { success: false, message: "文件格式无效或文件已损坏：缺少核心 'data' 模块。" };
         }
 
-        const { data } = jsonData;
+        const data = jsonData.data;
 
         if (data.staticKeys) {
             for (const [key, value] of Object.entries(data.staticKeys)) {
@@ -6425,9 +6772,7 @@
 
         if (data.apiKeys) {
             for (const [key, value] of Object.entries(data.apiKeys)) {
-                if (value !== undefined) {
-                    GM_setValue(key, value);
-                }
+                if (value !== undefined) GM_setValue(key, value);
             }
         }
         if (data.modelSelections) {
@@ -6447,16 +6792,20 @@
 
             const newServiceList = [];
             for (const service of data.customServices) {
+                if (!service || typeof service.id !== 'string') continue;
                 newServiceList.push({
                     id: service.id,
                     name: service.name,
                     url: service.url,
                     modelsRaw: service.modelsRaw,
-                    models: String(service.modelsRaw).replace(/[，]/g, ',').split(',').map(m => m.trim()).filter(Boolean)
+                    models: String(service.modelsRaw || '').replace(/[，]/g, ',').split(',').map(m => m.trim()).filter(Boolean)
                 });
-                GM_setValue(`${service.id}_keys_string`, service.apiKey);
-                GM_setValue(`${ACTIVE_MODEL_PREFIX_KEY}${service.id}`, service.selectedModel);
-                GM_setValue(`custom_service_last_action_${service.id}`, service.lastAction);
+
+                const apiKeyToSet = service.apiKey !== undefined ? service.apiKey : (data.apiKeys ? data.apiKeys[`${service.id}_keys_string`] : undefined);
+                if (apiKeyToSet !== undefined) GM_setValue(`${service.id}_keys_string`, apiKeyToSet);
+
+                if (service.selectedModel !== undefined) GM_setValue(`${ACTIVE_MODEL_PREFIX_KEY}${service.id}`, service.selectedModel);
+                if (service.lastAction !== undefined) GM_setValue(`custom_service_last_action_${service.id}`, service.lastAction);
             }
             GM_setValue(CUSTOM_SERVICES_LIST_KEY, newServiceList);
         }
@@ -6473,6 +6822,12 @@
         if (data.uiState) {
             if (data.uiState.fabPosition) GM_setValue('ao3_fab_position', data.uiState.fabPosition);
             if (data.uiState.panelPosition) GM_setValue('ao3_panel_position', data.uiState.panelPosition);
+        }
+
+        if (data.aiParameters) {
+            for (const [key, value] of Object.entries(data.aiParameters)) {
+                if (value !== undefined) GM_setValue(key, value);
+            }
         }
 
         synchronizeAllSettings(syncPanelStateCallback);
@@ -6601,9 +6956,25 @@
                 display: flex; align-items: center; justify-content: center;
                 font-size: 24px; color: rgba(0, 0, 0, 0.54);
             }
-            .settings-panel-body { padding: 18px 16px 16px; display: flex; flex-direction: column; gap: 16px; max-height: 70vh; overflow-y: auto; }
+            .settings-panel-body { padding: 16px 16px 16px; display: flex; flex-direction: column; gap: 16px; max-height: 70vh; overflow-y: auto; }
+            .settings-panel-body::-webkit-scrollbar,
+            .custom-dropdown-menu ul::-webkit-scrollbar,
+            .settings-group textarea.settings-control::-webkit-scrollbar {
+                width: 5px;
+            }
+            .settings-panel-body::-webkit-scrollbar-track,
+            .custom-dropdown-menu ul::-webkit-scrollbar-track,
+            .settings-group textarea.settings-control::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .settings-panel-body::-webkit-scrollbar-thumb,
+            .custom-dropdown-menu ul::-webkit-scrollbar-thumb,
+            .settings-group textarea.settings-control::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+            }
 
-            .settings-switch-group { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+            .settings-switch-group { display: flex; justify-content: space-between; align-items: center; padding: 0; }
             .settings-panel-body > .settings-switch-group:first-child {
                 padding-left: 14px;
             }
@@ -6617,6 +6988,34 @@
             .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
             input:checked + .slider { background-color: #209CEE; }
             input:checked + .slider:before { transform: translateX(20px); }
+
+            .language-swap-container {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+            }
+            .language-swap-container .settings-group {
+                flex: 1;
+                min-width: 0;
+            }
+            #swap-lang-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                color: #555;
+                padding: 0 4px;
+                line-height: 1;
+                transition: color 0.2s ease;
+                flex-shrink: 0;
+            }
+            #swap-lang-btn:disabled {
+                color: #a9a9a9;
+                cursor: default;
+            }
+            #swap-lang-btn:focus {
+                outline: none;
+            }
 
             .settings-group { position: relative; }
             .settings-group.ao3-trans-control-disabled {
@@ -6648,6 +7047,24 @@
                 line-height: 40px;
                 color: #000000DE;
                 box-shadow: none;
+                min-width: 0;
+            }
+            .settings-group textarea.settings-control {
+                height: 72px !important;
+                min-height: 72px !important;
+                max-height: 72px !important;
+                line-height: 1.5;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                resize: none;
+            }
+            .settings-group input[type="number"] {
+                -moz-appearance: textfield;
+            }
+            .settings-group input[type="number"]::-webkit-inner-spin-button,
+            .settings-group input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
             }
             .settings-group .settings-control:hover { border-color: var(--ao3-trans-border-hover); }
             .settings-group .settings-control:focus {
@@ -6714,6 +7131,9 @@
 
             .input-wrapper { position: relative; }
             .input-wrapper .settings-input { padding-right: 52px !important; }
+            #ai-param-input-area .input-wrapper textarea.settings-input {
+                padding-right: 12px !important;
+            }
             .settings-action-button-inline {
                 position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
                 background: none; border: none; color: var(--ao3-trans-primary-color);
@@ -6815,7 +7235,7 @@
             .custom-dropdown-menu li .item-text {
                 white-space: nowrap;
                 overflow: hidden;
-                text-overflow: ellipsis;
+                text-overflow: clip;
                 flex-grow: 1;
             }
             .custom-dropdown-menu li .item-actions {
@@ -6840,16 +7260,6 @@
             }
             .custom-dropdown-menu li .item-action-btn.delete[data-confirming="true"] {
                 color: var(--ao3-trans-danger-color);
-            }
-            .custom-dropdown-menu ul::-webkit-scrollbar {
-                width: 5px;
-            }
-            .custom-dropdown-menu ul::-webkit-scrollbar-track {
-                background: transparent;
-            }
-            .custom-dropdown-menu ul::-webkit-scrollbar-thumb {
-                background: rgba(0, 0, 0, 0.2);
-                border-radius: 3px;
             }
             #custom-service-url-notice {
                 font-size: 12px;
@@ -6926,6 +7336,16 @@
             .data-sync-action-btn:focus {
                 outline: none;
             }
+
+            .settings-action-button-inline,
+            .online-glossary-delete-btn,
+            .custom-dropdown-menu li .item-action-btn,
+            .data-sync-action-btn,
+            #swap-lang-btn,
+            div.translate-me-ao3-wrapper > div {
+                -webkit-tap-highlight-color: transparent;
+                outline: none;
+            }
         `);
 
         const panel = document.createElement('div');
@@ -6949,6 +7369,18 @@
                         <input type="checkbox" id="setting-master-switch">
                         <span class="slider"></span>
                     </label>
+                </div>
+
+                <div class="language-swap-container">
+                    <div class="settings-group settings-group-select">
+                        <select id="setting-from-lang" class="settings-control settings-select custom-styled-select"></select>
+                        <label for="setting-from-lang" class="settings-label">原文语言</label>
+                    </div>
+                    <button id="swap-lang-btn" title="互换">⇄</button>
+                    <div class="settings-group settings-group-select">
+                        <select id="setting-to-lang" class="settings-control settings-select custom-styled-select"></select>
+                        <label for="setting-to-lang" class="settings-label">目标语言</label>
+                    </div>
                 </div>
 
                 <div class="settings-group settings-group-select">
@@ -6987,6 +7419,7 @@
                         <option value="import">导入在线术语表</option>
                         <option value="manage">管理在线术语表</option>
                         <option value="post_replace">译文后处理替换</option>
+                        <option value="ai_settings">翻译参数自定义</option>
                         <option value="data_sync">数据导入与导出</option>
                     </select>
                     <label for="setting-glossary-actions" class="settings-label">更多功能</label>
@@ -6995,6 +7428,21 @@
                 <div id="data-sync-actions-container" class="data-sync-actions-container" style="display: none;">
                     <button id="btn-import-data" class="data-sync-action-btn">数据导入</button>
                     <button id="btn-export-data" class="data-sync-action-btn">数据导出</button>
+                </div>
+
+                <div id="editable-section-ai-settings" class="editable-section" style="display: none; flex-direction: column; gap: 16px;">
+                    <div class="settings-group static-label settings-group-select">
+                        <select id="ai-param-select" class="settings-control settings-select custom-styled-select">
+                            <option value="system_prompt">System Prompt</option>
+                            <option value="user_prompt">User Prompt</option>
+                            <option value="temperature">Temperature</option>
+                            <option value="chunk_size">每次翻译文本量</option>
+                            <option value="para_limit">每次翻译段落数</option>
+                            <option value="lazy_load_margin">懒加载参数设置</option>
+                        </select>
+                        <label for="ai-param-select" class="settings-label">参数选择</label>
+                    </div>
+                    <div id="ai-param-input-area"></div>
                 </div>
 
                 <div id="editable-section-glossary-local" class="settings-group static-label editable-section">
@@ -7047,7 +7495,10 @@
             closeBtn: panel.querySelector('.settings-panel-close-btn'),
             header: panel.querySelector('.settings-panel-header'),
             masterSwitch: panel.querySelector('#setting-master-switch'),
+            swapLangBtn: panel.querySelector('#swap-lang-btn'),
             engineSelect: panel.querySelector('#setting-trans-engine'),
+            fromLangSelect: panel.querySelector('#setting-from-lang'),
+            toLangSelect: panel.querySelector('#setting-to-lang'),
             modelGroup: panel.querySelector('#setting-model-group'),
             modelSelect: panel.querySelector('#setting-trans-model'),
             displayModeSelect: panel.querySelector('#setting-display-mode'),
@@ -7057,6 +7508,9 @@
             customServiceContainer: panel.querySelector('#custom-service-container'),
             glossaryActionsSelect: panel.querySelector('#setting-glossary-actions'),
             editableSections: panel.querySelectorAll('.editable-section'),
+            aiSettingsSection: panel.querySelector('#editable-section-ai-settings'),
+            aiParamSelect: panel.querySelector('#ai-param-select'),
+            aiParamInputArea: panel.querySelector('#ai-param-input-area'),
             glossaryLocalSection: panel.querySelector('#editable-section-glossary-local'),
             glossaryLocalInput: panel.querySelector('#setting-input-glossary-local'),
             glossaryLocalSaveBtn: panel.querySelector('#setting-btn-glossary-local-save'),
@@ -7083,10 +7537,10 @@
     /**
      * 显示一个自定义的确认模态框
      */
-    function showCustomConfirm(message, title = '请确认') {
+    function showCustomConfirm(message, title = '提示') {
         return new Promise((resolve, reject) => {
             if (document.getElementById('ao3-custom-confirm-overlay')) {
-                return reject(new Error('已有确认框正在显示中。'));
+                return reject(new Error('已有提示框正在显示中。'));
             }
 
             GM_addStyle(`
@@ -7197,6 +7651,10 @@
 
             isPendingCreation = false;
             currentServiceId = newService.id;
+
+            const lastActionKey = `custom_service_last_action_${currentServiceId}`;
+            GM_setValue(lastActionKey, currentEditSection);
+
             GM_setValue('transEngine', currentServiceId);
 
             return newService.id;
@@ -7363,7 +7821,7 @@
                             const confirmationMessage = `您正在添加一个自定义翻译服务接口地址。\n为了保护您的浏览器安全，油猴脚本要求您为这个新地址手动授权。\n您需要将刚才输入的接口地址域名添加到脚本的 “域名白名单” 中。这是一个首次设置时必须进行的一次性操作。\n点击 “确定” ，将跳转到一份图文版操作教程；点击 “取消” ，则不会进行跳转。\n此提示仅显示一次，是否跳转到教程页面？`;
                             try {
                                 await showCustomConfirm(confirmationMessage, '安全授权');
-                                window.open('https://v-lipset.github.io/ao3-chinese/guide/whitelist.html', '_blank');
+                                window.open('https://v-lipset.github.io/docs/guides/whitelist', '_blank');
                             } catch (e) {}
                         }
                     }
@@ -7551,13 +8009,40 @@
     }
 
     /**
+     * 清理无效的自定义服务配置
+     */
+    function cleanupAllEmptyCustomServices() {
+        const services = GM_getValue(CUSTOM_SERVICES_LIST_KEY, []);
+        const servicesToKeep = services.filter(s => {
+            const hasName = s.name && s.name.trim() !== '';
+            const hasUrl = s.url && s.url.trim() !== '';
+            const hasModels = s.models && s.models.length > 0;
+            const hasApiKey = GM_getValue(`${s.id}_keys_string`, '').trim() !== '';
+
+            return hasName || hasUrl || hasModels || hasApiKey;
+        });
+
+        if (services.length !== servicesToKeep.length) {
+            GM_setValue(CUSTOM_SERVICES_LIST_KEY, servicesToKeep);
+            const currentEngine = GM_getValue('transEngine');
+            const isCurrentEngineRemoved = !servicesToKeep.some(s => s.id === currentEngine);
+
+            if (isCurrentEngineRemoved && currentEngine.startsWith('custom_')) {
+                GM_setValue('transEngine', 'google_translate');
+            }
+        }
+    }
+
+    /**
      * 设置面板的内部逻辑
      */
     function initializeSettingsPanelLogic(panelElements, rerenderMenuCallback, onPanelCloseCallback) {
         const {
-            panel, closeBtn, header, masterSwitch, engineSelect, modelGroup, modelSelect, displayModeSelect,
+            panel, closeBtn, header, masterSwitch, swapLangBtn, engineSelect, fromLangSelect, toLangSelect,
+            modelGroup, modelSelect, displayModeSelect,
             apiKeyGroup, apiKeyInput, apiKeySaveBtn, customServiceContainer,
             glossaryActionsSelect, editableSections,
+            aiSettingsSection, aiParamSelect, aiParamInputArea,
             glossaryLocalSection, glossaryLocalInput, glossaryLocalSaveBtn,
             glossaryForbiddenSection, glossaryForbiddenInput, glossaryForbiddenSaveBtn,
             glossaryImportSection, glossaryImportUrlInput, glossaryImportSaveBtn,
@@ -7567,9 +8052,142 @@
             dataSyncActionsContainer, importDataBtn, exportDataBtn
         } = panelElements;
 
-        /**
-         * 根据选择的翻译服务ID更新UI
-         */
+        const PANEL_POSITION_KEY = 'ao3_panel_position';
+        const GLOSSARY_ACTION_KEY = 'ao3_glossary_last_action';
+        const AI_PARAM_ACTION_KEY = 'ao3_ai_param_last_action';
+        let isDragging = false;
+        let origin = { x: 0, y: 0 }, startPosition = { x: 0, y: 0 };
+        let activeDropdown = null;
+
+        const customServiceManager = createCustomServiceManager(panelElements, syncPanelState);
+
+		function renderAiParamEditor() {
+            const param = aiParamSelect.value;
+            aiParamInputArea.innerHTML = '';
+
+            const paramConfig = {
+                system_prompt: { type: 'textarea', key: 'custom_ai_system_prompt', autoSave: true },
+                user_prompt: { type: 'textarea', key: 'custom_ai_user_prompt', autoSave: true },
+                temperature: { type: 'number', key: 'custom_ai_temperature', attrs: { min: 0, max: 2, step: 0.1 }, hint: ' (0-2)' },
+                chunk_size: { type: 'number', key: 'custom_ai_chunk_size', attrs: { min: 100, step: 100 } },
+                para_limit: { type: 'number', key: 'custom_ai_para_limit', attrs: { min: 1, step: 1 } },
+                lazy_load_margin: { type: 'text', key: 'custom_ai_lazy_load_margin', hint: ' (px)' }
+            };
+
+            const defaults = {
+                system_prompt: () => getSharedSystemPrompt(),
+                user_prompt: () => `Translate the following numbered list to {toLangName}:\n\n{numberedText}`,
+                temperature: () => 0,
+                chunk_size: () => CONFIG.CHUNK_SIZE,
+                para_limit: () => CONFIG.PARAGRAPH_LIMIT,
+                lazy_load_margin: () => CONFIG.LAZY_LOAD_ROOT_MARGIN
+            };
+
+            const config = paramConfig[param];
+            if (!config) return;
+
+            const defaultValue = defaults[param]();
+            let displayValue = GM_getValue(config.key, defaultValue);
+
+            const section = document.createElement('div');
+            section.className = 'settings-group static-label';
+
+            const inputWrapper = document.createElement('div');
+            inputWrapper.className = 'input-wrapper';
+
+            const inputElement = document.createElement(config.type === 'textarea' ? 'textarea' : 'input');
+            inputElement.id = `ai-param-input-${param}`;
+            inputElement.className = 'settings-control settings-input';
+            if (param === 'system_prompt' || param === 'user_prompt') {
+                inputElement.setAttribute('spellcheck', 'false');
+            }
+            if (config.type !== 'textarea') {
+                inputElement.type = config.type;
+            }
+            if (config.attrs) {
+                Object.entries(config.attrs).forEach(([attr, val]) => inputElement.setAttribute(attr, val));
+            }
+            inputElement.value = displayValue;
+
+            const label = document.createElement('label');
+            label.htmlFor = inputElement.id;
+            label.className = 'settings-label';
+            let labelText = aiParamSelect.options[aiParamSelect.selectedIndex].text;
+            if (config.hint) {
+                labelText += config.hint;
+            }
+            label.textContent = labelText;
+
+            inputWrapper.appendChild(inputElement);
+            inputWrapper.appendChild(label);
+
+            if (!config.autoSave) {
+                const saveBtn = document.createElement('button');
+                saveBtn.className = 'settings-action-button-inline';
+                saveBtn.textContent = '保存';
+                inputWrapper.appendChild(saveBtn);
+
+                saveBtn.addEventListener('click', () => {
+                    let valueToSave = inputElement.value;
+                    if (config.type === 'number') {
+                        const numValue = parseInt(valueToSave, 10);
+                        if (isNaN(numValue) || (config.attrs.min !== undefined && numValue < config.attrs.min)) {
+                            valueToSave = config.attrs.min;
+                        } else {
+                            valueToSave = numValue;
+                        }
+                        inputElement.value = valueToSave;
+                    }
+                    GM_setValue(config.key, valueToSave);
+                    updateInputLabel(inputElement);
+                });
+            } else {
+                inputElement.addEventListener('blur', () => {
+                    let valueToSave = inputElement.value;
+                    GM_setValue(config.key, valueToSave);
+                });
+            }
+
+            section.appendChild(inputWrapper);
+            aiParamInputArea.appendChild(section);
+
+            updateInputLabel(inputElement);
+        }
+
+        function updateModelSelect(engineId) {
+            const config = engineMenuConfig[engineId];
+            modelGroup.style.display = 'none';
+
+            if (config && config.modelMapping) {
+                modelSelect.innerHTML = '';
+                Object.keys(config.modelMapping).forEach(modelId => {
+                    const option = document.createElement('option');
+                    option.value = modelId;
+                    option.textContent = config.modelMapping[modelId];
+                    modelSelect.appendChild(option);
+                });
+                modelSelect.disabled = false;
+                modelSelect.value = GM_getValue(config.modelGmKey, Object.keys(config.modelMapping)[0]);
+                modelGroup.style.display = 'block';
+            } else if (engineId.startsWith('custom_')) {
+                customServiceManager.renderDisplayModeModelSelect(engineId);
+            }
+        }
+
+        function updateApiKeySection(engineId) {
+            const config = engineMenuConfig[engineId];
+            if (config && config.requiresApiKey) {
+                apiKeyGroup.style.display = 'block';
+                const stringKeyName = `${engineId}_keys_string`;
+                apiKeyInput.value = GM_getValue(stringKeyName, '');
+                apiKeyGroup.querySelector('.settings-label').textContent = `设置 ${config.displayName} API Key`;
+                apiKeyInput.placeholder = 'Key 1，Key 2，Key 3';
+                updateInputLabel(apiKeyInput);
+            } else {
+                apiKeyGroup.style.display = 'none';
+            }
+        }
+
         function updateUiForEngine(engineId) {
             customServiceContainer.style.display = 'none';
             modelGroup.style.display = 'none';
@@ -7583,12 +8201,6 @@
             }
             updateAllLabels();
         }
-
-        const PANEL_POSITION_KEY = 'ao3_panel_position';
-        const GLOSSARY_ACTION_KEY = 'ao3_glossary_last_action';
-        let isDragging = false;
-        let origin = { x: 0, y: 0 }, startPosition = { x: 0, y: 0 };
-        let activeDropdown = null;
 
         const populateEngineSelect = () => {
             engineSelect.innerHTML = '';
@@ -7622,15 +8234,19 @@
             engineSelect.appendChild(createOption(ADD_NEW_CUSTOM_SERVICE_ID, engineMenuConfig[ADD_NEW_CUSTOM_SERVICE_ID]));
         };
 
-        const syncPanelState = () => {
+        function syncPanelState() {
             const isEnabled = GM_getValue('enable_transDesc', false);
             masterSwitch.checked = isEnabled;
 
             populateEngineSelect();
             const currentEngine = getValidEngineName();
             engineSelect.value = currentEngine;
-            
+
             updateUiForEngine(currentEngine);
+
+            fromLangSelect.value = GM_getValue('from_lang', 'auto');
+            toLangSelect.value = GM_getValue('to_lang', 'zh-CN');
+            updateSwapButtonState();
 
             displayModeSelect.value = GM_getValue('translation_display_mode', 'bilingual');
 
@@ -7642,24 +8258,7 @@
             });
 
             updateAllLabels();
-        };
-
-        const updateApiKeySection = (engineId) => {
-            const config = engineMenuConfig[engineId];
-            if (config && config.requiresApiKey) {
-                apiKeyGroup.style.display = 'block';
-                const stringKeyName = `${engineId}_keys_string`;
-                apiKeyInput.value = GM_getValue(stringKeyName, '');
-                apiKeyGroup.querySelector('.settings-label').textContent = `设置 ${config.displayName} API Key`;
-                apiKeyInput.placeholder = 'Key 1，Key 2，Key 3';
-                updateInputLabel(apiKeyInput);
-            } else {
-                apiKeyGroup.style.display = 'none';
-            }
-        };
-
-        panelElements.updateApiKeySection = updateApiKeySection;
-		const customServiceManager = createCustomServiceManager(panelElements, syncPanelState, populateEngineSelect);
+        }
 
         const isMobile = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
@@ -7727,33 +8326,13 @@
             editableSections.forEach(s => s.style.display = 'none');
             dataSyncActionsContainer.style.display = 'none';
             if (sectionToShow) {
-                if (sectionToShow.id === 'editable-section-glossary-manage') {
+                if (sectionToShow.id === 'editable-section-glossary-manage' || sectionToShow.id === 'editable-section-ai-settings') {
                     sectionToShow.style.display = 'flex';
                 } else {
                     sectionToShow.style.display = 'block';
                 }
                 const input = sectionToShow.querySelector('.settings-control');
                 if (input) updateInputLabel(input);
-            }
-        };
-
-        const updateModelSelect = (engineId) => {
-            const config = engineMenuConfig[engineId];
-            modelGroup.style.display = 'none';
-
-            if (config && config.modelMapping) {
-                modelSelect.innerHTML = '';
-                Object.keys(config.modelMapping).forEach(modelId => {
-                    const option = document.createElement('option');
-                    option.value = modelId;
-                    option.textContent = config.modelMapping[modelId];
-                    modelSelect.appendChild(option);
-                });
-                modelSelect.disabled = false;
-                modelSelect.value = GM_getValue(config.modelGmKey, Object.keys(config.modelMapping)[0]);
-                modelGroup.style.display = 'block';
-            } else if (engineId.startsWith('custom_')) {
-                customServiceManager.renderDisplayModeModelSelect(engineId);
             }
         };
 
@@ -7771,7 +8350,6 @@
             }
 
             if (!serviceIdToUpdate) {
-                notifyAndLog('无法保存 API Key，因为没有有效的服务被选中。', '保存错误', 'error');
                 return;
             }
 
@@ -7832,21 +8410,6 @@
             resetDeleteButton();
         };
 
-        const cleanupAllEmptyCustomServices = () => {
-            const services = GM_getValue(CUSTOM_SERVICES_LIST_KEY, []);
-            const servicesToKeep = services.filter(s => s.url || (s.models && s.models.length > 0));
-
-            if (services.length !== servicesToKeep.length) {
-                GM_setValue(CUSTOM_SERVICES_LIST_KEY, servicesToKeep);
-                const currentEngine = GM_getValue('transEngine');
-                const isCurrentEngineRemoved = !servicesToKeep.some(s => s.id === currentEngine);
-
-                if (isCurrentEngineRemoved && currentEngine.startsWith('custom_')) {
-                    GM_setValue('transEngine', 'google_translate');
-                }
-            }
-        };
-
         const handleExport = async () => {
             try {
                 const data = await exportAllData();
@@ -7856,17 +8419,17 @@
                 const a = document.createElement("a");
                 a.href = url;
                 const shanghaiDate = new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Shanghai' }).slice(0, 10);
-                a.download = `AO3-Chinese-Plugin-Backup-${shanghaiDate}.json`;
+                a.download = `AO3-Chinese-Script-Backup-${shanghaiDate}.json`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                notifyAndLog("配置已成功导出！");
+                notifyAndLog('配置已成功导出！', '操作成功');
             } catch (e) {
+                notifyAndLog(`导出失败: ${e.message}`, '操作失败', 'error');
                 if (DEBUG_MODE) {
                     console.error("导出失败:", e);
                 }
-                notifyAndLog("导出失败，请查看控制台获取详情。", "导出错误", "error");
             }
         };
 
@@ -7878,24 +8441,30 @@
                 const file = e.target.files[0];
                 if (!file) return;
 
-                if (!window.confirm("您确定要导入该配置文件吗？这将覆盖您当前的所有设置，包括 API Key 、术语表、自定义翻译服务等。\n注意：此操作无法撤销。")) {
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = async (event) => {
-                    try {
-                        const jsonData = JSON.parse(event.target.result);
-                        const result = await importAllData(jsonData, syncPanelState);
-                        notifyAndLog(result.message, result.success ? "导入成功" : "导入失败", result.success ? "info" : "error");
-                    } catch (err) {
-                        if (DEBUG_MODE) {
-                            console.error("导入失败:", err);
-                        }
-                        notifyAndLog(`导入失败：${err.message}`, "导入错误", "error");
-                    }
-                };
-                reader.readAsText(file);
+                showCustomConfirm("您确定要导入该配置文件吗？\n这将覆盖您当前的所有设置，包括 API Key 、术语表、自定义翻译服务等。\n注意：此操作无法撤销。")
+                    .then(() => {
+                        const reader = new FileReader();
+                        reader.onload = async (event) => {
+                            try {
+                                const jsonData = JSON.parse(event.target.result);
+                                const result = await importAllData(jsonData, syncPanelState);
+                                if (result.success) {
+                                    notifyAndLog(result.message, '导入成功');
+                                } else {
+                                    notifyAndLog(result.message, '导入失败', 'error');
+                                }
+                            } catch (err) {
+                                notifyAndLog(`导入失败: 文件格式无效或已损坏。 ${err.message}`, '导入失败', 'error');
+                                if (DEBUG_MODE) {
+                                    console.error("导入失败:", err);
+                                }
+                            }
+                        };
+                        reader.readAsText(file);
+                    })
+                    .catch(() => {
+                        notifyAndLog('导入操作已取消。', '操作取消');
+                    });
             };
             input.click();
         };
@@ -7928,6 +8497,20 @@
             if (rerenderMenuCallback) rerenderMenuCallback();
         };
 
+        const updateSwapButtonState = () => {
+            const isAutoDetect = fromLangSelect.value === 'auto';
+            swapLangBtn.disabled = isAutoDetect;
+        };
+
+        const handleLanguageChange = () => {
+            if (glossaryActionsSelect.value === 'ai_settings') {
+                const currentParam = aiParamSelect.value;
+                if (currentParam === 'system_prompt' || currentParam === 'user_prompt') {
+                    renderAiParamEditor();
+                }
+            }
+        };
+
         panel.addEventListener('change', (e) => {
             if (e.target.classList.contains('settings-control')) {
                 updateInputLabel(e.target);
@@ -7955,6 +8538,31 @@
                     delete el.dataset.state;
                 });
             }
+        });
+
+        swapLangBtn.addEventListener('click', () => {
+            if (swapLangBtn.disabled) return;
+            const fromLang = fromLangSelect.value;
+            const toLang = toLangSelect.value;
+            fromLangSelect.value = toLang;
+            toLangSelect.value = fromLang;
+            GM_setValue('from_lang', toLang);
+            GM_setValue('to_lang', fromLang);
+            fromLangSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            toLangSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        fromLangSelect.addEventListener('change', () => {
+            const newLang = fromLangSelect.value;
+            GM_setValue('from_lang', newLang);
+            updateSwapButtonState();
+            handleLanguageChange();
+        });
+
+        toLangSelect.addEventListener('change', () => {
+            const newLang = toLangSelect.value;
+            GM_setValue('to_lang', newLang);
+            handleLanguageChange();
         });
 
         engineSelect.addEventListener('change', () => {
@@ -7999,6 +8607,12 @@
             toggleEditableSection(null);
 
             switch (action) {
+                case 'ai_settings':
+                    toggleEditableSection(aiSettingsSection);
+                    const lastAiAction = GM_getValue(AI_PARAM_ACTION_KEY, 'system_prompt');
+                    aiParamSelect.value = lastAiAction;
+                    renderAiParamEditor();
+                    break;
                 case 'local':
                     glossaryLocalInput.value = GM_getValue(LOCAL_GLOSSARY_STRING_KEY, '');
                     toggleEditableSection(glossaryLocalSection);
@@ -8027,6 +8641,11 @@
             }
         });
 
+        aiParamSelect.addEventListener('change', () => {
+            GM_setValue(AI_PARAM_ACTION_KEY, aiParamSelect.value);
+            renderAiParamEditor();
+        });
+
         glossaryLocalSaveBtn.addEventListener('click', () => {
             GM_setValue(LOCAL_GLOSSARY_STRING_KEY, glossaryLocalInput.value);
             synchronizeAllSettings();
@@ -8041,6 +8660,7 @@
             const url = glossaryImportUrlInput.value.trim();
             if (url) {
                 importOnlineGlossary(url, () => {
+                    invalidateGlossaryCache();
                     if (glossaryActionsSelect.value === 'manage') {
                         populateManageGlossary();
                     }
@@ -8072,7 +8692,6 @@
                     GM_setValue(IMPORTED_GLOSSARY_KEY, allGlossaries);
                     GM_setValue(GLOSSARY_METADATA_KEY, allMetadata);
                     invalidateGlossaryCache();
-                    notifyAndLog(`已删除术语表: ${decodeURIComponent(urlToRemove.split('/').pop())}`);
                     populateManageGlossary();
                     updateInputLabel(glossaryManageSelect);
                 }
@@ -8087,7 +8706,7 @@
             synchronizeAllSettings();
         });
 
-        importDataBtn.addEventListener('click', () => handleImport(syncPanelState));
+        importDataBtn.addEventListener('click', () => handleImport());
         exportDataBtn.addEventListener('click', handleExport);
 
         closeBtn.addEventListener('click', togglePanel);
@@ -8127,6 +8746,9 @@
             if (panel.style.display !== 'block') {
                 return;
             }
+            if (document.getElementById('ao3-custom-confirm-overlay')) {
+                return;
+            }
             if (document.querySelector('.custom-dropdown-backdrop')) {
                 return;
             }
@@ -8137,6 +8759,24 @@
         };
         document.addEventListener('mousedown', handleClickOutside, true);
 
+        const populateLangSelects = () => {
+            const fromOptions = [{ value: 'auto', text: '自动检测' }, ...ALL_LANG_OPTIONS.map(([value, text]) => ({ value, text }))];
+            const toOptions = ALL_LANG_OPTIONS.map(([value, text]) => ({ value, text }));
+
+            const createOptions = (select, options) => {
+                select.innerHTML = '';
+                options.forEach(({ value, text }) => {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = text;
+                    select.appendChild(option);
+                });
+            };
+            createOptions(fromLangSelect, fromOptions);
+            createOptions(toLangSelect, toOptions);
+        };
+
+        populateLangSelects();
         populateEngineSelect();
         syncPanelState();
 
@@ -8428,8 +9068,8 @@
             modelGmKey: 'google_ai_model',
             modelMapping: {
                 'gemini-2.5-pro': 'Gemini 2.5 Pro',
-                'gemini-2.5-flash': 'Gemini 2.5 Flash',
-                'gemini-2.5-flash-lite': 'Gemini 2.5 Flash-Lite'
+                'gemini-flash-latest': 'Gemini 2.5 Flash',
+                'gemini-flash-lite-latest': 'Gemini 2.5 Flash-Lite'
             },
             requiresApiKey: true
         },
@@ -8437,8 +9077,9 @@
             displayName: 'Groq AI',
             modelGmKey: 'groq_model',
             modelMapping: {
-                'meta-llama/llama-4-maverick-17b-128e-instruct': 'Llama 4',
-                'moonshotai/kimi-k2-instruct': 'Kimi K2',
+                'meta-llama/llama-4-maverick-17b-128e-instruct': 'Llama 4 Maverick',
+                'meta-llama/llama-4-scout-17b-16e-instruct': 'Llama 4 Scout',
+                'moonshotai/kimi-k2-instruct-0905': 'Kimi K2',
                 'deepseek-r1-distill-llama-70b': 'DeepSeek 70B',
                 'openai/gpt-oss-120b': 'GPT-OSS 120B'
             },
@@ -8448,8 +9089,9 @@
             displayName: 'Together AI',
             modelGmKey: 'together_model',
             modelMapping: {
-                'meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8': 'Llama 4',
+                'meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8': 'Llama 4 Maverick',
                 'deepseek-ai/DeepSeek-V3': 'DeepSeek V3',
+                'moonshotai/Kimi-K2-Instruct': 'Kimi K2',
                 'Qwen/Qwen3-235B-A22B-Instruct-2507-tput': 'Qwen3 235B'
             },
             requiresApiKey: true
@@ -8458,7 +9100,8 @@
             displayName: 'Cerebras',
             modelGmKey: 'cerebras_model',
             modelMapping: {
-                'llama-4-maverick-17b-128e-instruct': 'Llama 4',
+                'llama-4-maverick-17b-128e-instruct': 'Llama 4 Maverick',
+                'llama-4-scout-17b-16e-instruct': 'Llama 4 Scout',
                 'qwen-3-235b-a22b-instruct-2507': 'Qwen 3 235B',
                 'gpt-oss-120b': 'GPT-OSS 120B'
             },
@@ -8468,9 +9111,9 @@
             displayName: 'ModelScope',
             modelGmKey: 'modelscope_model',
             modelMapping: {
-                'LLM-Research/Llama-4-Maverick-17B-128E-Instruct': 'Llama 4',
+                'LLM-Research/Llama-4-Maverick-17B-128E-Instruct': 'Llama 4 Maverick',
                 'deepseek-ai/DeepSeek-V3.1': 'DeepSeek V3.1',
-                'ZhipuAI/GLM-4.5': 'GLM 4.5',
+                'ZhipuAI/GLM-4.6': 'GLM 4.6',
                 'Qwen/Qwen3-235B-A22B-Instruct-2507': 'Qwen3 235B'
             },
             requiresApiKey: true
@@ -8552,7 +9195,7 @@
 
     /****************** API 客户端层 ******************/
 
-    /**
+	/**
      * 所有 API 客户端的基类，定义了标准接口和通用翻译流程
      */
     class BaseApiClient {
@@ -8573,7 +9216,7 @@
         /**
          * 构建请求所需的 Body
          */
-        _buildBody(_paragraphs) {
+        _buildBody(_paragraphs, _fromLang) {
             throw new Error("'_buildBody' must be implemented by subclasses.");
         }
 
@@ -8590,6 +9233,7 @@
         _handleError(response, responseData) {
             const apiErrorMessage = getNestedProperty(responseData, 'error.message') || getNestedProperty(responseData, 'message') || response.statusText || '未知错误';
             const error = new Error();
+            let userFriendlyError;
             error.noRetry = false;
 
             if (DEBUG_MODE) {
@@ -8602,40 +9246,40 @@
 
             switch (response.status) {
                 case 401:
-                    error.message = `API Key 无效或认证失败 (401)：请在设置面板中检查您的 ${this.provider.name} API Key。`;
+                    userFriendlyError = `API Key 无效或认证失败 (401)：请在设置面板中检查您的 ${this.provider.name} API Key。`;
                     error.noRetry = true;
                     break;
                 case 403:
-                    error.message = `权限被拒绝 (403)：您的 API Key 无权访问所请求的资源，或您所在的地区不受支持。`;
+                    userFriendlyError = `权限被拒绝 (403)：您的 API Key 无权访问所请求的资源，或您所在的地区不受支持。`;
                     error.noRetry = true;
                     break;
                 case 429:
-                    error.message = `请求频率过高 (429)：已超出 API 的速率限制，脚本将在稍后自动重试。`;
+                    userFriendlyError = `请求频率过高 (429)：已超出 API 的速率限制，脚本将在稍后自动重试。`;
                     error.type = 'rate_limit';
                     break;
                 case 500:
                 case 503:
-                    error.message = `服务器错误 (${response.status})：${this.provider.name} 的服务器暂时不可用，脚本将在稍后自动重试。`;
+                    userFriendlyError = `服务器错误 (${response.status})：${this.provider.name} 的服务器暂时不可用，脚本将在稍后自动重试。`;
                     error.type = 'server_overloaded';
                     break;
                 default:
-                    error.message = `发生未知 API 错误 (代码: ${response.status})。`;
+                    userFriendlyError = `发生未知 API 错误 (代码: ${response.status})。`;
                     error.noRetry = true;
                     break;
             }
 
-            error.message += `\n\n原始错误信息：\n${apiErrorMessage}`;
+            error.message = userFriendlyError + `\n\n原始错误信息：\n${apiErrorMessage}`;
             return error;
         }
 
-        /**
+		/**
          * 主翻译方法，执行完整的异步网络请求和响应处理流程
          */
-        translate(paragraphs) {
+        translate(paragraphs, fromLang = 'auto', toLang = 'zh-CN') {
             return new Promise(async (resolve, reject) => {
                 try {
                     const headers = await this._buildHeaders();
-                    const body = this._buildBody(paragraphs);
+                    const body = this._buildBody(paragraphs, fromLang, toLang);
                     const url = this.provider.apiHost;
 
                     if (!url) {
@@ -8702,7 +9346,7 @@
         }
     }
 
-    /**
+	/**
      * 用于处理所有 OpenAI 兼容 API 的客户端，包括大部分自定义服务
      */
     class OpenAICompatibleClient extends BaseApiClient {
@@ -8732,19 +9376,37 @@
             };
         }
 
-        _buildBody(paragraphs) {
+        _buildBody(paragraphs, fromLang, toLang) {
+            const fromLangName = LANG_CODE_TO_NAME[fromLang] || fromLang;
+            const toLangName = LANG_CODE_TO_NAME[toLang] || toLang;
+            const exampleOutput = generatePromptExample(toLang);
             const numberedText = paragraphs
                 .map((p, i) => `${i + 1}. ${p.innerHTML}`)
                 .join('\n\n');
 
+            const defaultSystemPrompt = getSharedSystemPrompt();
+            const systemPromptTemplate = GM_getValue('custom_ai_system_prompt', defaultSystemPrompt);
+            const userPromptTemplate = GM_getValue('custom_ai_user_prompt', `Translate the following numbered list to {toLangName}:\n\n{numberedText}`);
+
+            const finalSystemPrompt = systemPromptTemplate
+                .replace(/\{fromLangName\}/g, fromLangName)
+                .replace(/\{toLangName\}/g, toLangName)
+                .replace(/\{exampleOutput\}/g, exampleOutput);
+
+            const finalUserPrompt = userPromptTemplate
+                .replace(/\{toLangName\}/g, toLangName)
+                .replace(/\{numberedText\}/g, numberedText);
+
+            const temperature = GM_getValue('custom_ai_temperature', 0);
+
             const requestData = {
                 model: this.provider.selectedModel,
                 messages: [
-                    { "role": "system", "content": sharedSystemPrompt },
-                    { "role": "user", "content": `Translate the following numbered list to Simplified Chinese（简体中文）:\n\n${numberedText}` }
+                    { "role": "system", "content": finalSystemPrompt },
+                    { "role": "user", "content": finalUserPrompt }
                 ],
                 stream: false,
-                temperature: 0,
+                temperature: temperature,
             };
             return JSON.stringify(requestData);
         }
@@ -8771,16 +9433,17 @@
         /**
          * 覆盖基类的 translate 方法以添加详细的调试日志
          */
-        translate(paragraphs) {
+        translate(paragraphs, fromLang, toLang) {
             if (DEBUG_MODE) {
                 console.group(`[调试日志] OpenAICompatibleClient.translate 发起请求`);
                 console.log('服务 Provider:', this.provider);
                 console.log('请求 URL:', this.provider.apiHost);
                 console.log('请求模型:', this.provider.selectedModel);
+                console.log('检测到的源语言:', fromLang);
                 console.log('请求段落数:', paragraphs.length);
                 console.groupEnd();
             }
-            return super.translate(paragraphs);
+            return super.translate(paragraphs, fromLang, toLang);
         }
     }
 
@@ -8818,7 +9481,7 @@
         }
     };
 
-    /**
+	/**
      * 用于处理 Anthropic API 的专属客户端
      */
     class AnthropicClient extends BaseApiClient {
@@ -8852,22 +9515,40 @@
         /**
          * 构建完全符合 Anthropic API 规范的请求体
          */
-        _buildBody(paragraphs) {
+        _buildBody(paragraphs, fromLang, toLang) {
+            const fromLangName = LANG_CODE_TO_NAME[fromLang] || fromLang;
+            const toLangName = LANG_CODE_TO_NAME[toLang] || toLang;
+            const exampleOutput = generatePromptExample(toLang);
             const numberedText = paragraphs
                 .map((p, i) => `${i + 1}. ${p.innerHTML}`)
                 .join('\n\n');
 
+            const defaultSystemPrompt = getSharedSystemPrompt();
+            const systemPromptTemplate = GM_getValue('custom_ai_system_prompt', defaultSystemPrompt);
+            const userPromptTemplate = GM_getValue('custom_ai_user_prompt', `Translate the following numbered list to {toLangName}:\n\n{numberedText}`);
+
+            const finalSystemPrompt = systemPromptTemplate
+                .replace(/\{fromLangName\}/g, fromLangName)
+                .replace(/\{toLangName\}/g, toLangName)
+                .replace(/\{exampleOutput\}/g, exampleOutput);
+
+            const finalUserPrompt = userPromptTemplate
+                .replace(/\{toLangName\}/g, toLangName)
+                .replace(/\{numberedText\}/g, numberedText);
+
+            const temperature = GM_getValue('custom_ai_temperature', 0);
+
             const requestData = {
                 model: this.provider.selectedModel,
-                system: sharedSystemPrompt,
+                system: finalSystemPrompt,
                 max_tokens: 4096,
                 messages: [
                     {
                         "role": "user",
-                        "content": `Translate the following numbered list to Simplified Chinese（简体中文）:\n\n${numberedText}`
+                        "content": finalUserPrompt
                     }
                 ],
-                temperature: 0,
+                temperature: temperature,
             };
             return JSON.stringify(requestData);
         }
@@ -8908,24 +9589,40 @@
         /**
          * 构建符合 Gemini API 规范的请求体
          */
-        _buildBody(paragraphs) {
+        _buildBody(paragraphs, fromLang, toLang) {
+            const fromLangName = LANG_CODE_TO_NAME[fromLang] || fromLang;
+            const toLangName = LANG_CODE_TO_NAME[toLang] || toLang;
+            const exampleOutput = generatePromptExample(toLang);
             const numberedText = paragraphs
                 .map((p, i) => `${i + 1}. ${p.innerHTML}`)
                 .join('\n\n');
 
-            const userPrompt = `Translate the following numbered list to Simplified Chinese（简体中文）:\n\n${numberedText}`;
+            const defaultSystemPrompt = getSharedSystemPrompt();
+            const systemPromptTemplate = GM_getValue('custom_ai_system_prompt', defaultSystemPrompt);
+            const userPromptTemplate = GM_getValue('custom_ai_user_prompt', `Translate the following numbered list to {toLangName}:\n\n{numberedText}`);
+
+            const finalSystemPrompt = systemPromptTemplate
+                .replace(/\{fromLangName\}/g, fromLangName)
+                .replace(/\{toLangName\}/g, toLangName)
+                .replace(/\{exampleOutput\}/g, exampleOutput);
+
+            const finalUserPrompt = userPromptTemplate
+                .replace(/\{toLangName\}/g, toLangName)
+                .replace(/\{numberedText\}/g, numberedText);
+
+            const temperature = GM_getValue('custom_ai_temperature', 0);
 
             const requestData = {
                 systemInstruction: {
                     role: "user",
-                    parts: [{ text: sharedSystemPrompt }]
+                    parts: [{ text: finalSystemPrompt }]
                 },
                 contents: [{
                     role: "user",
-                    parts: [{ text: userPrompt }]
+                    parts: [{ text: finalUserPrompt }]
                 }],
                 generationConfig: {
-                    temperature: 0,
+                    temperature: temperature,
                     candidateCount: 1,
                 }
             };
@@ -8942,7 +9639,7 @@
         /**
          * 主翻译方法，处理 Google AI 特有的 URL 构建和认证逻辑
          */
-        translate(paragraphs) {
+        translate(paragraphs, fromLang, toLang) {
             return new Promise(async (resolve, reject) => {
                 try {
                     const { key: apiKey, index: keyIndex } = await _getApiKeyForService(this.provider);
@@ -8956,7 +9653,7 @@
 
                     const finalUrl = this.provider.apiHost.replace('{model}', modelId) + `?key=${apiKey}`;
                     const headers = this._buildHeaders();
-                    const body = this._buildBody(paragraphs);
+                    const body = this._buildBody(paragraphs, fromLang, toLang);
 
                     if (DEBUG_MODE) {
                         const maskedKey = apiKey.length > 8 ? `${apiKey.substring(0, 4)}...${apiKey.substring(apiKey.length - 4)}` : apiKey;
@@ -8964,6 +9661,7 @@
                         console.log('服务 Provider:', this.provider);
                         console.log('请求 URL:', finalUrl);
                         console.log(`使用 Key #${keyIndex + 1}: ${maskedKey}`);
+                        console.log('检测到的源语言:', fromLang);
                         console.log('请求 Headers:', headers);
                         try {
                             console.log('请求 Body (解析后):', JSON.parse(body));
@@ -9016,7 +9714,6 @@
                 }
             });
         }
-
     }
 
     /****************** 谷歌翻译模块 ******************/
@@ -9100,10 +9797,75 @@
 		return CONFIG.transEngine;
 	}
 
+	/**
+     * 使用百度翻译 API 检测文本语言
+     */
+    async function detectLanguageBaidu(text) {
+        if (DEBUG_MODE) {
+            console.log(`[语言检测] detectLanguageBaidu: 开始检测文本片段...`, { text: text.substring(0, 100) + '...' });
+        }
+        return new Promise((resolve) => {
+            if (!text || !text.trim()) {
+                if (DEBUG_MODE) {
+                    console.log(`[语言检测] detectLanguageBaidu: 文本为空，默认返回 'en'。`);
+                }
+                resolve('en');
+                return;
+            }
+
+            if (DEBUG_MODE) {
+                console.log(`[语言检测] detectLanguageBaidu: 正在向百度 API 发送语言检测请求...`);
+            }
+
+            GM_xmlhttpRequest({
+                method: 'POST',
+                url: 'https://fanyi.baidu.com/langdetect',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                data: `query=${encodeURIComponent(text)}`,
+                responseType: 'json',
+                timeout: 10000,
+                onload: function(response) {
+                    if (DEBUG_MODE) {
+                        console.log(`[语言检测] detectLanguageBaidu: 收到百度 API 响应。`, { status: response.status, response: response.response });
+                    }
+                    if (response.status === 200 && response.response && response.response.error === 0) {
+                        const lang = response.response.lan;
+                        if (DEBUG_MODE) {
+                            console.log(`[语言检测] detectLanguageBaidu: 成功检测到语言 -> ${lang}`);
+                        }
+                        resolve(lang);
+                    } else {
+                        console.error('百度语言检测失败:', response.response ? response.response.msg : '请求失败');
+                        if (DEBUG_MODE) {
+                            console.log(`[语言检测] detectLanguageBaidu: 检测失败，默认返回 'en'。`);
+                        }
+                        resolve('en');
+                    }
+                },
+                onerror: function(error) {
+                    console.error('百度语言检测网络错误:', error);
+                    if (DEBUG_MODE) {
+                        console.log(`[语言检测] detectLanguageBaidu: 网络错误，默认返回 'en'。`);
+                    }
+                    resolve('en');
+                },
+                ontimeout: function() {
+                    console.error('百度语言检测请求超时。');
+                    if (DEBUG_MODE) {
+                        console.log(`[语言检测] detectLanguageBaidu: 请求超时，默认返回 'en'。`);
+                    }
+                    resolve('en');
+                }
+            });
+        });
+    }
+
     /**
      * 远程翻译请求函数
      */
-    async function requestRemoteTranslation(paragraphs, { retryCount = 0, maxRetries = 5, isCancelled = () => false } = {}) {
+    async function requestRemoteTranslation(paragraphs, { retryCount = 0, maxRetries = 5, isCancelled = () => false, knownFromLang = null } = {}) {
         const createCancellationError = () => {
             const error = new Error('用户已取消翻译。');
             error.type = 'user_cancelled';
@@ -9116,13 +9878,43 @@
             throw createCancellationError();
         }
 
-        if (DEBUG_MODE) console.log(`[网络层] requestRemoteTranslation 开始执行 (尝试 #${retryCount + 1})。isCancelled 初始状态: ${isCancelled()}`);
+        if (DEBUG_MODE) {
+            console.log(`[网络层] requestRemoteTranslation 开始执行 (尝试 #${retryCount + 1})。`);
+        }
 
         const engineName = getValidEngineName();
+        const toLang = GM_getValue('to_lang', 'zh-CN');
+        let fromLang;
+
+        if (knownFromLang) {
+            fromLang = knownFromLang;
+            if (DEBUG_MODE) {
+                console.log(`[网络层] 使用已知的源语言: '${fromLang}'，跳过自动检测。`);
+            }
+        } else {
+            const userSelectedFromLang = GM_getValue('from_lang', 'auto');
+            if (userSelectedFromLang === 'auto') {
+                if (DEBUG_MODE) {
+                    console.log(`[网络层] 用户设置为自动检测，开始执行语言检测...`);
+                }
+                const textToDetect = paragraphs.map(p => p.textContent).join(' ').substring(0, 200);
+                fromLang = await detectLanguageBaidu(textToDetect);
+            } else {
+                fromLang = userSelectedFromLang;
+                if (DEBUG_MODE) {
+                    console.log(`[网络层] 用户已手动选择源语言: '${fromLang}'，跳过自动检测。`);
+                }
+            }
+        }
+
+        if (isCancelled()) {
+            if (DEBUG_MODE) console.log('[网络层] 语言检测/设置读取后检测到取消信号，中止翻译。');
+            throw createCancellationError();
+        }
 
         if (engineName === 'google_translate') {
             try {
-                const translatedHtmlSnippets = await _handleGoogleRequest(CONFIG.TRANS_ENGINES.google_translate, paragraphs);
+                const translatedHtmlSnippets = await _handleGoogleRequest(CONFIG.TRANS_ENGINES.google_translate, paragraphs, fromLang, toLang);
                 if (!Array.isArray(translatedHtmlSnippets)) {
                     throw new Error('谷歌翻译接口未返回预期的数组格式');
                 }
@@ -9147,7 +9939,7 @@
             }
 
             const client = ApiClientFactory.create(provider);
-            const translatedText = await client.translate(paragraphs);
+            const translatedText = await client.translate(paragraphs, fromLang, toLang);
 
             if (typeof translatedText !== 'string' || !translatedText.trim()) {
                 throw new Error('API 未返回有效文本。');
@@ -9186,7 +9978,7 @@
                     if (DEBUG_MODE) console.log('[网络层] 等待后检测到取消信号，中止重试。');
                     throw createCancellationError();
                 }
-                return await requestRemoteTranslation(paragraphs, { retryCount: retryCount + 1, maxRetries, isCancelled });
+                return await requestRemoteTranslation(paragraphs, { retryCount: retryCount + 1, maxRetries, isCancelled, knownFromLang });
             }
             throw error;
         }
@@ -9245,16 +10037,17 @@
             GM_setValue(indexKey, (startIndex + 1) % keys.length);
 
             const currentKey = keys[currentIndex];
+            console.log(`[API Key 调度] 正在为“${provider.name}”服务使用 Key #${currentIndex + 1}`);
             return { key: currentKey, index: currentIndex };
         } finally {
             releaseLock();
         }
     }
 
-    /**
+	/**
      * 处理对谷歌翻译接口的特定请求流程
      */
-    async function _handleGoogleRequest(engineConfig, paragraphs) {
+    async function _handleGoogleRequest(engineConfig, paragraphs, fromLang, toLang) {
         await GoogleTranslateHelper .findAuth();
         if (!GoogleTranslateHelper .translateAuth) {
             throw new Error('无法获取谷歌翻译的授权凭证');
@@ -9264,7 +10057,20 @@
             ...engineConfig.headers,
             'X-goog-api-key': GoogleTranslateHelper .translateAuth
         };
-        const requestData = engineConfig.getRequestData(paragraphs);
+
+        const sourceTexts = paragraphs.map(p => p.outerHTML);
+        const requestData = JSON.stringify([
+            [sourceTexts, fromLang, toLang], "te"
+        ]);
+
+        if (DEBUG_MODE) {
+            console.groupCollapsed(`[调试日志] _handleGoogleRequest 准备发送请求`);
+            console.log('请求 URL:', engineConfig.url_api);
+            console.log('检测到的源语言:', fromLang);
+            console.log('目标语言:', toLang);
+            console.log('请求段落数:', paragraphs.length);
+            console.groupEnd();
+        }
 
         const res = await new Promise((resolve, reject) => {
             GM_xmlhttpRequest({
@@ -9412,7 +10218,7 @@
         return error;
     }
 
-    /**
+	/**
      * Zhipu AI 的专属错误处理策略
      */
     function _handleZhipuAiError(res, name, responseData) {
@@ -9445,9 +10251,8 @@
                     break;
                 case '1302':
                 case '1303':
-                    userFriendlyError = `请求频率过高 (${businessErrorCode})：已超出 API 的速率限制，脚本将在稍后自动重试。`;
-                    error.type = 'rate_limit';
-                    break;
+                    error.message = `请求频率过高 (${businessErrorCode})：已超出 API 的速率限制，脚本将在稍后自动重试。\n\n原始错误信息：\n${apiErrorMessage}`;
+                    return error;
                 case '1304':
                     userFriendlyError = `调用次数超限 (${businessErrorCode})：已达到当日调用次数限额，请联系 Zhipu AI 客服。`;
                     error.noRetry = true;
@@ -9948,6 +10753,15 @@
 
         const regexRules = rules.filter(r => r.matchStrategy === 'regex');
         if (regexRules.length > 0) {
+            const groupedRules = regexRules.reduce((acc, rule) => {
+                const flags = rule.regex.flags;
+                if (!acc[flags]) {
+                    acc[flags] = [];
+                }
+                acc[flags].push(rule);
+                return acc;
+            }, {});
+
             const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT, {
                 acceptNode: (node) => {
                     if (node.parentElement.closest('[data-glossary-applied="true"]')) {
@@ -9956,46 +10770,58 @@
                     return NodeFilter.FILTER_ACCEPT;
                 }
             });
-            const textNodes = [];
+
+            const nodesToProcess = [];
             let n;
-            while (n = walker.nextNode()) textNodes.push(n);
+            while (n = walker.nextNode()) {
+                nodesToProcess.push(n);
+            }
 
-            const combinedRegex = new RegExp(regexRules.map(r => `(${r.regex.source})`).join('|'), 'g');
+            while (nodesToProcess.length > 0) {
+                const currentNode = nodesToProcess.shift();
+                if (!currentNode.parentNode) continue;
 
-            textNodes.forEach(node => {
-                if (!node.parentNode) return;
+                let nodeWasReplaced = false;
 
-                const text = node.nodeValue;
-                const matches = Array.from(text.matchAll(combinedRegex));
+                for (const flags in groupedRules) {
+                    const rulesInGroup = groupedRules[flags];
+                    const combinedPattern = rulesInGroup.map(r => `(${r.regex.source})`).join('|');
+                    const combinedRegex = new RegExp(combinedPattern, flags);
 
-                if (matches.length > 0) {
-                    const fragment = document.createDocumentFragment();
-                    let lastIndex = 0;
+                    const text = currentNode.nodeValue;
+                    if (!text) continue;
 
-                    matches.forEach(match => {
+                    const match = combinedRegex.exec(text);
+                    if (match) {
+                        const fragment = document.createDocumentFragment();
                         const matchedText = match[0];
                         const matchIndex = match.index;
 
-                        if (matchIndex > lastIndex) {
-                            fragment.appendChild(document.createTextNode(text.substring(lastIndex, matchIndex)));
+                        if (matchIndex > 0) {
+                            fragment.appendChild(document.createTextNode(text.substring(0, matchIndex)));
                         }
 
                         const ruleIndex = match.slice(1).findIndex(g => g !== undefined);
-                        const rule = regexRules[ruleIndex];
+                        const rule = rulesInGroup[ruleIndex];
 
                         const placeholderNode = _applyRuleToTextMatch(matchedText, rule, placeholders, placeholderCache, engineName);
                         fragment.appendChild(placeholderNode);
 
-                        lastIndex = matchIndex + matchedText.length;
-                    });
+                        if (matchIndex + matchedText.length < text.length) {
+                            fragment.appendChild(document.createTextNode(text.substring(matchIndex + matchedText.length)));
+                        }
 
-                    if (lastIndex < text.length) {
-                        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                        const newNodes = Array.from(fragment.childNodes).filter(n => n.nodeType === Node.TEXT_NODE && n.nodeValue);
+                        if (newNodes.length > 0) {
+                            nodesToProcess.unshift(...newNodes);
+                        }
+
+                        currentNode.parentNode.replaceChild(fragment, currentNode);
+                        nodeWasReplaced = true;
+                        break; 
                     }
-
-                    node.parentNode.replaceChild(fragment, node);
                 }
-            });
+            }
         }
         return clone;
     }
@@ -10167,7 +10993,7 @@
     /**
      * 段落翻译函数，集成了术语表、禁翻和后处理替换逻辑
      */
-    async function translateParagraphs(paragraphs, { maxRetries = 3, isCancelled = () => false } = {}) {
+    async function translateParagraphs(paragraphs, { maxRetries = 3, isCancelled = () => false, knownFromLang = null } = {}) {
         const createCancellationError = () => {
             const error = new Error('用户已取消翻译。');
             error.type = 'user_cancelled';
@@ -10231,7 +11057,7 @@
                     legalPlaceholders.add(key);
                 }
 
-                const combinedTranslation = await requestRemoteTranslation(preprocessedParagraphs, { retryCount: 0, maxRetries: 3, isCancelled });
+                const combinedTranslation = await requestRemoteTranslation(preprocessedParagraphs, { retryCount: 0, maxRetries: 3, isCancelled, knownFromLang });
 
                 lastTranslationAttempt = combinedTranslation;
                 lastPlaceholdersMap = placeholders;
@@ -10361,7 +11187,7 @@
                             if (DEBUG_MODE) console.log('逐段回退时检测到取消信号，中断回退。');
                             break;
                         }
-                        const singleResultMap = await translateParagraphs([p], { maxRetries: 0, isCancelled });
+                        const singleResultMap = await translateParagraphs([p], { maxRetries: 0, isCancelled, knownFromLang });
                         const singleResult = singleResultMap.get(p);
                         fallbackResults.set(p, singleResult || { status: 'error', content: '逐段翻译失败' });
                     }
@@ -10397,7 +11223,7 @@
         }
     }
 
-    /**
+	/**
      * 创建并返回一个独立的翻译任务控制实例
      */
     function createTranslationController(options) {
@@ -10405,13 +11231,8 @@
 
         const controller = {
             state: 'idle',
-            observer: null,
+            translationTask: null,
             isCancellationRequested: false,
-
-            instanceState: {
-                elementState: new WeakMap(),
-                isFirstTranslationChunk: true,
-            },
 
             updateButtonState: function(text, stateClass = '') {
                 if (buttonWrapper) {
@@ -10441,8 +11262,13 @@
                     }
                 };
 
+                const instanceState = {
+                    elementState: new WeakMap(),
+                    isFirstTranslationChunk: true,
+                };
+
                 if (isLazyLoad) {
-                    this.observer = runTranslationEngineWithObserver({
+                    this.translationTask = runTranslationEngineWithObserver({
                         containerElement: containerElement,
                         isCancelled: () => this.isCancellationRequested,
                         onProgress: (translated, total) => {
@@ -10451,7 +11277,7 @@
                             }
                         },
                         onComplete: onComplete,
-                        instanceState: this.instanceState
+                        instanceState: instanceState
                     });
                 } else {
                     runTranslationEngineForBlock(containerElement, () => this.isCancellationRequested, onComplete);
@@ -10463,9 +11289,9 @@
 
                 this.isCancellationRequested = true;
                 if (DEBUG_MODE) console.log('[UI控制] pause: 用户请求暂停，isCancellationRequested 设置为 true。');
-                if (this.observer) {
-                    this.observer.disconnect();
-                    this.observer = null;
+                if (this.translationTask && this.translationTask.cleanup) {
+                    this.translationTask.cleanup();
+                    this.translationTask = null;
                 }
                 
                 this.state = 'paused';
@@ -10481,9 +11307,9 @@
             clear: function() {
                 this.isCancellationRequested = true;
                 if (DEBUG_MODE) console.log('[UI控制] clear: 用户请求清除，isCancellationRequested 设置为 true。');
-                if (this.observer) {
-                    this.observer.disconnect();
-                    this.observer = null;
+                if (this.translationTask && this.translationTask.cleanup) {
+                    this.translationTask.cleanup();
+                    this.translationTask = null;
                 }
 
                 const translationNodes = containerElement.querySelectorAll('.translated-by-ao3-script, .translated-by-ao3-script-error');
@@ -10493,9 +11319,6 @@
                     unit.style.display = '';
                     delete unit.dataset.translationState;
                 });
-
-                this.instanceState.elementState = new WeakMap();
-                this.instanceState.isFirstTranslationChunk = true;
                 
                 this.state = 'idle';
                 this.updateButtonState(originalButtonText, 'state-idle');
@@ -10522,7 +11345,7 @@
         return controller;
     }
 
-    /**
+	/**
      * 翻译引擎（用于简介、注释、评论等区域）
      */
     async function runTranslationEngineForBlock(containerElement, isCancelled, onComplete) {
@@ -10548,57 +11371,65 @@
 
         units.forEach(unit => unit.dataset.translationState = 'translating');
 
-        let translationResults;
         try {
-            translationResults = await translateParagraphs(units, { isCancelled });
-        } catch (error) {
-            if (error.type === 'user_cancelled') {
+            const translationResults = await translateParagraphs(units, { isCancelled });
+
+            if (isCancelled()) {
                 units.forEach(unit => delete unit.dataset.translationState);
                 return;
             }
-            translationResults = new Map();
+
+            const currentMode = GM_getValue('translation_display_mode', 'bilingual');
+
             units.forEach(unit => {
-                translationResults.set(unit, { status: 'error', content: error.message || '未知错误' });
-            });
-        }
+                const result = translationResults.get(unit);
+                if (result) {
+                    const transNode = document.createElement('div');
+                    const newTranslatedElement = unit.cloneNode(false);
+                    newTranslatedElement.innerHTML = result.content;
 
-        if (isCancelled()) {
-            units.forEach(unit => delete unit.dataset.translationState);
-            return;
-        }
-
-        const currentMode = GM_getValue('translation_display_mode', 'bilingual');
-
-        units.forEach(unit => {
-            const result = translationResults.get(unit);
-            if (result) {
-                const transNode = document.createElement('div');
-                const newTranslatedElement = unit.cloneNode(false);
-                newTranslatedElement.innerHTML = result.content;
-
-                if (result.status === 'success') {
-                    transNode.className = 'translated-by-ao3-script';
-                    unit.dataset.translationState = 'translated';
-                    if (currentMode === 'translation_only') {
-                        unit.style.display = 'none';
+                    if (result.status === 'success') {
+                        transNode.className = 'translated-by-ao3-script';
+                        unit.dataset.translationState = 'translated';
+                        if (currentMode === 'translation_only') {
+                            unit.style.display = 'none';
+                        }
+                    } else {
+                        transNode.className = 'translated-by-ao3-script-error';
+                        newTranslatedElement.innerHTML = `翻译失败：${result.content.replace('翻译失败：', '')}`;
+                        unit.dataset.translationState = 'error';
                     }
+                    transNode.appendChild(newTranslatedElement);
+                    transNode.style.cssText = 'margin-top: 0.25em; margin-bottom: 1em;';
+                    unit.after(transNode);
                 } else {
-                    transNode.className = 'translated-by-ao3-script-error';
-                    newTranslatedElement.innerHTML = `翻译失败：${result.content.replace('翻译失败：', '')}`;
                     unit.dataset.translationState = 'error';
                 }
+            });
+
+            if (onComplete) onComplete();
+        } catch (error) {
+            if (isCancelled() || (error && error.type === 'user_cancelled')) {
+                units.forEach(unit => delete unit.dataset.translationState);
+                return;
+            }
+
+            units.forEach(unit => {
+                const transNode = document.createElement('div');
+                transNode.className = 'translated-by-ao3-script-error';
+                const newTranslatedElement = unit.cloneNode(false);
+                newTranslatedElement.innerHTML = `翻译失败：${error.message || '未知错误'}`;
                 transNode.appendChild(newTranslatedElement);
                 transNode.style.cssText = 'margin-top: 0.25em; margin-bottom: 1em;';
                 unit.after(transNode);
-            } else {
                 unit.dataset.translationState = 'error';
-            }
-        });
+            });
 
-        if (onComplete) onComplete();
+            if (onComplete) onComplete();
+        }
     }
 
-    /**
+	/**
      * 翻译引擎（懒加载模式）
      */
     function runTranslationEngineWithObserver(options) {
@@ -10608,6 +11439,26 @@
         const translationQueue = new Set();
         let scheduleTimeout = null;
         let flushTimeout = null;
+        let detectedLanguageForSession = null;
+
+        async function initializeLanguageDetection() {
+            const userSelectedFromLang = GM_getValue('from_lang', 'auto');
+            if (userSelectedFromLang === 'auto') {
+                const firstFewUnits = allUnits.slice(0, 5);
+                if (firstFewUnits.length > 0) {
+                    const textToDetect = firstFewUnits.map(p => p.textContent).join(' ').substring(0, 200);
+                    detectedLanguageForSession = await detectLanguageBaidu(textToDetect);
+                    if (DEBUG_MODE) {
+                        console.log(`[懒加载引擎] 任务初始化：自动检测到源语言为 '${detectedLanguageForSession}'。`);
+                    }
+                }
+            } else {
+                detectedLanguageForSession = userSelectedFromLang;
+                if (DEBUG_MODE) {
+                    console.log(`[懒加载引擎] 任务初始化：用户已设置源语言为 '${detectedLanguageForSession}'。`);
+                }
+            }
+        }
 
         function preProcessAndGetUnits(container) {
             const brSplitSelectors = 'p, blockquote';
@@ -10668,6 +11519,8 @@
             return null;
         }
 
+        initializeLanguageDetection();
+
         const isInViewport = (el) => {
             const rect = el.getBoundingClientRect();
             return (rect.top < window.innerHeight && rect.bottom >= 0);
@@ -10689,19 +11542,24 @@
             const offscreenInQueue = allQueuedUnits.filter(p => !visibleInQueue.includes(p));
             const prioritizedUnits = [...visibleInQueue, ...offscreenInQueue];
 
-            const runType = instanceState.isFirstTranslationChunk ? 'first' : 'subsequent';
             const engineName = getValidEngineName();
-            const modelId = getCurrentModelId(engineName);
-            let paragraphLimit = CONFIG[runType === 'first' ? 'PARAGRAPH_LIMIT' : 'SUBSEQUENT_PARAGRAPH_LIMIT'];
-            let chunkSize = CONFIG[runType === 'first' ? 'CHUNK_SIZE' : 'SUBSEQUENT_CHUNK_SIZE'];
-            const priorityKeys = [modelId, engineName].filter(Boolean);
-            for (const key of priorityKeys) {
-                const specificLimits = getNestedProperty(CONFIG.MODEL_SPECIFIC_LIMITS, `${key}.${runType}`);
-                if (specificLimits) {
-                    paragraphLimit = specificLimits.PARAGRAPH_LIMIT || paragraphLimit;
-                    chunkSize = specificLimits.CHUNK_SIZE || chunkSize;
-                    break;
-                }
+            let paragraphLimit, chunkSize;
+
+            if (engineName === 'google_translate') {
+                const googleLimits = CONFIG.MODEL_SPECIFIC_LIMITS.google_translate;
+                paragraphLimit = googleLimits.PARAGRAPH_LIMIT;
+                chunkSize = googleLimits.CHUNK_SIZE;
+            } else {
+                chunkSize = GM_getValue('custom_ai_chunk_size', CONFIG.CHUNK_SIZE);
+                paragraphLimit = GM_getValue('custom_ai_para_limit', CONFIG.PARAGRAPH_LIMIT);
+            }
+
+            if (DEBUG_MODE) {
+                console.groupCollapsed(`[调试日志] 懒加载引擎参数`);
+                console.log(`翻译服务: ${engineName}`);
+                console.log(`段落数限制: ${paragraphLimit}`);
+                console.log(`文本量限制: ${chunkSize}`);
+                console.groupEnd();
             }
 
             let currentChars = 0;
@@ -10730,7 +11588,6 @@
             if (chunkToSend.length === 0) return;
 
             isProcessing = true;
-            if (instanceState.isFirstTranslationChunk) instanceState.isFirstTranslationChunk = false;
             chunkToSend.forEach(p => {
                 translationQueue.delete(p);
                 p.dataset.translationState = 'translating';
@@ -10744,7 +11601,7 @@
                 const paragraphsToTranslate = chunkToSend.filter(p => p.tagName !== 'HR' && p.textContent.trim().length > 0);
                 let translationResults;
                 try {
-                    translationResults = paragraphsToTranslate.length > 0 ? await translateParagraphs(paragraphsToTranslate, { isCancelled }) : new Map();
+                    translationResults = paragraphsToTranslate.length > 0 ? await translateParagraphs(paragraphsToTranslate, { isCancelled, knownFromLang: detectedLanguageForSession }) : new Map();
                 } catch (error) {
                     if (error.type === 'user_cancelled') {
                         if (DEBUG_MODE) console.log('[懒加载引擎] processQueue 捕获到用户取消错误，提前返回。');
@@ -10821,16 +11678,17 @@
             scheduleTimeout = setTimeout(() => processQueue(force), 300);
         };
 
-        let effectiveRootMargin = CONFIG.LAZY_LOAD_ROOT_MARGIN;
+        let effectiveRootMargin;
         const engineName = getValidEngineName();
-        const modelId = getCurrentModelId(engineName);
-        const priorityKeys = [modelId, engineName].filter(Boolean);
-        for (const key of priorityKeys) {
-            const specificMargin = getNestedProperty(CONFIG.MODEL_SPECIFIC_LIMITS, `${key}.LAZY_LOAD_ROOT_MARGIN`);
-            if (specificMargin) {
-                effectiveRootMargin = specificMargin;
-                break;
-            }
+        if (engineName === 'google_translate') {
+            const googleLimits = CONFIG.MODEL_SPECIFIC_LIMITS.google_translate;
+            effectiveRootMargin = googleLimits.LAZY_LOAD_ROOT_MARGIN;
+        } else {
+            effectiveRootMargin = GM_getValue('custom_ai_lazy_load_margin', CONFIG.LAZY_LOAD_ROOT_MARGIN);
+        }
+
+        if (DEBUG_MODE) {
+            console.log(`[调试日志] 懒加载引擎 IntersectionObserver 使用的 rootMargin: "${effectiveRootMargin}"`);
         }
 
         const observer = new IntersectionObserver((entries) => {
@@ -11181,6 +12039,11 @@
         let rules = [];
         const processedLocalKeys = new Set();
 
+        if (DEBUG_MODE) {
+            console.group('[调试日志] 术语表规则构建全流程');
+            console.log('开始构建术语表规则...');
+        }
+
         const PRIORITY = {
             LOCAL_FORBIDDEN: 60000,
             LOCAL_TERM: 50000,
@@ -11199,7 +12062,7 @@
             if (basePriority === undefined) return;
 
             const lengthFactor = isMultiPart
-                ? termForms.map(forms => Array.from(forms)[0]).join(' ').length
+                ? termForms.map(partForms => Array.from(partForms)[0]).join(' ').length
                 : Array.from(termForms)[0].length;
             const priority = basePriority + timestamp + lengthFactor;
 
@@ -11217,7 +12080,7 @@
                     ruleObject = {
                         type: isForbidden ? 'forbidden' : 'term', matchStrategy: 'dom',
                         parts: termForms,
-                        replacement: isForbidden ? termForms.map(forms => Array.from(forms)[0]).join(' ') : translation,
+                        replacement: isForbidden ? termForms.map(partForms => Array.from(partForms)[0]).join(' ') : translation,
                         priority, isGeneral, source, originalTerm, isUnordered
                     };
                 } else {
@@ -11242,16 +12105,23 @@
             const normalizedTerm = term.trim();
             if (!normalizedTerm) return;
 
+            const isGeneral = type.includes('GENERAL');
+            const isForbidden = type.includes('FORBIDDEN');
+
             if (termSeparatorRegex.test(normalizedTerm)) {
                 processMultiPartTerm(term, translation, type, isLocal, timestamp, source, originalTerm, false);
                 return;
             }
 
-            const isForbidden = type.includes('FORBIDDEN');
-            const forms = generateWordForms(normalizedTerm, { preserveCase: isForbidden });
+            const forms = generateWordForms(normalizedTerm, { preserveCase: isForbidden, forceLowerCase: isGeneral });
+
+            if (DEBUG_MODE && /anija/i.test(normalizedTerm)) {
+                console.log(`[词条处理] 正在处理词条: "${normalizedTerm}" (类型: ${type})`);
+                console.log(`  - 生成的词形变体 (forms):`, forms);
+            }
 
             if (isLocal || !processedLocalKeys.has(normalizedTerm.toLowerCase())) {
-                addRule({ termForms: forms, translation, type, isLocal, timestamp, source, originalTerm, isMultiPart: false, isGeneral: type.includes('GENERAL') });
+                addRule({ termForms: forms, translation, type, isLocal, timestamp, source, originalTerm, isMultiPart: false, isGeneral: isGeneral });
                 if (isLocal) {
                     forms.forEach(f => processedLocalKeys.add(f.toLowerCase()));
                 }
@@ -11276,8 +12146,13 @@
 
             const isGeneral = type.includes('GENERAL');
             const termPartsWithForms = termParts.map(part =>
-                Array.from(generateWordForms(part, { preserveCase: isForbidden || isGeneral }))
+                Array.from(generateWordForms(part, { preserveCase: isForbidden, forceLowerCase: isGeneral }))
             );
+
+            if (DEBUG_MODE && /anija/i.test(normalizedTerm)) {
+                console.log(`[词条处理] 正在处理多部分词条: "${normalizedTerm}" (类型: ${type})`);
+                console.log(`  - 生成的各部分词形变体 (termPartsWithForms):`, termPartsWithForms);
+            }
 
             const isUnorderedEligible = isFromEqualsSyntax && (type === 'LOCAL_TERM' || type === 'ONLINE_TERM');
 
@@ -11308,11 +12183,13 @@
             }
         }
 
+        if (DEBUG_MODE) console.log('阶段1: 处理本地禁翻词条...');
         localForbiddenTerms.forEach(term => {
             processSinglePartTerm(term, null, 'LOCAL_FORBIDDEN', true, 0, '本地禁翻', term);
         });
 
         if (localGlossaryString.trim()) {
+            if (DEBUG_MODE) console.log('阶段2: 处理本地术语表...');
             localGlossaryString.replace(/[，,]/g, '|||').split('|||').forEach(entry => {
                 const normalizedEntry = entry.replace(/[：＝]/g, (match) => ({ '：': ':', '＝': '=' }[match]));
                 const multiPartMatch = normalizedEntry.match(/^\s*(.+?)\s*=\s*(.+?)\s*$/);
@@ -11335,11 +12212,13 @@
                 return timeB - timeA;
             });
 
+        if (DEBUG_MODE) console.log('阶段3: 处理在线术语表...');
         sortedOnlineGlossaryUrls.forEach((url, index) => {
             const g = allImportedGlossaries[url];
             if (!g) return;
             const timestamp = index * 0.001;
             const sourceName = `在线: ${decodeURIComponent(url.split('/').pop())}`;
+            if (DEBUG_MODE) console.log(`  - 正在加载: ${sourceName}`);
 
             (g.forbiddenTerms || []).forEach(term => processSinglePartTerm(term, null, 'ONLINE_FORBIDDEN', false, timestamp, sourceName, term));
             Object.entries(g.terms || {}).forEach(([k, v]) => processSinglePartTerm(k, v, 'ONLINE_TERM', false, timestamp, sourceName, `${k}:${v}`));
@@ -11353,6 +12232,7 @@
             });
         });
 
+        if (DEBUG_MODE) console.log('阶段4: 排序所有规则...');
         rules.sort((a, b) => b.priority - a.priority);
 
         const currentStateHash = generateGlossaryStateHash();
@@ -11369,17 +12249,19 @@
         });
 
         if (DEBUG_MODE) {
-            console.log('[缓存管理] 术语表规则已重建并存入缓存。');
+            console.groupCollapsed(`构建完成，共 ${rules.length} 条规则。`);
+            console.log('最终排序后的规则列表:', rules);
+            console.groupEnd();
         }
 
         return rules;
     }
 
-    /**
+	/**
      * 为单个英文单词生成其常见词形变体
      */
     function generateWordForms(baseTerm, options = {}) {
-        const { preserveCase = false } = options;
+        const { preserveCase = false, forceLowerCase = false } = options;
         const forms = new Set();
         if (!baseTerm || typeof baseTerm !== 'string') {
             return forms;
@@ -11417,6 +12299,13 @@
         }
 
         forms.add(pluralForm);
+
+        if (forceLowerCase) {
+            const lowerCaseForms = new Set();
+            forms.forEach(form => lowerCaseForms.add(form.toLowerCase()));
+            return lowerCaseForms;
+        }
+
         return forms;
     }
 
@@ -11904,6 +12793,21 @@
                 GM_setValue('google_ai_keys_string', newKeysString);
             }
         })();
+
+        (function() {
+            const modelKey = 'google_ai_model';
+            const currentModel = GM_getValue(modelKey, null);
+            if (!currentModel) return;
+
+            const migrationMap = {
+                'gemini-2.5-flash': 'gemini-flash-latest',
+                'gemini-2.5-flash-lite': 'gemini-flash-lite-latest'
+            };
+
+            if (migrationMap[currentModel]) {
+                GM_setValue(modelKey, migrationMap[currentModel]);
+            }
+        })();
     }
 
     /**
@@ -12182,6 +13086,10 @@
         if (pageType === 'tags_search') {
             translateTagSearchTips();
         }
+
+        if (pageType === 'users_stats') {
+            translateStatsChart();
+        }
     }
 
     /**
@@ -12355,7 +13263,10 @@
                     if (p2 && p3 === 'pseuds' && p5 === 'works') return 'users_common';
                     if (p2 && (p3 === 'blocked' || p3 === 'muted') && p4 === 'users') return 'users_block_mute_list';
                     if (p2 && p3 === 'dashboard') return 'dashboard';
+                    if (p2 && p3 === 'profile' && p4 === 'edit') return 'users_settings';
                     if (p2 && p3 === 'profile') return 'profile';
+                    if (p2 && p3 === 'stats') return 'users_stats';
+                    if (p2 && p3 === 'readings') return 'users_history';
                     if (p2 && p3 === 'preferences') return 'preferences';
                     if (p2 && p3 === 'edit') return 'users_settings';
                     if (p2 && p3 === 'change_username') return 'users_settings';
@@ -12386,7 +13297,13 @@
                     break;
                 case 'works':
                     if (document.querySelector('div#main.works-update')) return 'works_edit';
-                    if (p2 === 'new') return 'works_new';
+                    if (p2 === 'new') {
+                        const searchParams = new URLSearchParams(window.location.search);
+                        if (searchParams.get('import') === 'true') {
+                            return 'works_import';
+                        }
+                        return 'works_new';
+                    }
                     if (p2 === 'search') return isSearchResultsPage ? 'works_search_results' : 'works_search';
                     if (p2 && /^\d+$/.test(p2)) {
                         if (p3 === 'chapters' && p4 === 'new') return 'chapters_new';
@@ -12697,25 +13614,35 @@
         };
 
 		const pageTranslationConfig = {
+			'front_page': [
+                { selector: '.latest.news .post.group > blockquote.userstuff', text: '翻译概述', above: false, isLazyLoad: false }
+            ],
 			'works_show': [
 				{ selector: 'div.summary blockquote.userstuff', text: '翻译简介', above: false, isLazyLoad: false },
 				{ selector: 'div.notes blockquote.userstuff', text: '翻译注释', above: false, isLazyLoad: false },
-				{ selector: '#chapters .userstuff', text: '翻译正文', above: true, isLazyLoad: true },
-				{ selector: 'li.comment blockquote.userstuff', text: '翻译评论', above: false, isLazyLoad: false }
+				{ selector: '#chapters > .userstuff', text: '翻译正文', above: true, isLazyLoad: true },
+				{ selector: '#chapters > .chapter > .userstuff[role="article"]', text: '翻译正文', above: true, isLazyLoad: true },
+				{ selector: 'li.comment > blockquote.userstuff', text: '翻译评论', above: false, isLazyLoad: false }
 			],
 			'works_chapters_show': [
 				{ selector: 'div.summary blockquote.userstuff', text: '翻译简介', above: false, isLazyLoad: false },
 				{ selector: 'div.notes blockquote.userstuff', text: '翻译注释', above: false, isLazyLoad: false },
-				{ selector: '#chapters .userstuff', text: '翻译正文', above: true, isLazyLoad: true },
-				{ selector: 'li.comment blockquote.userstuff', text: '翻译评论', above: false, isLazyLoad: false }
+				{ selector: '#chapters > .userstuff', text: '翻译正文', above: true, isLazyLoad: true },
+				{ selector: '#chapters > .chapter > .userstuff[role="article"]', text: '翻译正文', above: true, isLazyLoad: true },
+				{ selector: 'li.comment > blockquote.userstuff', text: '翻译评论', above: false, isLazyLoad: false }
 			],
 			'admin_posts_show': [
-                { selector: '.admin_posts-show div[role="article"] .userstuff', text: '翻译动态', above: true, isLazyLoad: false },
-				{ selector: '.comment blockquote.userstuff', text: '翻译评论', above: false, isLazyLoad: false }
+                { selector: 'div[role="article"] > .userstuff', text: '翻译动态', above: true, isLazyLoad: false },
+				{ selector: 'li.comment > blockquote.userstuff', text: '翻译评论', above: false, isLazyLoad: false }
 			],
             'admin_posts_index': [
-                { selector: '.admin_posts-index div[role="article"] .userstuff', text: '翻译动态', above: true, isLazyLoad: false }
+                { selector: '.admin_posts-index div[role="article"] > .userstuff', text: '翻译动态', above: true, isLazyLoad: false }
             ],
+            'dashboard': [
+                { selector: '.latest.news .post.group > blockquote.userstuff', text: '翻译概述', above: false, isLazyLoad: false },
+                { selector: '.random.readings .reading.work.blurb .userstuff.summary', text: '翻译简介', above: false, isLazyLoad: false }
+            ],
+            'users_history': [blurbSummaryConfig],
             'works_index': [blurbSummaryConfig],
             'users_works_index': [blurbSummaryConfig],
             'tags_show': [blurbSummaryConfig],
@@ -12748,8 +13675,8 @@
             } else {
                 document.querySelectorAll(target.selector).forEach(element => {
                     if (element.dataset.translationHandled) return;
-                    if (pageConfig.currentPageType === 'works_show' && target.selector === '#chapters .userstuff' && element.closest('.notes, .end.notes, .bookmark, .summary')) return;
-                    if (pageConfig.currentPageType === 'works_chapters_show' && target.selector === '#chapters .userstuff' && element.closest('.notes, .end.notes, .bookmark, .summary')) return;
+                    const isWorkTextSelector = target.selector.startsWith('#chapters');
+                    if (isWorkTextSelector && element.closest('.notes, .end.notes, .bookmark, .summary')) return;
                     if (element.textContent.trim() !== '') {
                         addTranslationButton(element, target.text, target.above, target.isLazyLoad);
                     }
