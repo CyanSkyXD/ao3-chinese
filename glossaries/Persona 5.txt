@@ -1,6 +1,8 @@
-版本号：1.0.2
+版本号：1.0.3
 维护者：CyanSkyXD
-更新时间：2025-10-04
+更新时间：2025-12-07
+
+// 此术语表包括p5r主线角色及部分支线角色名、常见地点和专有名词，以及p5s部分角色名
 
 词条
 // 角色
@@ -43,7 +45,7 @@ Oda Shinya = 织田 信也
 Ohya Ichiko = 大宅 一子
 Okumura Haru = 奥村 春
 Okumura Kunikazu = 奥村 邦和
-Owada Jun = 大和 田纯
+Owada Jun = 大和田 纯
 Rumi = 由美
 Sakamoto Ryuji = 坂本 龙司
 Sakura Futaba = 佐仓 双叶
@@ -79,6 +81,7 @@ Shujin Academy：秀尽学园
 Shujin：秀尽
 Velvet Room：天鹅绒房间
 Yongenjaya：四轩茶屋
+
 // 其他
 calling card：预告函
 cognitive psience：认知诃学
