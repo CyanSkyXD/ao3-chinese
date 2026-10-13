@@ -1,6 +1,6 @@
-版本号：1.0.3
+版本号：1.0.4
 维护者：CyanSkyXD
-更新时间：2025-12-07
+更新时间：2026-10-13
 
 // 此术语表包括p5r主线角色及部分支线角色名、常见地点和专有名词，以及p5s部分角色名
 
@@ -33,6 +33,7 @@ Kitagawa Yusuke = 喜多川 祐介
 Kobayakawa = 小早川
 Kurusu Akira = 来栖 晓
 Lavenza = 拉雯妲
+Madarame Ichiryusai = 斑目 一流斋
 Maruki Takuto = 丸喜 拓人
 Mifune Chihaya = 御船 千早
 Mika = 美佳
@@ -60,6 +61,7 @@ Togo Hifumi = 东乡 一二三
 Usami = 宇佐美
 Ushimaru = 牛丸
 Wuhen = 无边
+Yaldabaoth = 亚尔达拜特
 Yoshida Toranosuke = 吉田 寅之助
 Yoshizawa Kasumi = 芳泽 霞
 Yoshizawa Shinichi = 芳泽 伸一
