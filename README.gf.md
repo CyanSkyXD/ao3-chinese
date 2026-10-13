@@ -1,19 +1,15 @@
-<div align="center" markdown="1">
-
 # AO3 汉化插件
 
 为 AO3 打造的中文阅读体验增强工具，支持 UI 界面汉化与多种翻译服务的实时内容翻译。
 
-简体中文 · [English](./README.md) · [文档](https://v-lipset.github.io) · [更新日志](https://github.com/V-Lipset/ao3-chinese/releases) · [QQ 频道](https://pd.qq.com/s/h5cf7c1sd?b=9)
+简体中文 · [English](https://github.com/V-Lipset/ao3-chinese/blob/main/README.md) · [文档](https://v-lipset.github.io) · [更新日志](https://github.com/V-Lipset/ao3-chinese/releases) · [QQ 频道](https://pd.qq.com/s/h5cf7c1sd?b=9)
 
 <!-- SHIELD GROUP -->
-
 [![GitHub release badge][release-shield]][release-link]
 [![GitHub stars badge][stars-shield]][stars-link]
+[![GitHub forks badge][forks-shield]][forks-link]
 [![GitHub contributors badge][contributors-shield]][contributors-link]
 ![GitHub last commit badge][last-commit-shield]
-
-</div>
 
 ### ✨ 功能
 
@@ -65,7 +61,7 @@
 
 ### 📄 许可证
 
-本项目基于 [GPL-3.0 License](./LICENSE) 许可证开源。
+本项目基于 [GPL-3.0 License](https://github.com/V-Lipset/ao3-chinese/blob/main/LICENSE) 许可证开源。
 
 ### 🙏 特别鸣谢
 
@@ -82,6 +78,8 @@
 
 [contributors-link]: https://github.com/V-Lipset/ao3-chinese/graphs/contributors
 [contributors-shield]: https://img.shields.io/github/contributors/V-Lipset/ao3-chinese?style=flat-square&label=Contributors&labelColor=black&color=brightgreen
+[forks-link]: https://github.com/V-Lipset/ao3-chinese/forks
+[forks-shield]: https://img.shields.io/github/forks/V-Lipset/ao3-chinese?style=flat-square&label=Forks&color=blue&labelColor=black
 [last-commit-shield]: https://img.shields.io/github/last-commit/V-Lipset/ao3-chinese?style=flat-square&label=Last%20Commit&labelColor=black&color=blue
 [release-link]: https://github.com/V-Lipset/ao3-chinese/releases
 [release-shield]: https://img.shields.io/github/v/release/V-Lipset/ao3-chinese?include_prereleases&style=flat-square&label=Latest&color=brightgreen&labelColor=black
